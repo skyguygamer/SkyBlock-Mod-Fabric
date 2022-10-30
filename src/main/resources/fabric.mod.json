@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "sbmod",
+  "version": "3.0.0-1.19.2",
+
+  "name": "Example Mod",
+  "description": "No\nDon't\nThink\nAbout\nIt\nShush\nShut\nUp\nNow\nPlease!\n",
+
+  "authors": [
+    "SkyGuyGamer"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "GPL-3.0-or-later",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.skyguygamer.sbmod.SbMod"
+    ],
+    "client": [
+      "net.skyguygamer.sbmod.SbModClient"
+      ]
+  },
+  "mixins": [
+    "sbmod.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
