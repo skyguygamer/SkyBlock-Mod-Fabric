@@ -1,21 +1,22 @@
 {
   "schemaVersion": 1,
   "id": "sbmod",
-  "version": "3.0.0-1.19.2",
+  "version": "3.0.0-1.19+",
 
-  "name": "Example Mod",
-  "description": "No\nDon't\nThink\nAbout\nIt\nShush\nShut\nUp\nNow\nPlease!\n",
+  "name": "Skyblock.net Mod FABRIC",
+  "description": "A skyblock mod made to use on skyblock.net\n\nCredits to Traumatophobia and m0gliE",
 
   "authors": [
     "SkyGuyGamer"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "N/A",
+    "sources": "https://github.com/skyguygamer/SkyBlock-Mod-Fabric"
   },
 
+
   "license": "GPL-3.0-or-later",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/sbmod/sbmodicon.png",
 
   "environment": "*",
   "entrypoints": {
