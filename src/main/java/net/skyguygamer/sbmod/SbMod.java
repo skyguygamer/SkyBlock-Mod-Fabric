@@ -29,7 +29,6 @@ public class SbMod implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(SBMOD_ID);
 
 	public static Boolean loggingIn = false;
-	public static ClientPlayerEntity PlayerEntity = null;
 	public static int pressTime = 0;
 	public static int advertTimer = 0;
 	public static Boolean loggedOn = false;

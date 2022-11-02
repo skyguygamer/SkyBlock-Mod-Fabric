@@ -23,7 +23,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         ClientPlayerEntity lp = MinecraftClient.getInstance().player;
         //Login message
         if (loggedInToWorld) {
-            if (!loggedOn) {
+            if (!loggedOn && !(MinecraftClient.getInstance().player == null)) {
                 if (!welcomeMsg) {
                     if (welcomeMessageTime >= 100) {
                         String boarder = "";
@@ -112,14 +112,14 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         }
         //Cool down for AutoFix
         if (coolDown) {
-            if (coolDownCounter >= 48040) {
+            if (coolDownCounter >= 24020) {
                 coolDown = false;
                 coolDownCounter = 0;
             }
             coolDownCounter ++;
         }
         //AutoAdvert
-        if (AutoAdvert.sendingmessages) {
+        if (AutoAdvert.sendingMessages) {
             if (advertTimer >= AutoAdvert.interval) {
 
                 lp.sendChatMessage(AutoAdvert.message, Text.literal(""));

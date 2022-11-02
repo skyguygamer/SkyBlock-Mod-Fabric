@@ -15,7 +15,7 @@ public final class AutoAdvert
 {
     //public static ClientPlayerEntityEntity lp = null;
     public static int interval = 8400;
-    public static Boolean sendingmessages = false;
+    public static Boolean sendingMessages = false;
     public static String message = "";
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher)
     {
@@ -38,14 +38,14 @@ public final class AutoAdvert
 
     }
     private static int stop(FabricClientCommandSource source) {
-        sendingmessages = false;
+        sendingMessages = false;
     
         source.sendFeedback(Text.literal("§aYou have stopped sending adverts!"));
 
         return Command.SINGLE_SUCCESS;
     }
     private static int info(FabricClientCommandSource source) {
-        if(sendingmessages) {
+        if(sendingMessages) {
             source.sendFeedback(Text.literal("§aYou are currently sending §f" + message));
             source.sendFeedback(Text.literal("§aYou are sending messages every §f" + interval/1200 + " §aminutes"));
         } else {
@@ -55,7 +55,7 @@ public final class AutoAdvert
     }
     public static int advert(FabricClientCommandSource source, String messagetosend) {
         message = messagetosend;
-        sendingmessages = true;
+        sendingMessages = true;
         ClientPlayerEntity lp = (ClientPlayerEntity) source.getEntity();
         //lp.chatSigned("d", Text.literal("dd"));
 

@@ -4,21 +4,23 @@
   "version": "3.0.0-1.19+",
 
   "name": "Skyblock.net Mod FABRIC",
-  "description": "A skyblock mod made to use on skyblock.net\n\nCredits to Traumatophobia and m0gliE",
+  "description": "A skyblock mod made to use on skyblock.net\n\nRewritten by SkyGuyGamer",
 
   "authors": [
     "SkyGuyGamer"
   ],
+
   "contact": {
-    "homepage": "N/A",
+    "homepage": "https://skyblock.net/threads/1-19-2-skyblock-mod.142467/",
+    "issues": "https://github.com/skyguygamer/SkyBlock-Mod-Fabric/issues",
     "sources": "https://github.com/skyguygamer/SkyBlock-Mod-Fabric"
   },
 
-
+  "contributors": ["Traumatophobia", "m0gliE"],
   "license": "GPL-3.0-or-later",
   "icon": "assets/sbmod/sbmodicon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
       "net.skyguygamer.sbmod.SbMod"
@@ -36,8 +38,12 @@
     "fabric-api": "*",
     "minecraft": "~1.19",
     "java": ">=17"
+
+  },
+  "recommends": {
+    "modmenu": "*"
   },
   "suggests": {
-    "another-mod": "*"
+    "modmenu": "*"
   }
 }
