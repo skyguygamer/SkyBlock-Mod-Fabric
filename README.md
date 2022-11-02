@@ -1,7 +1,8 @@
 # SkyBlock Mod `WIP`
 #### This is a mod for skyblock.net
 #### Version `1.19.2` `fabric`
-### For forge version 
+#### For forge version:
+#### https://github.com/skyguygamer/SkyBlock_Mod
 
 #### How to install
 ##### 1. Click on releases on the right hand side
