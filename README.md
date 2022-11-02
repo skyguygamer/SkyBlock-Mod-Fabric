@@ -4,6 +4,9 @@
 #### For forge version:
 #### https://github.com/skyguygamer/SkyBlock_Mod
 
+#### Recommend the mod `modmenu` as it will give useful information about the mod:
+##### https://www.curseforge.com/minecraft/mc-mods/modmenu
+
 #### How to install
 ##### 1. Click on releases on the right hand side
 ##### 2. Click on lastest release
