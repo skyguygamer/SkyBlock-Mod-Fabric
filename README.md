@@ -2,13 +2,13 @@
 #### This is a mod for skyblock.net
 #### Version `1.19.2`
 
-####How to install
-### 1. Click on releases on the right hand side
-### 2. Click on lastest release
-### 3. Download the jar file
-### 4. If you don't already have fabric, download fabric for 1.19.2 here https://fabricmc.net/use/installer/
-### 5. Move the jar file into the mods folder
-### 6. Play minecraft and enjoy!
+#### How to install
+##### 1. Click on releases on the right hand side
+##### 2. Click on lastest release
+##### 3. Download the jar file
+##### 4. If you don't already have fabric, download fabric for 1.19.2 here https://fabricmc.net/use/installer/
+##### 5. Move the jar file into the mods folder
+##### 6. Play minecraft and enjoy!
 
 #### List of commands:
 ```
