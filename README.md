@@ -2,7 +2,7 @@
 #### This is a mod for skyblock.net
 #### Version `1.19.2` `fabric`
 #### For forge version:
-#### https://github.com/skyguygamer/SkyBlock_Mod
+#### https://github.com/skyguygamer/SkyBlock-Mod-Forge
 
 #### Recommend the mod `modmenu` as it will give useful information about the mod:
 ##### https://www.curseforge.com/minecraft/mc-mods/modmenu
