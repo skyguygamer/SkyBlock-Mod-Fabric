@@ -3,13 +3,13 @@ package net.skyguygamer.sbmod.event;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.realms.dto.PlayerInfo;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
 import net.skyguygamer.sbmod.commands.AutoAdvert;
 import net.skyguygamer.sbmod.commands.AutoPrivate;
 import net.skyguygamer.sbmod.commands.AutoSpawnMob;
-import net.skyguygamer.sbmod.config.ModConfigs;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,7 +20,16 @@ import static net.skyguygamer.sbmod.SbMod.*;
 public class ClientTickHandler implements ClientTickEvents.StartTick {
     @Override
     public void onStartTick(MinecraftClient client) {
+
         ClientPlayerEntity lp = MinecraftClient.getInstance().player;
+        //List<? extends PlayerEntity> onlinePlayers = lp.getWorld().getPlayers();
+        //if(playerCheckTime >= 20)
+        //for(PlayerEntity p : MinecraftClient.getInstance().player.getWorld().getPlayers()) {
+        //    String playerName = p.getUuidAsString();
+         //   if()
+        //} else {
+        //    playerCheckTime++;
+        //}
         //Login message
         if (loggedInToWorld) {
             if (!loggedOn && !(MinecraftClient.getInstance().player == null)) {

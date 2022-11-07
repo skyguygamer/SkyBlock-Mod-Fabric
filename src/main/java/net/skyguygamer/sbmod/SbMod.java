@@ -22,6 +22,7 @@ import java.awt.event.KeyEvent;
 import java.beans.EventHandler;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SbMod implements ModInitializer {
@@ -55,6 +56,9 @@ public class SbMod implements ModInitializer {
 	public static int welcomeMessageTime = 0;
 	public static boolean loggedInToWorld = false;
 	public static boolean welcomeMsg = false;
+	public static int playerCheckTime = 0;
+	public static ArrayList<String> onlineUuids = new ArrayList<>(Arrays.asList());
+	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("SkyGuyGamerz", "Meggann"));
 
 	public static void convertText(String text) {
 		for (int i = 0; i < text.length(); i ++) {

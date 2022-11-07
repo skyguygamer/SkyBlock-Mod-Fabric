@@ -17,11 +17,9 @@ public class Divide64 {
     }
 
     private static int run(FabricClientCommandSource source, double amount) {
-         double total = amount/64.0;
-         String.format("%.2f", total);
-        source.sendFeedback(((Text.literal(" - ").formatted(Formatting.RED)).append(Text.literal(amount + " / " + " 64 " + " = " + String.format("%.2f", total)).formatted(Formatting.GREEN))));
-
-        return Command.SINGLE_SUCCESS;
-
+         double total = amount/64;
+         double remainder = amount%64;
+         source.sendFeedback(Text.literal(Formatting.RED + " - " + Formatting.GREEN +  String.format("%.0f", amount) + " / 64"  + " = " + Formatting.WHITE + String.format("%.2f", total) + Formatting.GREEN + " or " + Formatting.WHITE + String.format("%.0f", total) + Formatting.GREEN + " stacks and " + Formatting.WHITE + String.format("%.0f", remainder) + Formatting.GREEN + " grass"));
+         return Command.SINGLE_SUCCESS;
     }
 }
