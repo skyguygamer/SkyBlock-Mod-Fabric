@@ -24,6 +24,7 @@ public final class HelpCommand {
         }
         context.getSource().sendFeedback(Text.literal(boarder));
         context.getSource().sendFeedback(Text.literal("§a/shelp§f: Lists the Skyblock Mods Commands"));
+        context.getSource().sendFeedback(Text.literal("§a/saliases§f: Lists the available shortcuts to commands in this mod"));
         context.getSource().sendFeedback(Text.literal("§a/joincommand §7[add,delete,list,help]§f: Allows you to set commands/messages that are sent when you join the game"));
         context.getSource().sendFeedback(Text.literal("§a/autoadvert §7[info,message,time]§f: Allows you to send a message every interval (Leave empty to stop adverts)"));
         context.getSource().sendFeedback(Text.literal("§a/64 §7[number]§f: Divides a number by 64 to find how many stacks it is"));

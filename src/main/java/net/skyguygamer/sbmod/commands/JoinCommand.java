@@ -76,7 +76,7 @@ public final class JoinCommand {
             }
             commands.add(addtolist);
             success = true;
-            source.sendFeedback(Text.literal(addtolist+" will be executed whenever you join").formatted(Formatting.DARK_AQUA));
+            source.sendFeedback(Text.literal("/" + addtolist+" will be executed whenever you join"));
             }
         if (success) {
             PrintWriter writer;
@@ -100,7 +100,7 @@ public final class JoinCommand {
     }
     private static int delete(FabricClientCommandSource source, int numinlist, ArrayList<String> commands, Boolean success) {
         try {
-            commands.remove(numinlist);
+            commands.remove(numinlist-1);
             success = true;
         } catch (Exception e) {
             source.sendFeedback(Text.literal("Invalid, please check your index # (/joincommand list)").formatted(Formatting.RED));
@@ -132,7 +132,7 @@ public final class JoinCommand {
             source.sendFeedback(Text.literal("Kinda lonely here :("));
         }
         for (int i = 0; i < commands.size(); i++) {
-            source.sendFeedback(Text.literal(String.valueOf(i)+": "+commands.get(i)));
+            source.sendFeedback(Text.literal(String.valueOf(i+1)+": /"+commands.get(i)));
         }
         source.sendFeedback(Text.literal("****************************************").formatted(Formatting.GREEN));
 
