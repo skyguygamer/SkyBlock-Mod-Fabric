@@ -63,6 +63,9 @@ public final class JoinCommand {
     }
 
     private static int add(FabricClientCommandSource source, String command, ArrayList<String> commands, Boolean success) {
+        if (command.startsWith("/")) {
+            command = command.substring(1);
+        }
         if (command.equals("")) {
             source.sendFeedback(Text.literal("Please enter a command").formatted(Formatting.RED));
         }
@@ -125,8 +128,11 @@ public final class JoinCommand {
 
     private static int listJc(FabricClientCommandSource source, ArrayList<String> commands) {
         source.sendFeedback(Text.literal("****************************************").formatted(Formatting.GREEN));
+        if (commands.size()==0) {
+            source.sendFeedback(Text.literal("Kinda lonely here :("));
+        }
         for (int i = 0; i < commands.size(); i++) {
-            source.sendFeedback(Text.literal(String.valueOf(i)+": "+commands.get(i)).formatted(Formatting.DARK_AQUA));
+            source.sendFeedback(Text.literal(String.valueOf(i)+": "+commands.get(i)));
         }
         source.sendFeedback(Text.literal("****************************************").formatted(Formatting.GREEN));
 
