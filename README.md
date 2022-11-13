@@ -7,6 +7,8 @@
 #### Recommend the mod `modmenu` as it will give useful information about the mod:
 ##### https://www.curseforge.com/minecraft/mc-mods/modmenu
 
+#### Join discord for updates! https://discord.gg/WAw6xC29E8
+
 #### How to install
 ##### 1. Click on releases on the right hand side
 ##### 2. Click on lastest release
