@@ -409,6 +409,7 @@ public class SbMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+
 		ModConfigs.registerConfigs();
 
 		//ClientTickEvents.START_CLIENT_TICK.register();
@@ -425,7 +426,7 @@ public class SbMod implements ModInitializer {
 			JoinCommand.register(dispatcher);
 			HelpCommand.register(dispatcher);
 			AutoAdvert.register(dispatcher);
-			SetPrefix.register(dispatcher);
+			//SetPrefix.register(dispatcher);
 			EnchantAllCommand.register((dispatcher));
 			AutoFix.register(dispatcher);
 			CommandAliases.register((dispatcher));

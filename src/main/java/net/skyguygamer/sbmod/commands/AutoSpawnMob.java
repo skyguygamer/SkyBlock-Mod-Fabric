@@ -62,7 +62,7 @@ public class AutoSpawnMob {
     }
     public static int info(FabricClientCommandSource source) {
         if(SbMod.spawnMobs) {
-            source.sendFeedback(Text.literal("§aYou currently are spawning §f" + amountSpawning + " " + mobSpawned + " §aon §f" + PlayerEntitySpawnedOn));
+            source.sendFeedback(Text.literal("§aYou currently are spawning §f" + amountSpawning + " " + mobSpawned + " §aon §f" + PlayerEntitySpawnedOn) );
         } else {
             source.sendFeedback(Text.literal(Formatting.RED + "You are not spawning mobs right now!"));
         }

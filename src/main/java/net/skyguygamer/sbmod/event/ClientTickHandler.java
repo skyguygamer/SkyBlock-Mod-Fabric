@@ -66,8 +66,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     }
                     e.printStackTrace();
                 }
-                System.out.println(commands);
-                System.out.println(commands.size());
                 for (int i = 0; i < commands.size(); i++) {
                     if (welcomeMessageTime == (i*100)+100) {
                         //lp.sendChatMessage(commands.get(i), Text.literal(""));
@@ -140,17 +138,17 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         try {
             if (pressTime == 0 && enchantAxe) {
                 lp.sendChatMessage("/enchant sharpness 5", Text.literal(""));
-            } else if (pressTime == 40 && enchantAxe) {
+            } else if (pressTime == 20 && enchantAxe) {
                 lp.sendChatMessage("/enchant smite 5", Text.literal(""));
-            } else if (pressTime == 80 && enchantAxe) {
+            } else if (pressTime == 40 && enchantAxe) {
                 lp.sendChatMessage("/enchant baneofarthropods 5", Text.literal(""));
-            } else if (pressTime == 120 && enchantAxe) {
+            } else if (pressTime == 60 && enchantAxe) {
                 lp.sendChatMessage("/enchant efficiency 5", Text.literal(""));
-            } else if (pressTime == 160 && enchantAxe) {
+            } else if (pressTime == 80 && enchantAxe) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
-            } else if (pressTime == 200 && enchantAxe) {
+            } else if (pressTime == 100 && enchantAxe) {
                 lp.sendChatMessage("/enchant fortune 3", Text.literal(""));
-            } else if (pressTime == 240 && enchantAxe) {
+            } else if (pressTime == 120 && enchantAxe) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
                 enchantAxe = false;
                 enchant = false;
@@ -158,28 +156,28 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantSword) {
                 lp.sendChatMessage("/enchant sharpness 5", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantSword) {
+            else if (pressTime == 20 && enchantSword) {
                 lp.sendChatMessage("/enchant smite 5", Text.literal(""));
             }
-            else if (pressTime == 80 && enchantSword) {
+            else if (pressTime == 40 && enchantSword) {
                 lp.sendChatMessage("/enchant baneofarthropods 5", Text.literal(""));
             }
-            else if (pressTime == 120 && enchantSword) {
+            else if (pressTime == 60 && enchantSword) {
                 lp.sendChatMessage("/enchant fireaspect 2", Text.literal(""));
             }
-            else if (pressTime == 160 && enchantSword) {
+            else if (pressTime == 80 && enchantSword) {
                 lp.sendChatMessage("/enchant looting 3", Text.literal(""));
             }
-            else if (pressTime == 200 && enchantSword) {
+            else if (pressTime == 100 && enchantSword) {
                 lp.sendChatMessage("/enchant knockback 2", Text.literal(""));
             }
-            else if (pressTime == 240 && enchantSword) {
+            else if (pressTime == 120 && enchantSword) {
                 lp.sendChatMessage("/enchant sweepingedge 3", Text.literal(""));
             }
-            else if (pressTime == 280 && enchantSword) {
+            else if (pressTime == 140 && enchantSword) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
             }
-            else if (pressTime == 320 && enchantSword) {
+            else if (pressTime == 160 && enchantSword) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
                 enchantSword = false;
                 enchant = false;
@@ -187,13 +185,13 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantTool) {
                 lp.sendChatMessage("/enchant efficiency 5", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantTool) {
+            else if (pressTime == 20 && enchantTool) {
                 lp.sendChatMessage("/enchant unbreaking  3", Text.literal(""));
             }
-            else if (pressTime == 80 && enchantTool) {
+            else if (pressTime == 40 && enchantTool) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
             }
-            else if (pressTime == 120 && enchantTool) {
+            else if (pressTime == 60 && enchantTool) {
                 lp.sendChatMessage("/enchant fortune 3", Text.literal(""));
                 enchantTool = false;
                 enchant = false;
@@ -201,22 +199,22 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantChest) {
                 lp.sendChatMessage("/enchant protection 4", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantChest) {
+            else if (pressTime == 20 && enchantChest) {
                 lp.sendChatMessage("/enchant fireprotection 4", Text.literal(""));
             }
-            else if (pressTime == 80 && enchantChest) {
+            else if (pressTime == 40 && enchantChest) {
                 lp.sendChatMessage("/enchant blastprotection 4", Text.literal(""));
             }
-            else if (pressTime == 120 && enchantChest) {
+            else if (pressTime == 60 && enchantChest) {
                 lp.sendChatMessage("/enchant projectileprotection 4", Text.literal(""));
             }
-            else if (pressTime == 160 && enchantChest) {
+            else if (pressTime == 80 && enchantChest) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
             }
-            else if (pressTime == 200 && enchantChest) {
+            else if (pressTime == 100 && enchantChest) {
                 lp.sendChatMessage("/enchant thorns 3", Text.literal(""));
             }
-            else if (pressTime == 240 && enchantChest) {
+            else if (pressTime == 120 && enchantChest) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
                 enchantChest = false;
                 enchant = false;
@@ -225,19 +223,19 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantBow) {
                 lp.sendChatMessage("/enchant power 5", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantBow) {
+            else if (pressTime == 20 && enchantBow) {
                 lp.sendChatMessage("/enchant punch 2", Text.literal(""));
             }
-            else if (pressTime == 80 && enchantBow) {
+            else if (pressTime == 40 && enchantBow) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
             }
-            else if (pressTime == 120 && enchantBow) {
+            else if (pressTime == 60 && enchantBow) {
                 lp.sendChatMessage("/enchant flame 1", Text.literal(""));
             }
-            else if (pressTime == 160 && enchantBow) {
+            else if (pressTime == 80 && enchantBow) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
             }
-            else if (pressTime == 200 && enchantBow) {
+            else if (pressTime == 100 && enchantBow) {
                 lp.sendChatMessage("/enchant infinity 1", Text.literal(""));
                 enchantBow = false;
                 enchant = false;
@@ -246,28 +244,28 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantHelmet) {
                 lp.sendChatMessage("/enchant protection 4", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantHelmet) {
+            else if (pressTime == 20 && enchantHelmet) {
                 lp.sendChatMessage("/enchant fireprotection 4", Text.literal(""));
             }
-            else if (pressTime == 80 && enchantHelmet) {
+            else if (pressTime == 40 && enchantHelmet) {
                 lp.sendChatMessage("/enchant blastprotection 4", Text.literal(""));
             }
-            else if (pressTime == 120 && enchantHelmet) {
+            else if (pressTime == 60 && enchantHelmet) {
                 lp.sendChatMessage("/enchant projectileprotection 4", Text.literal(""));
             }
-            else if (pressTime == 160 && enchantHelmet) {
+            else if (pressTime == 80 && enchantHelmet) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
             }
-            else if (pressTime == 200 && enchantHelmet) {
+            else if (pressTime == 100 && enchantHelmet) {
                 lp.sendChatMessage("/enchant thorns 3", Text.literal(""));
             }
-            else if (pressTime == 240 && enchantHelmet) {
+            else if (pressTime == 120 && enchantHelmet) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
             }
-            else if (pressTime == 280 && enchantHelmet) {
+            else if (pressTime == 140 && enchantHelmet) {
                 lp.sendChatMessage("/enchant respiration 3", Text.literal(""));
             }
-            else if (pressTime == 320 && enchantHelmet) {
+            else if (pressTime == 160 && enchantHelmet) {
                 lp.sendChatMessage("/enchant aquaaffinity 1", Text.literal(""));
                 enchantHelmet = false;
                 enchant = false;
@@ -275,28 +273,28 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantBoots) {
                 lp.sendChatMessage("/enchant protection 4", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantBoots) {
+            else if (pressTime == 20 && enchantBoots) {
                 lp.sendChatMessage("/enchant fireprotection 4", Text.literal(""));
             }
-            else if (pressTime == 80 && enchantBoots) {
+            else if (pressTime == 40 && enchantBoots) {
                 lp.sendChatMessage("/enchant blastprotection 4", Text.literal(""));
             }
-            else if (pressTime == 120 && enchantBoots) {
+            else if (pressTime == 60 && enchantBoots) {
                 lp.sendChatMessage("/enchant projectileprotection 4", Text.literal(""));
             }
-            else if (pressTime == 160 && enchantBoots) {
+            else if (pressTime == 80 && enchantBoots) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
             }
-            else if (pressTime == 200 && enchantBoots) {
+            else if (pressTime == 100 && enchantBoots) {
                 lp.sendChatMessage("/enchant thorns 3", Text.literal(""));
             }
-            else if (pressTime == 240 && enchantBoots) {
+            else if (pressTime == 120 && enchantBoots) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
             }
-            else if (pressTime == 280 && enchantBoots) {
+            else if (pressTime == 140 && enchantBoots) {
                 lp.sendChatMessage("/enchant depth_strider 3", Text.literal(""));
             }
-            else if (pressTime == 320 && enchantBoots) {
+            else if (pressTime == 160 && enchantBoots) {
                 lp.sendChatMessage("/enchant featherfalling 4", Text.literal(""));
                 enchantBoots = false;
                 enchant = false;
@@ -304,13 +302,13 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantRod) {
                 lp.sendChatMessage("/enchant lure 3", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantRod) {
+            else if (pressTime == 20 && enchantRod) {
                 lp.sendChatMessage("/enchant luck 3", Text.literal(""));
             }
-            else if (pressTime == 80 && enchantRod) {
+            else if (pressTime == 40 && enchantRod) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
             }
-            else if (pressTime == 120 && enchantRod) {
+            else if (pressTime == 60 && enchantRod) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
                 enchantRod = false;
                 enchant = false;
@@ -318,7 +316,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (pressTime == 0 && enchantOther) {
                 lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
             }
-            else if (pressTime == 40 && enchantOther) {
+            else if (pressTime == 20 && enchantOther) {
                 lp.sendChatMessage("/enchant mending 1", Text.literal(""));
                 enchantOther = false;
                 enchant = false;
@@ -330,5 +328,4 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         } catch (Exception e) {}
         //return ActionResult.PASS;
     }
-
 }

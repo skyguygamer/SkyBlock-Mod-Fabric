@@ -1,5 +1,13 @@
 {
   "hellocommand": "Hello there %s",
-  "welcomemsg": "This is a very much so BETAA!!!"
+  "welcomemsg": "This is a very much so BETAA!!!",
+
+  "key.category.sbmod.sb": "Skyblock Mod Keybindings",
+  "key.sbmod.jump.command": "Jump command",
+  "key.sbmod.craft.command": "Craft command",
+  "key.sbmod.ehome.command": "Extra home command",
+  "key.sbmod.enderchest.command": "Enderchest command",
+  "key.sbmod.home.command": "Home command",
+  "key.sbmod.back.command": "Back command"
 }
 
