@@ -6,8 +6,11 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.realms.dto.PlayerInfo;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.ClientConnection;
 import net.minecraft.text.Text;
+import net.skyguygamer.sbmod.SbMod;
 import net.skyguygamer.sbmod.commands.AutoAdvert;
+import net.skyguygamer.sbmod.commands.AutoBuyTemp;
 import net.skyguygamer.sbmod.commands.AutoPrivate;
 import net.skyguygamer.sbmod.commands.AutoSpawnMob;
 
@@ -97,7 +100,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         try {
             if (spawnMobs) {
                 if (spawnTime >= 1500) {
-                    lp.sendChatMessage(AutoSpawnMob.command, Text.literal(""));
+                    lp.sendCommand(AutoSpawnMob.command);
                     spawnTime = 0;
                 }
                 spawnTime++;
@@ -105,6 +108,10 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         } catch (Exception e) {
             ;
         }
+
+        //ClientConnection d = MinecraftClient.getInstance().player.networkHandler.getConnection();
+
+
         //AutoFix
         if (autoFix && !coolDown) {
 
@@ -112,7 +119,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             float percent = 100*(((float) item.getMaxDamage() - (float) item.getDamage())/ (float) item.getMaxDamage());
             try {
                 if (percent < 25 && autoFix && item.isDamageable() && !coolDown) {
-                    lp.sendChatMessage("/fix all", Text.literal(""));
+                    lp.sendCommand("fix all", Text.literal(""));
                     coolDown = true;
                 }
             } catch (Exception e) {}
@@ -125,6 +132,14 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             coolDownCounter ++;
         }
+        //AutoBuyTEMP
+        if (autoBuy) {
+            if (autoBuyTime >= 36000) {
+                lp.sendCommand("lottery buy 2");
+                autoBuyTime = 0;
+            }
+            autoBuyTime++;
+        }
         //AutoAdvert
         if (AutoAdvert.sendingMessages) {
             if (advertTimer >= AutoAdvert.interval) {
@@ -134,190 +149,191 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             advertTimer++;
         }
+
         //AutoEnchanting
         try {
             if (pressTime == 0 && enchantAxe) {
-                lp.sendChatMessage("/enchant sharpness 5", Text.literal(""));
-            } else if (pressTime == 20 && enchantAxe) {
-                lp.sendChatMessage("/enchant smite 5", Text.literal(""));
-            } else if (pressTime == 40 && enchantAxe) {
-                lp.sendChatMessage("/enchant baneofarthropods 5", Text.literal(""));
+                lp.sendCommand("enchant sharpness 5");
+            } else if (pressTime == 15 && enchantAxe) {
+                lp.sendCommand("enchant smite 5");
+            } else if (pressTime == 30 && enchantAxe) {
+                lp.sendCommand("enchant baneofarthropods 5");
+            } else if (pressTime == 45 && enchantAxe) {
+                lp.sendCommand("enchant efficiency 5");
             } else if (pressTime == 60 && enchantAxe) {
-                lp.sendChatMessage("/enchant efficiency 5", Text.literal(""));
-            } else if (pressTime == 80 && enchantAxe) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
-            } else if (pressTime == 100 && enchantAxe) {
-                lp.sendChatMessage("/enchant fortune 3", Text.literal(""));
-            } else if (pressTime == 120 && enchantAxe) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
+                lp.sendCommand("enchant unbreaking 3");
+            } else if (pressTime == 75 && enchantAxe) {
+                lp.sendCommand("enchant fortune 3");
+            } else if (pressTime == 90 && enchantAxe) {
+                lp.sendCommand("enchant mending 1");
                 enchantAxe = false;
                 enchant = false;
             }
             if (pressTime == 0 && enchantSword) {
-                lp.sendChatMessage("/enchant sharpness 5", Text.literal(""));
+                lp.sendCommand("enchant sharpness 5");
             }
-            else if (pressTime == 20 && enchantSword) {
-                lp.sendChatMessage("/enchant smite 5", Text.literal(""));
+            else if (pressTime == 15 && enchantSword) {
+                lp.sendCommand("enchant smite 5");
             }
-            else if (pressTime == 40 && enchantSword) {
-                lp.sendChatMessage("/enchant baneofarthropods 5", Text.literal(""));
+            else if (pressTime == 30 && enchantSword) {
+                lp.sendCommand("enchant baneofarthropods 5");
+            }
+            else if (pressTime == 45 && enchantSword) {
+                lp.sendCommand("enchant fireaspect 2");
             }
             else if (pressTime == 60 && enchantSword) {
-                lp.sendChatMessage("/enchant fireaspect 2", Text.literal(""));
+                lp.sendCommand("enchant looting 3");
             }
-            else if (pressTime == 80 && enchantSword) {
-                lp.sendChatMessage("/enchant looting 3", Text.literal(""));
+            else if (pressTime == 75 && enchantSword) {
+                lp.sendCommand("enchant knockback 2");
             }
-            else if (pressTime == 100 && enchantSword) {
-                lp.sendChatMessage("/enchant knockback 2", Text.literal(""));
+            else if (pressTime == 90 && enchantSword) {
+                lp.sendCommand("enchant sweepingedge 3");
+            }
+            else if (pressTime == 105 && enchantSword) {
+                lp.sendCommand("enchant unbreaking 3");
             }
             else if (pressTime == 120 && enchantSword) {
-                lp.sendChatMessage("/enchant sweepingedge 3", Text.literal(""));
-            }
-            else if (pressTime == 140 && enchantSword) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
-            }
-            else if (pressTime == 160 && enchantSword) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
+                lp.sendCommand("enchant mending 1");
                 enchantSword = false;
                 enchant = false;
             }
             if (pressTime == 0 && enchantTool) {
-                lp.sendChatMessage("/enchant efficiency 5", Text.literal(""));
+                lp.sendCommand("enchant efficiency 5");
             }
-            else if (pressTime == 20 && enchantTool) {
-                lp.sendChatMessage("/enchant unbreaking  3", Text.literal(""));
+            else if (pressTime == 15 && enchantTool) {
+                lp.sendCommand("enchant unbreaking  3");
             }
-            else if (pressTime == 40 && enchantTool) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
+            else if (pressTime == 30 && enchantTool) {
+                lp.sendCommand("enchant mending 1");
             }
-            else if (pressTime == 60 && enchantTool) {
-                lp.sendChatMessage("/enchant fortune 3", Text.literal(""));
+            else if (pressTime == 45 && enchantTool) {
+                lp.sendCommand("enchant fortune 3");
                 enchantTool = false;
                 enchant = false;
             }
             if (pressTime == 0 && enchantChest) {
-                lp.sendChatMessage("/enchant protection 4", Text.literal(""));
+                lp.sendCommand("enchant protection 4");
             }
-            else if (pressTime == 20 && enchantChest) {
-                lp.sendChatMessage("/enchant fireprotection 4", Text.literal(""));
+            else if (pressTime == 15 && enchantChest) {
+                lp.sendCommand("enchant fireprotection 4");
             }
-            else if (pressTime == 40 && enchantChest) {
-                lp.sendChatMessage("/enchant blastprotection 4", Text.literal(""));
+            else if (pressTime == 30 && enchantChest) {
+                lp.sendCommand("enchant blastprotection 4");
+            }
+            else if (pressTime == 45 && enchantChest) {
+                lp.sendCommand("enchant projectileprotection 4");
             }
             else if (pressTime == 60 && enchantChest) {
-                lp.sendChatMessage("/enchant projectileprotection 4", Text.literal(""));
+                lp.sendCommand("enchant unbreaking 3");
             }
-            else if (pressTime == 80 && enchantChest) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
+            else if (pressTime == 75 && enchantChest) {
+                lp.sendCommand("enchant thorns 3");
             }
-            else if (pressTime == 100 && enchantChest) {
-                lp.sendChatMessage("/enchant thorns 3", Text.literal(""));
-            }
-            else if (pressTime == 120 && enchantChest) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
+            else if (pressTime == 90 && enchantChest) {
+                lp.sendCommand("enchant mending 1");
                 enchantChest = false;
                 enchant = false;
             }
 
             if (pressTime == 0 && enchantBow) {
-                lp.sendChatMessage("/enchant power 5", Text.literal(""));
+                lp.sendCommand("enchant power 5");
             }
-            else if (pressTime == 20 && enchantBow) {
-                lp.sendChatMessage("/enchant punch 2", Text.literal(""));
+            else if (pressTime == 15 && enchantBow) {
+                lp.sendCommand("enchant punch 2");
             }
-            else if (pressTime == 40 && enchantBow) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
+            else if (pressTime == 30 && enchantBow) {
+                lp.sendCommand("enchant unbreaking 3");
+            }
+            else if (pressTime == 45 && enchantBow) {
+                lp.sendCommand("enchant flame 1");
             }
             else if (pressTime == 60 && enchantBow) {
-                lp.sendChatMessage("/enchant flame 1", Text.literal(""));
+                lp.sendCommand("enchant mending 1");
             }
-            else if (pressTime == 80 && enchantBow) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
-            }
-            else if (pressTime == 100 && enchantBow) {
-                lp.sendChatMessage("/enchant infinity 1", Text.literal(""));
+            else if (pressTime == 75 && enchantBow) {
+                lp.sendCommand("enchant infinity 1");
                 enchantBow = false;
                 enchant = false;
             }
 
             if (pressTime == 0 && enchantHelmet) {
-                lp.sendChatMessage("/enchant protection 4", Text.literal(""));
+                lp.sendCommand("enchant protection 4");
             }
-            else if (pressTime == 20 && enchantHelmet) {
-                lp.sendChatMessage("/enchant fireprotection 4", Text.literal(""));
+            else if (pressTime == 15 && enchantHelmet) {
+                lp.sendCommand("enchant fireprotection 4");
             }
-            else if (pressTime == 40 && enchantHelmet) {
-                lp.sendChatMessage("/enchant blastprotection 4", Text.literal(""));
+            else if (pressTime == 30 && enchantHelmet) {
+                lp.sendCommand("enchant blastprotection 4");
+            }
+            else if (pressTime == 45 && enchantHelmet) {
+                lp.sendCommand("enchant projectileprotection 4");
             }
             else if (pressTime == 60 && enchantHelmet) {
-                lp.sendChatMessage("/enchant projectileprotection 4", Text.literal(""));
+                lp.sendCommand("enchant unbreaking 3");
             }
-            else if (pressTime == 80 && enchantHelmet) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
+            else if (pressTime == 75 && enchantHelmet) {
+                lp.sendCommand("enchant thorns 3");
             }
-            else if (pressTime == 100 && enchantHelmet) {
-                lp.sendChatMessage("/enchant thorns 3", Text.literal(""));
+            else if (pressTime == 90 && enchantHelmet) {
+                lp.sendCommand("enchant mending 1");
+            }
+            else if (pressTime == 105 && enchantHelmet) {
+                lp.sendCommand("enchant respiration 3");
             }
             else if (pressTime == 120 && enchantHelmet) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
-            }
-            else if (pressTime == 140 && enchantHelmet) {
-                lp.sendChatMessage("/enchant respiration 3", Text.literal(""));
-            }
-            else if (pressTime == 160 && enchantHelmet) {
-                lp.sendChatMessage("/enchant aquaaffinity 1", Text.literal(""));
+                lp.sendCommand("enchant aquaaffinity 1");
                 enchantHelmet = false;
                 enchant = false;
             }
             if (pressTime == 0 && enchantBoots) {
-                lp.sendChatMessage("/enchant protection 4", Text.literal(""));
+                lp.sendCommand("enchant protection 4");
             }
-            else if (pressTime == 20 && enchantBoots) {
-                lp.sendChatMessage("/enchant fireprotection 4", Text.literal(""));
+            else if (pressTime == 15 && enchantBoots) {
+                lp.sendCommand("enchant fireprotection 4");
             }
-            else if (pressTime == 40 && enchantBoots) {
-                lp.sendChatMessage("/enchant blastprotection 4", Text.literal(""));
+            else if (pressTime == 30 && enchantBoots) {
+                lp.sendCommand("enchant blastprotection 4");
+            }
+            else if (pressTime == 45 && enchantBoots) {
+                lp.sendCommand("enchant projectileprotection 4");
             }
             else if (pressTime == 60 && enchantBoots) {
-                lp.sendChatMessage("/enchant projectileprotection 4", Text.literal(""));
+                lp.sendCommand("enchant unbreaking 3");
             }
-            else if (pressTime == 80 && enchantBoots) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
+            else if (pressTime == 75 && enchantBoots) {
+                lp.sendCommand("enchant thorns 3");
             }
-            else if (pressTime == 100 && enchantBoots) {
-                lp.sendChatMessage("/enchant thorns 3", Text.literal(""));
+            else if (pressTime == 90 && enchantBoots) {
+                lp.sendCommand("enchant mending 1");
+            }
+            else if (pressTime == 105 && enchantBoots) {
+                lp.sendCommand("enchant depth_strider 3");
             }
             else if (pressTime == 120 && enchantBoots) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
-            }
-            else if (pressTime == 140 && enchantBoots) {
-                lp.sendChatMessage("/enchant depth_strider 3", Text.literal(""));
-            }
-            else if (pressTime == 160 && enchantBoots) {
-                lp.sendChatMessage("/enchant featherfalling 4", Text.literal(""));
+                lp.sendCommand("enchant featherfalling 4");
                 enchantBoots = false;
                 enchant = false;
             }
             if (pressTime == 0 && enchantRod) {
-                lp.sendChatMessage("/enchant lure 3", Text.literal(""));
+                lp.sendCommand("enchant lure 3");
             }
-            else if (pressTime == 20 && enchantRod) {
-                lp.sendChatMessage("/enchant luck 3", Text.literal(""));
+            else if (pressTime == 15 && enchantRod) {
+                lp.sendCommand("enchant luck 3");
             }
-            else if (pressTime == 40 && enchantRod) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
+            else if (pressTime == 30 && enchantRod) {
+                lp.sendCommand("enchant unbreaking 3");
             }
-            else if (pressTime == 60 && enchantRod) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
+            else if (pressTime == 45 && enchantRod) {
+                lp.sendCommand("enchant mending 1");
                 enchantRod = false;
                 enchant = false;
             }
             if (pressTime == 0 && enchantOther) {
-                lp.sendChatMessage("/enchant unbreaking 3", Text.literal(""));
+                lp.sendCommand("enchant unbreaking 3");
             }
-            else if (pressTime == 20 && enchantOther) {
-                lp.sendChatMessage("/enchant mending 1", Text.literal(""));
+            else if (pressTime == 15 && enchantOther) {
+                lp.sendCommand("enchant mending 1");
                 enchantOther = false;
                 enchant = false;
             }
@@ -326,6 +342,198 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 pressTime++;
             }
         } catch (Exception e) {}
-        //return ActionResult.PASS;
+
+        //Auto Unenchant
+        try {
+            if (pressTime == 0 && unEnchantAxe) {
+                lp.sendCommand("enchant sharpness 0");
+            } else if (pressTime == 15 && unEnchantAxe) {
+                lp.sendCommand("enchant smite 0");
+            } else if (pressTime == 30 && unEnchantAxe) {
+                lp.sendCommand("enchant baneofarthropods 0");
+            } else if (pressTime == 45 && unEnchantAxe) {
+                lp.sendCommand("enchant efficiency 0");
+            } else if (pressTime == 60 && unEnchantAxe) {
+                lp.sendCommand("enchant unbreaking 0");
+            } else if (pressTime == 75 && unEnchantAxe) {
+                lp.sendCommand("enchant fortune 0");
+            } else if (pressTime == 90 && unEnchantAxe) {
+                lp.sendCommand("enchant mending 0");
+                unEnchantAxe = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantSword) {
+                lp.sendCommand("enchant sharpness 0");
+            }
+            else if (pressTime == 15 && unEnchantSword) {
+                lp.sendCommand("enchant smite 0");
+            }
+            else if (pressTime == 30 && unEnchantSword) {
+                lp.sendCommand("enchant baneofarthropods 0");
+            }
+            else if (pressTime == 45 && unEnchantSword) {
+                lp.sendCommand("enchant fireaspect 0");
+            }
+            else if (pressTime == 60 && unEnchantSword) {
+                lp.sendCommand("enchant looting 0");
+            }
+            else if (pressTime == 75 && unEnchantSword) {
+                lp.sendCommand("enchant knockback 0");
+            }
+            else if (pressTime == 90 && unEnchantSword) {
+                lp.sendCommand("enchant sweepingedge 0");
+            }
+            else if (pressTime == 105 && unEnchantSword) {
+                lp.sendCommand("enchant unbreaking 0");
+            }
+            else if (pressTime == 120 && unEnchantSword) {
+                lp.sendCommand("enchant mending 0");
+                unEnchantSword = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantTool) {
+                lp.sendCommand("enchant efficiency 0");
+            }
+            else if (pressTime == 15 && unEnchantTool) {
+                lp.sendCommand("enchant unbreaking  0");
+            }
+            else if (pressTime == 30 && unEnchantTool) {
+                lp.sendCommand("enchant mending 0");
+            }
+            else if (pressTime == 45 && unEnchantTool) {
+                lp.sendCommand("enchant fortune 0");
+                unEnchantTool = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantChest) {
+                lp.sendCommand("enchant protection 0");
+            }
+            else if (pressTime == 15 && unEnchantChest) {
+                lp.sendCommand("enchant fireprotection 0");
+            }
+            else if (pressTime == 30 && unEnchantChest) {
+                lp.sendCommand("enchant blastprotection 0");
+            }
+            else if (pressTime == 45 && unEnchantChest) {
+                lp.sendCommand("enchant projectileprotection 0");
+            }
+            else if (pressTime == 60 && unEnchantChest) {
+                lp.sendCommand("enchant unbreaking 0");
+            }
+            else if (pressTime == 75 && unEnchantChest) {
+                lp.sendCommand("enchant thorns 0");
+            }
+            else if (pressTime == 90 && unEnchantChest) {
+                lp.sendCommand("enchant mending 0");
+                unEnchantChest = false;
+                unEnchant = false;
+            }
+
+            if (pressTime == 0 && unEnchantBow) {
+                lp.sendCommand("enchant power 0");
+            }
+            else if (pressTime == 15 && unEnchantBow) {
+                lp.sendCommand("enchant punch 0");
+            }
+            else if (pressTime == 30 && unEnchantBow) {
+                lp.sendCommand("enchant unbreaking 0");
+            }
+            else if (pressTime == 45 && unEnchantBow) {
+                lp.sendCommand("enchant flame 0");
+            }
+            else if (pressTime == 60 && unEnchantBow) {
+                lp.sendCommand("enchant mending 0");
+            }
+            else if (pressTime == 75 && unEnchantBow) {
+                lp.sendCommand("enchant infinity 0");
+                unEnchantBow = false;
+                unEnchant = false;
+            }
+
+            if (pressTime == 0 && unEnchantHelmet) {
+                lp.sendCommand("enchant protection 0");
+            }
+            else if (pressTime == 15 && unEnchantHelmet) {
+                lp.sendCommand("enchant fireprotection 0");
+            }
+            else if (pressTime == 30 && unEnchantHelmet) {
+                lp.sendCommand("enchant blastprotection 0");
+            }
+            else if (pressTime == 45 && unEnchantHelmet) {
+                lp.sendCommand("enchant projectileprotection 0");
+            }
+            else if (pressTime == 60 && unEnchantHelmet) {
+                lp.sendCommand("enchant unbreaking 0");
+            }
+            else if (pressTime == 75 && unEnchantHelmet) {
+                lp.sendCommand("enchant thorns 0");
+            }
+            else if (pressTime == 90 && unEnchantHelmet) {
+                lp.sendCommand("enchant mending 0");
+            }
+            else if (pressTime == 105 && unEnchantHelmet) {
+                lp.sendCommand("enchant respiration 0");
+            }
+            else if (pressTime == 120 && unEnchantHelmet) {
+                lp.sendCommand("enchant aquaaffinity 0");
+                unEnchantHelmet = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantBoots) {
+                lp.sendCommand("enchant protection 0");
+            }
+            else if (pressTime == 15 && unEnchantBoots) {
+                lp.sendCommand("enchant fireprotection 0");
+            }
+            else if (pressTime == 30 && unEnchantBoots) {
+                lp.sendCommand("enchant blastprotection 0");
+            }
+            else if (pressTime == 45 && unEnchantBoots) {
+                lp.sendCommand("enchant projectileprotection 0");
+            }
+            else if (pressTime == 60 && unEnchantBoots) {
+                lp.sendCommand("enchant unbreaking 0");
+            }
+            else if (pressTime == 75 && unEnchantBoots) {
+                lp.sendCommand("enchant thorns 0");
+            }
+            else if (pressTime == 90 && unEnchantBoots) {
+                lp.sendCommand("enchant mending 0");
+            }
+            else if (pressTime == 105 && unEnchantBoots) {
+                lp.sendCommand("enchant depth_strider 0");
+            }
+            else if (pressTime == 120 && unEnchantBoots) {
+                lp.sendCommand("enchant featherfalling 0");
+                unEnchantBoots = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantRod) {
+                lp.sendCommand("enchant lure 0");
+            }
+            else if (pressTime == 15 && unEnchantRod) {
+                lp.sendCommand("enchant luck 0");
+            }
+            else if (pressTime == 30 && unEnchantRod) {
+                lp.sendCommand("enchant unbreaking 0");
+            }
+            else if (pressTime == 45 && unEnchantRod) {
+                lp.sendCommand("enchant mending 0");
+                unEnchantRod = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantOther) {
+                lp.sendCommand("enchant unbreaking 0");
+            }
+            else if (pressTime == 15 && unEnchantOther) {
+                lp.sendCommand("enchant mending 0");
+                unEnchantOther = false;
+                unEnchant = false;
+            }
+
+            if (unEnchant) {
+                pressTime++;
+            }
+        } catch (Exception e) {}
     }
 }

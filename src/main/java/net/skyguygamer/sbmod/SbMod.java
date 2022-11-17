@@ -7,13 +7,11 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.skyguygamer.sbmod.commands.*;
 import net.skyguygamer.sbmod.config.ModConfigs;
-import net.skyguygamer.sbmod.event.BlockPlaceHandler;
-import net.skyguygamer.sbmod.event.ClientTickHandler;
-import net.skyguygamer.sbmod.event.LogInHandler;
-import net.skyguygamer.sbmod.event.LogOutHandler;
+import net.skyguygamer.sbmod.event.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,6 +54,18 @@ public class SbMod implements ModInitializer {
 	public static int welcomeMessageTime = 0;
 	public static boolean loggedInToWorld = false;
 	public static boolean welcomeMsg = false;
+	public static boolean unEnchantTool = false;
+	public static boolean unEnchantChest = false;
+	public static boolean unEnchantBow = false;
+	public static boolean unEnchantSword = false;
+	public static boolean unEnchantHelmet = false;
+	public static boolean unEnchantBoots = false;
+	public static boolean unEnchantRod = false;
+	public static boolean unEnchantOther = false;
+	public static boolean unEnchantAxe = false;
+	public static boolean unEnchant = false;
+	public static boolean autoBuy = false;
+	public static int autoBuyTime = 0;
 	public static int playerCheckTime = 0;
 	public static ArrayList<String> onlineUuids = new ArrayList<>(Arrays.asList());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("SkyGuyGamerz", "Meggann"));
@@ -417,6 +427,7 @@ public class SbMod implements ModInitializer {
 		ClientTickEvents.START_CLIENT_TICK.register(new ClientTickHandler());
 		ClientPlayConnectionEvents.DISCONNECT.register(new LogOutHandler());
 		ClientPlayConnectionEvents.JOIN.register(new LogInHandler());
+		ServerMessageEvents.ALLOW_CHAT_MESSAGE.register(new ChatRecievedHandler());
 
 		//Registers commands
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -433,6 +444,9 @@ public class SbMod implements ModInitializer {
 			AutoPrivate.register(dispatcher);
 			AutoSpawnMob.register(dispatcher);
 			FakeHelpCommand.register(dispatcher);
+			DiscordLink.register(dispatcher);
+			UnEnchantAllCommand.register(dispatcher);
+			AutoBuyTemp.register(dispatcher);
 		});
 
 	}

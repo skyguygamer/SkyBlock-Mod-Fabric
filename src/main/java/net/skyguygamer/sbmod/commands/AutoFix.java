@@ -24,7 +24,7 @@ public class AutoFix {
         if (SbMod.autoFix) {
             SbMod.autoFix = false;
             source.sendFeedback(Text.literal(Formatting.GREEN + "Auto Fix Disabled"));
-        } else if (!SbMod.autoFix) {
+        } else {
             SbMod.autoFix = true;
             source.sendFeedback(Text.literal(Formatting.GREEN + "Auto Fix Enabled"));
         }

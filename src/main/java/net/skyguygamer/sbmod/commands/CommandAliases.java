@@ -30,11 +30,12 @@ public class CommandAliases {
 
 
         context.getSource().sendFeedback(Text.literal(boarder));
-        context.getSource().sendFeedback(Text.literal("§a/enchantall§f: /ea").setStyle(test));
-        context.getSource().sendFeedback(Text.literal("§a/joincommand§f: /jc"));
-        context.getSource().sendFeedback(Text.literal("§a/autoadvert§f: /advert"));
-        context.getSource().sendFeedback(Text.literal("§a/autofix§f: /autorepair"));
-        context.getSource().sendFeedback(Text.literal("§a/autospawnmob§f: /asm"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/enchantall" + Formatting.WHITE + ": /ea").setStyle(test));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/unenchantall" + Formatting.WHITE + ": /uea"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/joincommand" + Formatting.WHITE + ": /jc"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autoadvert" + Formatting.WHITE + ": /advert"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autofix" + Formatting.WHITE + ": /autorepair"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autospawnmob" + Formatting.WHITE + ": /asm"));
         context.getSource().sendFeedback(Text.literal(boarder));
         return Command.SINGLE_SUCCESS;
     }

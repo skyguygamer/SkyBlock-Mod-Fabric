@@ -41,7 +41,7 @@ public class AutoSpawnMob {
     }
     //To spawn mobs with 3rd argument
     public static int all(FabricClientCommandSource source, String mob, int amount, String PlayerEntity) {
-        command = ("/spawnmob " + mob + " " + amount + " " + PlayerEntity);
+        command = ("spawnmob " + mob + " " + amount + " " + PlayerEntity);
         SbMod.spawnMobs = true;
         SbMod.spawnTime = 3000;
         amountSpawning = amount;
@@ -52,7 +52,7 @@ public class AutoSpawnMob {
     }
     //To spawn mobs without 3rd argument
     public static int noPlayerEntity(FabricClientCommandSource source, String mob, int amount) {
-        command = ("/spawnmob " + mob + " " + amount);
+        command = ("spawnmob " + mob + " " + amount);
         SbMod.spawnMobs = true;
         SbMod.spawnTime = 3000;
         amountSpawning = amount;
