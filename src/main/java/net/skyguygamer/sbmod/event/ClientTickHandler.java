@@ -44,8 +44,8 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                             boarder += "§2=";
                         }
                         lp.sendMessage((Text.literal(boarder + "§a-")), false);
-                        lp.sendMessage((Text.literal("§7Skyblock Mod for forge 1.19.2")), false);
-                        lp.sendMessage((Text.literal("§7Updated version 3.0 §cBETA")), false);
+                        lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")), false);
+                        lp.sendMessage((Text.literal("§7Updated version 3.0.2 §cBETA")), false);
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")), false);
                         lp.sendMessage((Text.literal(boarder + "§a-")), false);
                         welcomeMsg = true;
