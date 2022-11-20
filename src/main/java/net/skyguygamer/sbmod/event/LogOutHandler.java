@@ -29,6 +29,7 @@ public class LogOutHandler implements ClientPlayConnectionEvents.Disconnect {
         autoFix = false;
         welcomeMsg = false;
         AutoAdvert.sendingMessages = false;
+        advertTimer = 0;
         autoBuy = false;
     }
 }
