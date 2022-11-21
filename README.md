@@ -32,5 +32,5 @@
 /joincommand Executes a command on join
 /sdiscord Gives link to the discord
 /autobuy Auto buys 2 lottery tickets every 30 minutes
-(More features than just this)
+(More features than just this and easter eggs!)
 ```
