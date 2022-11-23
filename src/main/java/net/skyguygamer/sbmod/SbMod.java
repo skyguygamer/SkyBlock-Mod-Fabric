@@ -67,6 +67,7 @@ public class SbMod implements ModInitializer {
 	public static boolean autoBuy = false;
 	public static int autoBuyTime = 0;
 	public static int playerCheckTime = 0;
+	public static int ticketAmount = 2;
 	public static ArrayList<String> onlineUuids = new ArrayList<>(Arrays.asList());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("SkyGuyGamerz", "Meggann"));
 

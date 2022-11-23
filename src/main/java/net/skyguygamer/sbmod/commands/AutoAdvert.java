@@ -61,6 +61,7 @@ public final class AutoAdvert
     public static int advert(FabricClientCommandSource source, String messagetosend) {
         message = messagetosend;
         sendingMessages = true;
+        advertTimer = 0;
         ClientPlayerEntity lp = (ClientPlayerEntity) source.getEntity();
         //lp.chatSigned("d", Text.literal("dd"));
 

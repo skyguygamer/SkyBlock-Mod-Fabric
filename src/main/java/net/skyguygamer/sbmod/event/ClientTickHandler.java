@@ -2,11 +2,13 @@ package net.skyguygamer.sbmod.event;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.MinecraftClientGame;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.realms.dto.PlayerInfo;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.ClientConnection;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.text.Text;
 import net.skyguygamer.sbmod.SbMod;
 import net.skyguygamer.sbmod.commands.AutoAdvert;
@@ -17,6 +19,7 @@ import net.skyguygamer.sbmod.commands.AutoSpawnMob;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static net.skyguygamer.sbmod.SbMod.*;
 
@@ -43,12 +46,13 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                             boarder += "§a-";
                             boarder += "§2=";
                         }
-                        lp.sendMessage((Text.literal(boarder + "§a-")), false);
-                        lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")), false);
-                        lp.sendMessage((Text.literal("§7Updated version 3.0.2 §cBETA")), false);
-                        lp.sendMessage((Text.literal("§7Type /shelp for list of commands")), false);
-                        lp.sendMessage((Text.literal(boarder + "§a-")), false);
+                        lp.sendMessage((Text.literal(boarder + "§a-")));
+                        lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.0.2 §cBETA")));
+                        lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
+                        lp.sendMessage((Text.literal(boarder + "§a-")));
                         welcomeMsg = true;
+
                     }
                 }
                 List<String> commands = new ArrayList<String>();
@@ -135,7 +139,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //AutoBuyTEMP
         if (autoBuy) {
             if (autoBuyTime >= 36000) {
-                lp.sendCommand("lottery buy 2");
+                lp.sendCommand("lottery buy " + ticketAmount);
                 autoBuyTime = 0;
             }
             autoBuyTime++;
