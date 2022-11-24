@@ -49,7 +49,7 @@ public class KeyInputHandler {
         jumpKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 KEY_JUMP_COMMAND,
                 InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_V,
+                GLFW.GLFW_KEY_UNKNOWN,
                 KEY_CATEGORY_SB
         ));
         craftKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -79,7 +79,7 @@ public class KeyInputHandler {
         ehomeKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 KEY_EHOME_COMMAND,
                 InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_V,
+                GLFW.GLFW_KEY_UNKNOWN,
                 KEY_CATEGORY_SB
         ));
         registerKeyInputs();

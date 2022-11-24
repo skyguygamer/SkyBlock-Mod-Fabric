@@ -101,17 +101,14 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
         }
         //AutoSpawnMob
-        try {
-            if (spawnMobs) {
-                if (spawnTime >= 1500) {
-                    lp.sendCommand(AutoSpawnMob.command);
-                    spawnTime = 0;
-                }
-                spawnTime++;
+        if (spawnMobs) {
+            if (spawnTime >= 620) {
+                lp.sendCommand(AutoSpawnMob.command);
+                spawnTime = 0;
             }
-        } catch (Exception e) {
-            ;
+            spawnTime++;
         }
+
 
         //ClientConnection d = MinecraftClient.getInstance().player.networkHandler.getConnection();
 
