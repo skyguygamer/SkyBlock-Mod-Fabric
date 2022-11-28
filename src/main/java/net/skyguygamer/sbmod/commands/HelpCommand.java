@@ -64,7 +64,7 @@ public final class HelpCommand {
                 context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/sdiscord" + Formatting.WHITE + ": Sends you the link to the support discord!").setStyle(style));
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/autobuy"));
-        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autobuy" + Formatting.WHITE + ": Will try to buy 2 lottery tickets every 30 minutes").setStyle(style));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autobuy" + Formatting.GRAY + "[int]" + Formatting.WHITE + ": Will try to buy 2 lottery tickets every 30 minutes").setStyle(style));
         //style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sdiscord"));
         //context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "" + Formatting.WHITE + ": ").setStyle(style));
         context.getSource().sendFeedback(Text.literal(boarder));
