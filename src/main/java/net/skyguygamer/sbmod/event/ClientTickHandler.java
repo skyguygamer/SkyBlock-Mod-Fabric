@@ -87,6 +87,15 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 }
             }
         }
+        //AutoSell
+        if (autoSell) {
+            if (autoSellTime >= 820) {
+                lp.sendCommand("sell all");
+                autoSellTime = 0;
+            }
+            autoSellTime++;
+        }
+
         //AutoPrivate
         if (printMsg) {
             if (printMsgTimer >= 10) {

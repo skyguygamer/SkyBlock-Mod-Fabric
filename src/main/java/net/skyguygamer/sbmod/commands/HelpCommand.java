@@ -65,6 +65,9 @@ public final class HelpCommand {
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/autobuy"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autobuy" + Formatting.WHITE + ": Will try to buy 2 lottery tickets every 30 minutes").setStyle(style));
+
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/autosell"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autosell " + Formatting.GRAY + "[economy]" + Formatting.WHITE + ": Will auto sell everything in your inventory every 40 seconds").setStyle(style));
         //style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sdiscord"));
         //context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "" + Formatting.WHITE + ": ").setStyle(style));
         context.getSource().sendFeedback(Text.literal(boarder));

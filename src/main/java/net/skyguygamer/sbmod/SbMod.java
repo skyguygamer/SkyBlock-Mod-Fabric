@@ -66,6 +66,8 @@ public class SbMod implements ModInitializer {
 	public static boolean unEnchant = false;
 	public static boolean autoBuy = false;
 	public static int autoBuyTime = 0;
+	public static boolean autoSell = false;
+	public static int autoSellTime = 0;
 	public static int playerCheckTime = 0;
 	public static int ticketAmount = 2;
 	public static ArrayList<String> onlineUuids = new ArrayList<>(Arrays.asList());
@@ -428,7 +430,6 @@ public class SbMod implements ModInitializer {
 		ClientTickEvents.START_CLIENT_TICK.register(new ClientTickHandler());
 		ClientPlayConnectionEvents.DISCONNECT.register(new LogOutHandler());
 		ClientPlayConnectionEvents.JOIN.register(new LogInHandler());
-		ServerMessageEvents.ALLOW_CHAT_MESSAGE.register(new ChatRecievedHandler());
 
 		//Registers commands
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -448,6 +449,7 @@ public class SbMod implements ModInitializer {
 			DiscordLink.register(dispatcher);
 			UnEnchantAllCommand.register(dispatcher);
 			AutoBuyTemp.register(dispatcher);
+			AutoSell.register(dispatcher);
 		});
 
 	}

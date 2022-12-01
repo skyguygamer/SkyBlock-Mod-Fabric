@@ -69,7 +69,6 @@ public final class AutoAdvert
         //timer.scheduleAtFixedRate(sendmsg(messagetosend, source), 1000, 1000);
         source.sendFeedback(Text.literal( "§f" + messagetosend + " §awill now be sent every §f" + interval/1200+ " §aminutes!"));
 
-
         lp.sendChatMessage(message, Text.literal(""));
         return Command.SINGLE_SUCCESS;
     }
