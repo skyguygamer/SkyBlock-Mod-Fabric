@@ -417,6 +417,7 @@ public class SbMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
+
 		ModConfigs.registerConfigs();
 
 
