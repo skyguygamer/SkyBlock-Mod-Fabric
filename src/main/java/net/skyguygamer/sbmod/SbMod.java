@@ -1,14 +1,10 @@
 package net.skyguygamer.sbmod;
 
-import com.google.common.eventbus.Subscribe;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.skyguygamer.sbmod.commands.*;
 import net.skyguygamer.sbmod.config.ModConfigs;
 import net.skyguygamer.sbmod.event.*;
@@ -17,58 +13,56 @@ import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.beans.EventHandler;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class SbMod implements ModInitializer {
 	public static final String SBMOD_ID = "sbmod";
 	public static final Logger LOGGER = LoggerFactory.getLogger(SBMOD_ID);
 
 	public static Boolean loggingIn = false;
-	public static int pressTime = 0;
-	public static int advertTimer = 0;
 	public static Boolean loggedOn = false;
-	public static int time = 0;
-	public static int coolDownCounter = 0;
-	public static boolean enchantSword = false;
-	public static boolean playsound = false;
-	public static boolean enchantTool = false;
-	public static boolean enchantChest = false;
-	public static boolean enchantBow = false;
-	public static boolean enchantHelmet = false;
-	public static boolean enchantBoots = false;
-	public static boolean enchantRod = false;
-	public static boolean enchantOther = false;
-	public static boolean enchantAxe = false;
-	public static boolean enchant = false;
+	public static boolean autoBuy = false;
 	public static boolean autoFix = false;
 	public static boolean autoPrivate = false;
-	public static boolean coolDown = false;
-	public static boolean printMsg = false;
-	public static int printMsgTimer = 0;
-	public static boolean spawnMobs = false;
-	public static int spawnTime = 0;
-	public static int welcomeMessageTime = 0;
-	public static boolean loggedInToWorld = false;
-	public static boolean welcomeMsg = false;
-	public static boolean unEnchantTool = false;
-	public static boolean unEnchantChest = false;
-	public static boolean unEnchantBow = false;
-	public static boolean unEnchantSword = false;
-	public static boolean unEnchantHelmet = false;
-	public static boolean unEnchantBoots = false;
-	public static boolean unEnchantRod = false;
-	public static boolean unEnchantOther = false;
-	public static boolean unEnchantAxe = false;
-	public static boolean unEnchant = false;
-	public static boolean autoBuy = false;
-	public static int autoBuyTime = 0;
 	public static boolean autoSell = false;
+	public static boolean coolDown = false;
+	public static boolean enchant = false;
+	public static boolean enchantAxe = false;
+	public static boolean enchantBoots = false;
+	public static boolean enchantBow = false;
+	public static boolean enchantChest = false;
+	public static boolean enchantHelmet = false;
+	public static boolean enchantInHand = false;
+	public static boolean enchantOther = false;
+	public static boolean enchantRod = false;
+	public static boolean enchantSword = false;
+	public static boolean enchantTool = false;
+	public static boolean loggedInToWorld = false;
+	public static boolean playsound = false;
+	public static boolean printMsg = false;
+	public static boolean spawnMobs = false;
+	public static boolean unEnchant = false;
+	public static boolean unEnchantAxe = false;
+	public static boolean unEnchantBoots = false;
+	public static boolean unEnchantBow = false;
+	public static boolean unEnchantChest = false;
+	public static boolean unEnchantHelmet = false;
+	public static boolean unEnchantOther = false;
+	public static boolean unEnchantRod = false;
+	public static boolean unEnchantSword = false;
+	public static boolean unEnchantTool = false;
+	public static boolean welcomeMsg = false;
+	public static int advertTimer = 0;
+	public static int autoBuyTime = 0;
 	public static int autoSellTime = 0;
+	public static int coolDownCounter = 0;
 	public static int playerCheckTime = 0;
+	public static int pressTime = 0;
+	public static int printMsgTimer = 0;
+	public static int spawnTime = 0;
+	public static int time = 0;
+	public static int welcomeMessageTime = 0;
 	public static int ticketAmount = 2;
 	public static ArrayList<String> onlineUuids = new ArrayList<>(Arrays.asList());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("SkyGuyGamerz", "Meggann"));
@@ -425,6 +419,7 @@ public class SbMod implements ModInitializer {
 
 		ModConfigs.registerConfigs();
 
+
 		//ClientTickEvents.START_CLIENT_TICK.register();
 		UseBlockCallback.EVENT.register(new BlockPlaceHandler());
 		ClientTickEvents.START_CLIENT_TICK.register(new ClientTickHandler());
@@ -433,25 +428,25 @@ public class SbMod implements ModInitializer {
 
 		//Registers commands
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-			HelloCommand.register(dispatcher);
-			CalcCommand.register(dispatcher);
-			Divide64.register(dispatcher);
-			JoinCommand.register(dispatcher);
-			HelpCommand.register(dispatcher);
 			AutoAdvert.register(dispatcher);
-			//SetPrefix.register(dispatcher);
-			EnchantAllCommand.register((dispatcher));
-			AutoFix.register(dispatcher);
-			CommandAliases.register((dispatcher));
-			AutoPrivate.register(dispatcher);
-			AutoSpawnMob.register(dispatcher);
-			FakeHelpCommand.register(dispatcher);
-			DiscordLink.register(dispatcher);
-			UnEnchantAllCommand.register(dispatcher);
 			AutoBuyTemp.register(dispatcher);
+			AutoEnchantInHand.register(dispatcher);
+			AutoFix.register(dispatcher);
+			AutoPrivate.register(dispatcher);
 			AutoSell.register(dispatcher);
+			AutoSpawnMob.register(dispatcher);
+			CalcCommand.register(dispatcher);
+			CommandAliases.register((dispatcher));
+			DiscordLink.register(dispatcher);
+			Divide64.register(dispatcher);
+			EnchantAllCommand.register((dispatcher));
+			FakeHelpCommand.register(dispatcher);
+			HelloCommand.register(dispatcher);
+			HelpCommand.register(dispatcher);
+			JoinCommand.register(dispatcher);
+			RefreshTimers.register(dispatcher);
+			UnEnchantAllCommand.register(dispatcher);
+			//SetPrefix.register(dispatcher);
 		});
-
 	}
-
 }

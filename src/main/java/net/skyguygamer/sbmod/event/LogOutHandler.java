@@ -10,26 +10,26 @@ import static net.skyguygamer.sbmod.SbMod.*;
 public class LogOutHandler implements ClientPlayConnectionEvents.Disconnect {
     @Override
     public void onPlayDisconnect(ClientPlayNetworkHandler handler, MinecraftClient client) {
-        loggedOn = false;
-        time = 0;
-        loggedInToWorld = false;
-        welcomeMessageTime = 0;
-        enchantSword = false;
-        playsound = false;
-        enchantTool = false;
-        enchantChest = false;
-        enchantBow = false;
-        enchantHelmet = false;
-        enchantBoots = false;
-        enchantRod = false;
-        enchantOther = false;
-        enchantAxe = false;
-        enchant = false;
-        spawnMobs = false;
-        autoFix = false;
-        welcomeMsg = false;
         AutoAdvert.sendingMessages = false;
         advertTimer = 0;
         autoBuy = false;
+        autoFix = false;
+        enchant = false;
+        enchantAxe = false;
+        enchantBoots = false;
+        enchantBow = false;
+        enchantChest = false;
+        enchantHelmet = false;
+        enchantOther = false;
+        enchantRod = false;
+        enchantSword = false;
+        enchantTool = false;
+        loggedInToWorld = false;
+        loggedOn = false;
+        playsound = false;
+        spawnMobs = false;
+        time = 0;
+        welcomeMessageTime = 0;
+        welcomeMsg = false;
     }
 }

@@ -68,6 +68,12 @@ public final class HelpCommand {
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/autosell"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autosell " + Formatting.GRAY + "[economy]" + Formatting.WHITE + ": Will auto sell everything in your inventory every 40 seconds").setStyle(style));
+
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/autoenchantinhand"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autoenchantinhand" + Formatting.WHITE + ": Auto enchants and item when it's in your hand").setStyle(style));
+
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/refreshtimers"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/refreshtimers" + Formatting.WHITE + ": Refreshes all the timers if the feature is enabled").setStyle(style));
         //style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sdiscord"));
         //context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "" + Formatting.WHITE + ": ").setStyle(style));
         context.getSource().sendFeedback(Text.literal(boarder));

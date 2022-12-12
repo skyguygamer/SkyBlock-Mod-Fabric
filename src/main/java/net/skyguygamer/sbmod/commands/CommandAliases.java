@@ -36,6 +36,7 @@ public class CommandAliases {
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autoadvert" + Formatting.WHITE + ": /advert"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autofix" + Formatting.WHITE + ": /autorepair"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autospawnmob" + Formatting.WHITE + ": /asm"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/autoenchantinhand" + Formatting.WHITE + ": /aeih"));
         context.getSource().sendFeedback(Text.literal(boarder));
         return Command.SINGLE_SUCCESS;
     }

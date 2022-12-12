@@ -5,7 +5,9 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.MinecraftClientGame;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.realms.dto.PlayerInfo;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.MinecraftServer;
@@ -87,9 +89,13 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 }
             }
         }
+
+        //MinecraftClient.getInstance().inGameHud.getChatHud().getMessageHistory().get(i);
+
         //AutoSell
         if (autoSell) {
             if (autoSellTime >= 820) {
+                LOGGER.info("Selling");
                 lp.sendCommand("sell all");
                 autoSellTime = 0;
             }
@@ -112,6 +118,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //AutoSpawnMob
         if (spawnMobs) {
             if (spawnTime >= 620) {
+                LOGGER.info("Spawning mob");
                 lp.sendCommand(AutoSpawnMob.command);
                 spawnTime = 0;
             }
@@ -129,7 +136,8 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             float percent = 100*(((float) item.getMaxDamage() - (float) item.getDamage())/ (float) item.getMaxDamage());
             try {
                 if (percent < 25 && autoFix && item.isDamageable() && !coolDown) {
-                    lp.sendCommand("fix all", Text.literal(""));
+                    LOGGER.info("Fixing");
+                    lp.sendCommand("fix all");
                     coolDown = true;
                 }
             } catch (Exception e) {}
@@ -145,6 +153,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //AutoBuyTEMP
         if (autoBuy) {
             if (autoBuyTime >= 36000) {
+                LOGGER.info("Gambling");
                 lp.sendCommand("lottery buy " + ticketAmount);
                 autoBuyTime = 0;
             }
@@ -153,13 +162,20 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //AutoAdvert
         if (AutoAdvert.sendingMessages) {
             if (advertTimer >= AutoAdvert.interval) {
-
+                LOGGER.info("Adverting");
                 lp.sendChatMessage(AutoAdvert.message, Text.literal(""));
                 advertTimer = 0;
             }
             advertTimer++;
         }
-
+        //AutoEnchant in hand
+        if (enchantInHand) {
+            ItemStack item = MinecraftClient.getInstance().player.getMainHandStack();
+            if(item.isEnchantable() && EnchantmentHelper.get(item).isEmpty() && !enchant) {
+                LOGGER.info("AutoEnchanting cause item in da hand");
+                MinecraftClient.getInstance().player.sendCommand("enchantall");
+            }
+        }
         //AutoEnchanting
         try {
             if (pressTime == 0 && enchantAxe) {
