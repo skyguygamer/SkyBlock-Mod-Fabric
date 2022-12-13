@@ -49,11 +49,13 @@ public class SbMod implements ModInitializer {
 	public static boolean unEnchantBoots = false;
 	public static boolean unEnchantBow = false;
 	public static boolean unEnchantChest = false;
+	public static boolean unEnchantCrossbow = false;
 	public static boolean unEnchantHelmet = false;
 	public static boolean unEnchantOther = false;
 	public static boolean unEnchantRod = false;
 	public static boolean unEnchantSword = false;
 	public static boolean unEnchantTool = false;
+	public static boolean unEnchantTrident = false;
 	public static boolean welcomeMsg = false;
 	public static int advertTimer = 0;
 	public static int autoBuyTime = 0;
@@ -68,7 +70,6 @@ public class SbMod implements ModInitializer {
 	public static int ticketAmount = 2;
 	public static ArrayList<String> onlineUuids = new ArrayList<>(Arrays.asList());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("SkyGuyGamerz", "Meggann"));
-
 
 
 	public static void convertText(String text) {

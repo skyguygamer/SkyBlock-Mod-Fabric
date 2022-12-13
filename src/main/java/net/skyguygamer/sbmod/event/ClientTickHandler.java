@@ -404,6 +404,35 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
 
         //Auto Unenchant
         try {
+            if (pressTime == 0 && unEnchantCrossbow) {
+                lp.sendCommand("enchant quick_charge 0");
+            } else if (pressTime == 15 && unEnchantCrossbow) {
+                lp.sendCommand("enchant multishot 0");
+            } else if (pressTime == 30 && unEnchantCrossbow) {
+                lp.sendCommand("enchant piercing 0");
+            } else if (pressTime == 45 && unEnchantCrossbow) {
+                lp.sendCommand("enchant unbreaking 0");
+            } else if (pressTime == 60 && unEnchantCrossbow) {
+                lp.sendCommand("enchant mending 0");
+                unEnchantCrossbow = false;
+                unEnchant = false;
+            }
+
+            if (pressTime == 0 && unEnchantTrident) {
+                lp.sendCommand("enchant loyalty 0");
+            } else if (pressTime == 15 && unEnchantTrident) {
+                lp.sendCommand("enchant channeling 0");
+            } else if (pressTime == 30 && unEnchantTrident) {
+                lp.sendCommand("enchant riptide 0");
+            } else if (pressTime == 45 && unEnchantTrident) {
+                lp.sendCommand("enchant impaling 0");
+            } else if (pressTime == 60 && unEnchantTrident) {
+                lp.sendCommand("enchant unbreaking 0");
+            } else if (pressTime == 75 && unEnchantTrident) {
+                lp.sendCommand("enchant mending 0");
+                unEnchantTrident = false;
+                unEnchant = false;
+            }
             if (pressTime == 0 && unEnchantAxe) {
                 lp.sendCommand("enchant sharpness 0");
             } else if (pressTime == 15 && unEnchantAxe) {
