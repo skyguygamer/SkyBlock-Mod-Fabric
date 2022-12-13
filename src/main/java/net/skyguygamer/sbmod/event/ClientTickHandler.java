@@ -30,6 +30,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
     public void onStartTick(MinecraftClient client) {
 
         ClientPlayerEntity lp = MinecraftClient.getInstance().player;
+        assert lp != null;
         //List<? extends PlayerEntity> onlinePlayers = lp.getWorld().getPlayers();
         //if(playerCheckTime >= 20)
         //for(PlayerEntity p : MinecraftClient.getInstance().player.getWorld().getPlayers()) {
@@ -40,17 +41,19 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //}
         //Login message
         if (loggedInToWorld) {
-            if (!loggedOn && !(MinecraftClient.getInstance().player == null)) {
+
+            if (!loggedOn) {
                 if (!welcomeMsg) {
                     if (welcomeMessageTime >= 100) {
-                        String boarder = "";
+                        StringBuilder boarder = new StringBuilder();
                         for (int i = 0; i < 20; i++) {
-                            boarder += "§a-";
-                            boarder += "§2=";
+                            boarder.append("§a-");
+                            boarder.append("§2=");
                         }
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
-                        lp.sendMessage((Text.literal("§7Updated version 3.0.2 §cBETA")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.0.3" +
+                                "§cBETA")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         welcomeMsg = true;
@@ -140,7 +143,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     lp.sendCommand("fix all");
                     coolDown = true;
                 }
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
         //Cool down for AutoFix
         if (coolDown) {
@@ -178,6 +181,36 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         }
         //AutoEnchanting
         try {
+            if (pressTime == 0 && enchantCrossbow) {
+                lp.sendCommand("enchant quick_charge 3");
+            } else if (pressTime == 15 && enchantCrossbow) {
+                lp.sendCommand("enchant multishot");
+            } else if (pressTime == 30 && enchantCrossbow) {
+                lp.sendCommand("enchant piercing 4");
+            } else if (pressTime == 45 && enchantCrossbow) {
+                lp.sendCommand("enchant unbreaking 3");
+            } else if (pressTime == 60 && enchantCrossbow) {
+                lp.sendCommand("enchant mending");
+                enchantCrossbow = false;
+                enchant = false;
+            }
+
+            if (pressTime == 0 && enchantTrident) {
+                lp.sendCommand("enchant loyalty 3");
+            } else if (pressTime == 15 && enchantTrident) {
+                lp.sendCommand("enchant channeling");
+            } else if (pressTime == 30 && enchantTrident) {
+                lp.sendCommand("enchant riptide 3");
+            } else if (pressTime == 45 && enchantTrident) {
+                lp.sendCommand("enchant impaling 5");
+            } else if (pressTime == 60 && enchantTrident) {
+                lp.sendCommand("enchant unbreaking 3");
+            } else if (pressTime == 75 && enchantTrident) {
+                lp.sendCommand("enchant mending");
+                enchantTrident = false;
+                enchant = false;
+            }
+
             if (pressTime == 0 && enchantAxe) {
                 lp.sendCommand("enchant sharpness 5");
             } else if (pressTime == 15 && enchantAxe) {
@@ -367,7 +400,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (enchant) {
                 pressTime++;
             }
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
 
         //Auto Unenchant
         try {
@@ -560,6 +593,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (unEnchant) {
                 pressTime++;
             }
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
     }
 }
