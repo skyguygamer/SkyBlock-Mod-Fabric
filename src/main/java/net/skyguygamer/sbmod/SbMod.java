@@ -32,12 +32,14 @@ public class SbMod implements ModInitializer {
 	public static boolean enchantBoots = false;
 	public static boolean enchantBow = false;
 	public static boolean enchantChest = false;
+	public static boolean enchantCrossbow = false;
 	public static boolean enchantHelmet = false;
 	public static boolean enchantInHand = false;
 	public static boolean enchantOther = false;
 	public static boolean enchantRod = false;
 	public static boolean enchantSword = false;
 	public static boolean enchantTool = false;
+	public static boolean enchantTrident = false;
 	public static boolean loggedInToWorld = false;
 	public static boolean playsound = false;
 	public static boolean printMsg = false;
@@ -47,11 +49,13 @@ public class SbMod implements ModInitializer {
 	public static boolean unEnchantBoots = false;
 	public static boolean unEnchantBow = false;
 	public static boolean unEnchantChest = false;
+	public static boolean unEnchantCrossbow = false;
 	public static boolean unEnchantHelmet = false;
 	public static boolean unEnchantOther = false;
 	public static boolean unEnchantRod = false;
 	public static boolean unEnchantSword = false;
 	public static boolean unEnchantTool = false;
+	public static boolean unEnchantTrident = false;
 	public static boolean welcomeMsg = false;
 	public static int advertTimer = 0;
 	public static int autoBuyTime = 0;
@@ -67,6 +71,7 @@ public class SbMod implements ModInitializer {
 	public static Map<String, Text> onlineStaffUuids = new HashMap<>();
 	public static ArrayList<String> onlinePlayers = new ArrayList<>(Arrays.asList());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("e8a71c21-760b-40ad-b900-45ec8674544d", "d6df79345-a001-4ccc-9104-e1c2df361c70", "59e70fab-f92f-484f-9189-d7a799fa8553"));
+
 
 	public static void convertText(String text) {
 		for (int i = 0; i < text.length(); i ++) {

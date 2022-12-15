@@ -21,6 +21,16 @@ public class EnchantAllCommand {
 
         Item item = MinecraftClient.getInstance().player.getMainHandStack().getItem();
         if (!SbMod.enchant) {
+            if (item == Items.CROSSBOW) {
+                SbMod.pressTime = 0;
+                SbMod.enchantCrossbow = true;
+                SbMod.enchant = true;
+            }
+            if (item == Items.TRIDENT) {
+                SbMod.pressTime = 0;
+                SbMod.enchantTrident = true;
+                SbMod.enchant = true;
+            }
             if (item == Items.NETHERITE_PICKAXE || item == Items.NETHERITE_SHOVEL || item == Items.DIAMOND_PICKAXE || item == Items.DIAMOND_SHOVEL || item == Items.IRON_PICKAXE || item == Items.IRON_SHOVEL || item == Items.STONE_PICKAXE || item == Items.STONE_SHOVEL || item == Items.GOLDEN_PICKAXE || item == Items.GOLDEN_SHOVEL || item == Items.WOODEN_PICKAXE || item == Items.WOODEN_SHOVEL|| item == Items.SHEARS) {
                 SbMod.pressTime = 0;
                 SbMod.enchantTool = true;
@@ -46,7 +56,7 @@ public class EnchantAllCommand {
                 SbMod.pressTime = 0;
                 SbMod.enchant = true;
             }
-            else if (item == Items.NETHERITE_HELMET || item == Items.DIAMOND_HELMET || item == Items.IRON_HELMET || item == Items.GOLDEN_HELMET || item == Items.CHAINMAIL_HELMET || item == Items.LEATHER_HELMET) {
+            else if (item == Items.TURTLE_HELMET || item == Items.NETHERITE_HELMET || item == Items.DIAMOND_HELMET || item == Items.IRON_HELMET || item == Items.GOLDEN_HELMET || item == Items.CHAINMAIL_HELMET || item == Items.LEATHER_HELMET) {
                 SbMod.enchantHelmet = true;
                 SbMod.pressTime = 0;
                 SbMod.enchant = true;
@@ -61,7 +71,7 @@ public class EnchantAllCommand {
                 SbMod.pressTime = 0;
                 SbMod.enchant = true;
             }
-            else if (item == Items.FLINT_AND_STEEL || item == Items.ELYTRA || item == Items.WOODEN_HOE || item == Items.STONE_HOE || item == Items.IRON_HOE || item == Items.GOLDEN_HOE || item == Items.DIAMOND_HOE || item == Items.SHIELD) {
+            else if (item == Items.WARPED_FUNGUS_ON_A_STICK || item == Items.CARROT_ON_A_STICK || item == Items.FLINT_AND_STEEL || item == Items.ELYTRA || item == Items.WOODEN_HOE || item == Items.STONE_HOE || item == Items.IRON_HOE || item == Items.GOLDEN_HOE || item == Items.DIAMOND_HOE || item == Items.NETHERITE_HOE||item == Items.SHIELD) {
                 SbMod.enchantOther = true;
                 SbMod.pressTime = 0;
                 SbMod.enchant = true;
