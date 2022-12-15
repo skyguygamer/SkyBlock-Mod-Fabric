@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.minecraft.text.Text;
 import net.skyguygamer.sbmod.commands.*;
 import net.skyguygamer.sbmod.config.ModConfigs;
 import net.skyguygamer.sbmod.event.*;
@@ -13,8 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class SbMod implements ModInitializer {
 	public static final String SBMOD_ID = "sbmod";
@@ -64,8 +64,9 @@ public class SbMod implements ModInitializer {
 	public static int time = 0;
 	public static int welcomeMessageTime = 0;
 	public static int ticketAmount = 2;
-	public static ArrayList<String> onlineUuids = new ArrayList<>(Arrays.asList());
-	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("SkyGuyGamerz", "Meggann"));
+	public static Map<String, Text> onlineStaffUuids = new HashMap<>();
+	public static ArrayList<String> onlinePlayers = new ArrayList<>(Arrays.asList());
+	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList("e8a71c21-760b-40ad-b900-45ec8674544d", "d6df79345-a001-4ccc-9104-e1c2df361c70", "59e70fab-f92f-484f-9189-d7a799fa8553"));
 
 	public static void convertText(String text) {
 		for (int i = 0; i < text.length(); i ++) {

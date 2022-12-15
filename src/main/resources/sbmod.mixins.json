@@ -6,8 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ClientPlayNetworkHandlerMixin",
-    "MessageHandlerMixin"
+    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

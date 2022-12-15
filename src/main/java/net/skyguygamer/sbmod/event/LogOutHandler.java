@@ -31,5 +31,20 @@ public class LogOutHandler implements ClientPlayConnectionEvents.Disconnect {
         time = 0;
         welcomeMessageTime = 0;
         welcomeMsg = false;
+        autoPrivate = false;
+        autoSell = false;
+        coolDown = false;
+        enchantInHand = false;
+        printMsg = false;
+        unEnchant = false;
+        unEnchantAxe = false;
+        unEnchantBoots = false;
+        unEnchantBow = false;
+        unEnchantChest = false;
+        unEnchantHelmet = false;
+        unEnchantOther = false;
+        unEnchantRod = false;
+        unEnchantSword = false;
+        unEnchantTool = false;
     }
 }
