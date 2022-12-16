@@ -17,6 +17,7 @@ import static net.skyguygamer.sbmod.SbMod.*;
 import static net.skyguygamer.sbmod.config.Config.lotteryTickets;
 
 public final class AutoBuyTemp {
+
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher) {
         dispatcher.register(ClientCommandManager.literal("autobuy").executes(AutoBuyTemp::run)
                 .then(ClientCommandManager.argument("tickets", IntegerArgumentType.integer(1, 5)).executes(AutoBuyTemp -> customAmount(AutoBuyTemp.getSource(),

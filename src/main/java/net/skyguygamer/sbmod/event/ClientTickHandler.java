@@ -29,8 +29,7 @@ import java.io.*;
 import java.util.*;
 
 import static net.skyguygamer.sbmod.SbMod.*;
-import static net.skyguygamer.sbmod.config.Config.lotteryTickets;
-import static net.skyguygamer.sbmod.config.Config.welcomeMessage;
+import static net.skyguygamer.sbmod.config.Config.*;
 
 public class ClientTickHandler implements ClientTickEvents.StartTick {
     @Override
@@ -58,40 +57,42 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
 
                     }
                 }
-                List<String> commands = new ArrayList<String>();
-                try {
-                    BufferedReader jclist = new BufferedReader(new FileReader("joincommands.txt"));
-                    String line;
-                    while ((line = jclist.readLine()) != null) {
-                        commands.add(line);
-                    }
-                    jclist.close();
-                } catch (Exception e) {
-                    PrintWriter writer;
+                if (joinCommands) {
+                    List<String> commands = new ArrayList<String>();
                     try {
-                        writer = new PrintWriter("joincommands.txt", "UTF-8");
-                    } catch (FileNotFoundException | UnsupportedEncodingException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
+                        BufferedReader jclist = new BufferedReader(new FileReader("joincommands.txt"));
+                        String line;
+                        while ((line = jclist.readLine()) != null) {
+                            commands.add(line);
+                        }
+                        jclist.close();
+                    } catch (Exception e) {
+                        PrintWriter writer;
+                        try {
+                            writer = new PrintWriter("joincommands.txt", "UTF-8");
+                        } catch (FileNotFoundException | UnsupportedEncodingException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+                        e.printStackTrace();
                     }
-                    e.printStackTrace();
-                }
-                for (int i = 0; i < commands.size(); i++) {
-                    if (welcomeMessageTime == (i * 100) + 100) {
-                        //lp.sendChatMessage(commands.get(i), Text.literal(""));
-                        lp.sendCommand(commands.get(i));
-                        loggedOn = true;
-                    } else {
-                        loggedOn = false;
+                    for (int i = 0; i < commands.size(); i++) {
+                        if (welcomeMessageTime == (i * 100) + 100) {
+                            //lp.sendChatMessage(commands.get(i), Text.literal(""));
+                            lp.sendCommand(commands.get(i));
+                            loggedOn = true;
+                        } else {
+                            loggedOn = false;
+                        }
                     }
-                }
-                if (!loggedOn) {
-                    welcomeMessageTime++;
+                    if (!loggedOn) {
+                        welcomeMessageTime++;
+                    }
                 }
             }
         }
         //Staffcheck
-        if (loggedInToWorld) {
+        if (loggedInToWorld && staffCheck) {
             if (playerCheckTime == 100) {
                 onlinePlayers = new ArrayList<>(Arrays.asList());
                 for (PlayerListEntry p : MinecraftClient.getInstance().getNetworkHandler().getPlayerList()) {

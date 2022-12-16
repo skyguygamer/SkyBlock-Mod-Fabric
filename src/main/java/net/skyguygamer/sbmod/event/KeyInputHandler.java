@@ -33,7 +33,7 @@ public class KeyInputHandler {
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if(configKey.wasPressed()) {
-                //MidnightConfig.getScreen(parent, "sbmod");
+                MidnightConfig.getScreen(null   , "sbmod");
             }
             if(ehomeKey.wasPressed()) {
                 client.player.sendCommand("ehome");

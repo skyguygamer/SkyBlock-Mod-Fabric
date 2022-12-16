@@ -10,7 +10,10 @@ public class Config extends MidnightConfig {
     @Entry public static boolean welcomeMessage = true;
     @Entry public static String name = "Hello World!";
     @Comment(centered = true) public static Comment features;
-    @Entry(min = 1, max = 5) public static int lotteryTickets = 2;
+    @Entry(name = "Amount of lottery tickets to buy",isSlider = true, min = 1, max = 5) public static int lotteryTickets = 2;
+    @Entry public static boolean joinCommands = true;
+    @Entry() public static boolean staffCheck = true;
+
     //@Entry public static TestEnum testEnum = TestEnum.FABRIC;   // Example for an enum option
     //public enum TestEnum {                               // Enums allow the user to cycle through predefined options
     //    QUILT, FABRIC, FORGE

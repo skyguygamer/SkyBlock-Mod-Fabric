@@ -15,6 +15,9 @@
   "sbmod.midnightconfig.toggles":"Chat toggles",
   "sbmod.midnightconfig.welcomeMessage": "Welcome message",
   "sbmod.midnightconfig.features": "Features",
-  "sbmod.midnightconfig.lotteryTickets": "Amount of lottery tickets to buy"
+  "sbmod.midnightconfig.lotteryTickets": "Amount of lottery tickets to buy",
+  "sbmod.midnightconfig.joinCommands": "When you join a game commands are sent",
+  "sbmod.midnightconfig.staffCheck": "Notifies you when staff join/leave",
+  "modid.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \n which staff member has joined/left",
 }
 
