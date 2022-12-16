@@ -8,6 +8,12 @@
   "key.sbmod.ehome.command": "Extra home command",
   "key.sbmod.enderchest.command": "Enderchest command",
   "key.sbmod.home.command": "Home command",
-  "key.sbmod.back.command": "Back command"
+  "key.sbmod.back.command": "Back command",
+
+  "sbmod.midnightconfig.title":"Skyblock Configuration",
+  "sbmod.midnightconfig.toggles":"Chat toggles",
+  "sbmod.midnightconfig.welcomeMessage": "Welcome message",
+  "sbmod.midnightconfig.features": "Features",
+  "sbmod.midnightconfig.lotteryTickets": "Amount of lottery tickets to buy"
 }
 

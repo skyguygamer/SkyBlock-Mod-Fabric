@@ -1,5 +1,6 @@
 package net.skyguygamer.sbmod;
 
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -7,7 +8,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.text.Text;
 import net.skyguygamer.sbmod.commands.*;
-import net.skyguygamer.sbmod.config.ModConfigs;
+import net.skyguygamer.sbmod.config.Config;
 import net.skyguygamer.sbmod.event.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -435,7 +436,7 @@ public class SbMod implements ModInitializer {
 	public void onInitialize() {
 
 
-		ModConfigs.registerConfigs();
+		MidnightConfig.init("sbmod", Config.class);
 
 		UseBlockCallback.EVENT.register(new BlockPlaceHandler());
 		ClientTickEvents.START_CLIENT_TICK.register(new ClientTickHandler());

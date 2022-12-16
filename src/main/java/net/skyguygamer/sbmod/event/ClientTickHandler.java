@@ -29,6 +29,8 @@ import java.io.*;
 import java.util.*;
 
 import static net.skyguygamer.sbmod.SbMod.*;
+import static net.skyguygamer.sbmod.config.Config.lotteryTickets;
+import static net.skyguygamer.sbmod.config.Config.welcomeMessage;
 
 public class ClientTickHandler implements ClientTickEvents.StartTick {
     @Override
@@ -40,7 +42,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //Login message
         if (loggedInToWorld) {
             if (!loggedOn && !(MinecraftClient.getInstance().player == null)) {
-                if (!welcomeMsg) {
+                if (!welcomeMsg && welcomeMessage) {
                     if (welcomeMessageTime >= 100) {
                         String boarder = "";
                         for (int i = 0; i < 20; i++) {
@@ -99,9 +101,9 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     onlinePlayers.add(playerUuid);
 
                     if (modNames.contains(playerUuid) && !onlineStaffUuids.containsKey(playerUuid)) {
-                        MutableText message = p.getDisplayName().copy();
-                        message.append(Text.literal(Formatting.DARK_GREEN + " has joined the server!"));
-                        MinecraftClient.getInstance().player.sendMessage(message);
+                        //MutableText message = p.getDisplayName().copy();
+                        //message.append(Text.literal(Formatting.DARK_GREEN + " has joined the server!"));
+                        MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + p.getProfile().getName() +  Formatting.DARK_GREEN + " has joined the server!"));
                         onlineStaffUuids.put(playerUuid, displayName);
                     }
                     playerCheckTime = 0;
@@ -111,8 +113,8 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 //Check offline staff
                 if (!onlineStaffUuids.isEmpty()) {
                     ArrayList <String> tempList = new ArrayList<>();
-                    System.out.println(onlineStaffUuids);
-                    System.out.println(MinecraftClient.getInstance().getNetworkHandler().getPlayerUuids());
+                    //System.out.println(onlineStaffUuids);
+                    //System.out.println(MinecraftClient.getInstance().getNetworkHandler().getPlayerUuids());
                     for (String staffUuid : onlineStaffUuids.keySet()) {
                         //PlayerListEntry name =
                         PlayerListEntry player = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(UUID.fromString(staffUuid));
@@ -191,7 +193,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         if (autoBuy) {
             if (autoBuyTime >= 36000) {
                 LOGGER.info("Gambling");
-                lp.sendCommand("lottery buy " + ticketAmount);
+                lp.sendCommand("lottery buy " + lotteryTickets);
                 autoBuyTime = 0;
             }
             autoBuyTime++;

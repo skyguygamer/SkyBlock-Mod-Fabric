@@ -46,5 +46,9 @@ public class LogOutHandler implements ClientPlayConnectionEvents.Disconnect {
         unEnchantRod = false;
         unEnchantSword = false;
         unEnchantTool = false;
+
+        playerCheckTime = 0;
+        onlinePlayers.clear();
+        onlineStaffUuids.clear();
     }
 }
