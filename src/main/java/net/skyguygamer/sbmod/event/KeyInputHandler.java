@@ -32,9 +32,6 @@ public class KeyInputHandler {
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if(configKey.wasPressed()) {
-                MidnightConfig.getScreen(null   , "sbmod");
-            }
             if(ehomeKey.wasPressed()) {
                 client.player.sendCommand("ehome");
             }
@@ -53,16 +50,13 @@ public class KeyInputHandler {
             if(backKey.wasPressed()) {
                 client.player.sendCommand("back");
             }
+            if(configKey.wasPressed()) {
+                MidnightConfig.getScreen(null   , "sbmod");
+            }
         });
     }
 
     public static void register() {
-        configKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                KEY_CONFIG,
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_B,
-                KEY_CATEGORY_SB
-        ));
         jumpKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 KEY_JUMP_COMMAND,
                 InputUtil.Type.KEYSYM,
@@ -97,6 +91,12 @@ public class KeyInputHandler {
                 KEY_EHOME_COMMAND,
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_UNKNOWN,
+                KEY_CATEGORY_SB
+        ));
+        configKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                KEY_CONFIG,
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_B,
                 KEY_CATEGORY_SB
         ));
         registerKeyInputs();
