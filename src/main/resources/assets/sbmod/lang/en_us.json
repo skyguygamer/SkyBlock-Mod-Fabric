@@ -9,6 +9,7 @@
   "key.sbmod.enderchest.command": "Enderchest command",
   "key.sbmod.home.command": "Home command",
   "key.sbmod.back.command": "Back command",
+  "key.sbmod.config": "Configuration",
 
   "sbmod.midnightconfig.title":"Skyblock Configuration",
   "sbmod.midnightconfig.toggles":"Chat toggles",
