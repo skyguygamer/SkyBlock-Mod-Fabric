@@ -11,6 +11,8 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
+import java.text.Normalizer;
+
 public final class HelpCommand {
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher)
     {
@@ -18,20 +20,22 @@ public final class HelpCommand {
     }
 
     static int run(CommandContext<FabricClientCommandSource> context) {
-        PlayerEntity PlayerEntity = (PlayerEntity) context.getSource().getEntity();
-
-        String boarder = "";
+        StringBuilder boarder = new StringBuilder();
         for (int i = 0; i < 20; i++) {
-            boarder += "§a*";
-            boarder += "§f*";
+            boarder.append("§a*");
+            boarder.append("§f*");
         }
-        context.getSource().sendFeedback(Text.literal(boarder));
+        context.getSource().sendFeedback(Text.literal(boarder.toString()));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Press B to open up the config menu (change it under keybinds)"));
         Style style = Style.EMPTY;
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/shelp"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/shelp" + Formatting.WHITE + ": Lists the Skyblock Mods Commands").setStyle(style));
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/saliases"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/saliases" + Formatting.WHITE + ": Lists the available shortcuts to commands in this mod").setStyle(style));
+
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/staffnotify"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/staffnotify" + Formatting.WHITE + ": Lets you know in chat when a staff member has joined or left").setStyle(style));
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/joincommand"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/joincommand " + Formatting.GRAY + "[add,delete,list,help]" + Formatting.WHITE + ": Allows you to set commands/messages that are sent when you join the game").setStyle(style));
@@ -74,9 +78,12 @@ public final class HelpCommand {
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/refreshtimers"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/refreshtimers" + Formatting.WHITE + ": Refreshes all the timers if the feature is enabled").setStyle(style));
+
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/toggle"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/toggle" + Formatting.GRAY + "[tips/advancements...." + Formatting.WHITE + ": Lets you toggle off certain messages sent by the server in chat. You can leave the arguments blank to enable/disabled all toggles").setStyle(style));
         //style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sdiscord"));
         //context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "" + Formatting.WHITE + ": ").setStyle(style));
-        context.getSource().sendFeedback(Text.literal(boarder));
+        context.getSource().sendFeedback(Text.literal(boarder.toString()));
         return Command.SINGLE_SUCCESS;
     }
 }

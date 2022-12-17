@@ -18,6 +18,8 @@ import java.awt.event.KeyEvent;
 import java.util.*;
 import java.util.List;
 
+import static net.skyguygamer.sbmod.config.Config.extraStaffNames;
+
 public class SbMod implements ModInitializer {
 	public static final String SBMOD_ID = "sbmod";
 	public static final Logger LOGGER = LoggerFactory.getLogger(SBMOD_ID);
@@ -70,6 +72,8 @@ public class SbMod implements ModInitializer {
 	public static int time = 0;
 	public static int welcomeMessageTime = 0;
 	public static int ticketAmount = 2;
+
+
 	public static Map<String, Text> onlineStaffUuids = new HashMap<>();
 	public static ArrayList<String> onlinePlayers = new ArrayList<>(List.of());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList(
@@ -462,6 +466,8 @@ public class SbMod implements ModInitializer {
 			HelpCommand.register(dispatcher);
 			JoinCommand.register(dispatcher);
 			RefreshTimers.register(dispatcher);
+			StaffNotifications.register(dispatcher);
+			ToggleChats.register(dispatcher);
 			UnEnchantAllCommand.register(dispatcher);
 			//SetPrefix.register(dispatcher);
 		});

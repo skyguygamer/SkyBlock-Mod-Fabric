@@ -3,6 +3,7 @@ package net.skyguygamer.sbmod.event;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
@@ -51,7 +52,8 @@ public class KeyInputHandler {
                 client.player.sendCommand("back");
             }
             if(configKey.wasPressed()) {
-                MidnightConfig.getScreen(null   , "sbmod");
+                //MidnightConfig.getScreen(null   , "sbmod");
+                MinecraftClient.getInstance().setScreen(MidnightConfig.getScreen(null   , "sbmod"));
             }
         });
     }

@@ -11,13 +11,37 @@
   "key.sbmod.back.command": "Back command",
   "key.sbmod.config": "Configuration",
 
+
+
   "sbmod.midnightconfig.title":"Skyblock Configuration",
+  "sbmod.midnightconfig.title.tooltip": "§aVersion 3.0.3, modid = `sbmod`",
   "sbmod.midnightconfig.toggles":"Chat toggles",
+
   "sbmod.midnightconfig.welcomeMessage": "Welcome message",
+  "sbmod.midnightconfig.welcomeMessage.tooltip": "§aIf you really want, this gives \nyou the ability to turn off the \non join world message",
+
+  "sbmod.midnightconfig.toggleTips": "Toggles skyblocks tips",
+  "sbmod.midnightconfig.toggleTips.tooltip": "§aToggles off the skyblock servers \ntips (shop,lock/unlock,settings etc.)",
+
+  "sbmod.midnightconfig.toggleAdvancements": "Toggles player advancements",
+  "sbmod.midnightconfig.toggleAdvancements.tooltip": "§aToggles the player advancements \nthat are sent in chat",
+
+  "sbmod.midnightconfig.toggleNewPlayerWelcome": "Toggles welcome messages",
+  "sbmod.midnightconfig.toggleNewPlayerWelcome.tooltip": "§aToggles the welcome of new \nplayers to the server",
+
+  "sbmod.midnightconfig.togglePlayerVoted": "Toggles player voted",
+  "sbmod.midnightconfig.togglePlayerVoted.tooltip": "§aToggles the notification sent \nwhen a player votes",
+
+  "sbmod.midnightconfig.toggleVoterRewards": "Toggles voting rewards",
+  "sbmod.midnightconfig.toggleVoterRewards.tooltip": "§aToggles extra voting \nrewards from voting",
+
   "sbmod.midnightconfig.features": "Features",
-  "sbmod.midnightconfig.lotteryTickets": "Amount of lottery tickets to buy",
-  "sbmod.midnightconfig.joinCommands": "When you join a game commands are sent",
-  "sbmod.midnightconfig.staffCheck": "Notifies you when staff join/leave",
-  "modid.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \n which staff member has joined/left"
+  "sbmod.midnightconfig.lotteryTickets": "§aThe amount of lottery ticket to buy",
+
+  "sbmod.midnightconfig.joinCommands": "Join commands",
+  "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world",
+
+  "sbmod.midnightconfig.staffCheck": "Staff join/leave notifications",
+  "sbmod.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \nwhich staff member has joined/left"
 }
 

@@ -3,16 +3,22 @@ package net.skyguygamer.sbmod.config;
 
 import eu.midnightdust.lib.config.MidnightConfig;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Config extends MidnightConfig {
     @Comment(centered = true) public static Comment toggles;      // Centered comments are the same as normal ones - just centered!
     @Entry public static boolean welcomeMessage = true;
-    @Entry public static String name = "Hello World!";
+    @Entry public static boolean toggleTips = false;
+    @Entry public static boolean toggleAdvancments = false;
+    @Entry public static boolean toggleNewPlayerWelcome = false;
+    @Entry public static boolean togglePlayerVoted = false;
+    @Entry public static boolean toggleVoterRewards = false;
     @Comment(centered = true) public static Comment features;
     @Entry(name = "Amount of lottery tickets to buy",isSlider = true, min = 1, max = 5) public static int lotteryTickets = 2;
     @Entry public static boolean joinCommands = true;
     @Entry() public static boolean staffCheck = true;
+    @Entry(name = "Add staff UUID's here") public static List<String> extraStaffNames = List.of();
 
     //@Entry public static TestEnum testEnum = TestEnum.FABRIC;   // Example for an enum option
     //public enum TestEnum {                               // Enums allow the user to cycle through predefined options

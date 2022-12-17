@@ -43,22 +43,21 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             if (!loggedOn && !(MinecraftClient.getInstance().player == null)) {
                 if (!welcomeMsg && welcomeMessage) {
                     if (welcomeMessageTime >= 100) {
-                        String boarder = "";
+                        StringBuilder boarder = new StringBuilder();
                         for (int i = 0; i < 20; i++) {
-                            boarder += "§a-";
-                            boarder += "§2=";
+                            boarder.append("§a-");
+                            boarder.append("§2=");
                         }
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
-                        lp.sendMessage((Text.literal("§7Updated version 3.0.2 §cBETA")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.0.3 §cBETA")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         welcomeMsg = true;
-
                     }
                 }
                 if (joinCommands) {
-                    List<String> commands = new ArrayList<String>();
+                    List<String> commands = new ArrayList<>();
                     try {
                         BufferedReader jclist = new BufferedReader(new FileReader("joincommands.txt"));
                         String line;
@@ -66,19 +65,9 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                             commands.add(line);
                         }
                         jclist.close();
-                    } catch (Exception e) {
-                        PrintWriter writer;
-                        try {
-                            writer = new PrintWriter("joincommands.txt", "UTF-8");
-                        } catch (FileNotFoundException | UnsupportedEncodingException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
-                        e.printStackTrace();
-                    }
+                    } catch (Exception ignored){}
                     for (int i = 0; i < commands.size(); i++) {
                         if (welcomeMessageTime == (i * 100) + 100) {
-                            //lp.sendChatMessage(commands.get(i), Text.literal(""));
                             lp.sendCommand(commands.get(i));
                             loggedOn = true;
                         } else {
@@ -94,31 +83,22 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //Staffcheck
         if (loggedInToWorld && staffCheck) {
             if (playerCheckTime == 100) {
-                onlinePlayers = new ArrayList<>(Arrays.asList());
+                LOGGER.info("Updating and looking for online staff!");
+                onlinePlayers = new ArrayList<>(List.of());
                 for (PlayerListEntry p : MinecraftClient.getInstance().getNetworkHandler().getPlayerList()) {
-
                     String playerUuid = p.getProfile().getId().toString();
                     Text displayName = p.getDisplayName();
                     onlinePlayers.add(playerUuid);
-
-                    if (modNames.contains(playerUuid) && !onlineStaffUuids.containsKey(playerUuid)) {
-                        //MutableText message = p.getDisplayName().copy();
-                        //message.append(Text.literal(Formatting.DARK_GREEN + " has joined the server!"));
+                    if ((modNames.contains(playerUuid) || extraStaffNames.contains(playerUuid)) && !onlineStaffUuids.containsKey(playerUuid)) {
                         MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + p.getProfile().getName() +  Formatting.DARK_GREEN + " has joined the server!"));
                         onlineStaffUuids.put(playerUuid, displayName);
                     }
                     playerCheckTime = 0;
-                    //LOGGER.info(p.getProfile().getId().toString());
                 }
-                LOGGER.info("Updating and looking for online staff!");
                 //Check offline staff
                 if (!onlineStaffUuids.isEmpty()) {
                     ArrayList <String> tempList = new ArrayList<>();
-                    //System.out.println(onlineStaffUuids);
-                    //System.out.println(MinecraftClient.getInstance().getNetworkHandler().getPlayerUuids());
                     for (String staffUuid : onlineStaffUuids.keySet()) {
-                        //PlayerListEntry name =
-                        PlayerListEntry player = MinecraftClient.getInstance().getNetworkHandler().getPlayerListEntry(UUID.fromString(staffUuid));
                         if (!onlinePlayers.contains(staffUuid)) {
                             Text displayName = onlineStaffUuids.get(staffUuid);
                             MutableText message = displayName.copy();
@@ -141,7 +121,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             autoSellTime++;
         }
-
         //AutoPrivate
         if (printMsg) {
             if (printMsgTimer >= 10) {
@@ -163,11 +142,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             spawnTime++;
         }
-
-
-        //ClientConnection d = MinecraftClient.getInstance().player.networkHandler.getConnection();
-
-
         //AutoFix
         if (autoFix && !coolDown) {
 
@@ -179,8 +153,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     lp.sendCommand("fix all");
                     coolDown = true;
                 }
-            } catch (Exception e) {
-            }
+            } catch (Exception e) {}
         }
         //Cool down for AutoFix
         if (coolDown) {
