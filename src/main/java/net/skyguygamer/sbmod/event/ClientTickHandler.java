@@ -87,23 +87,23 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 onlinePlayers = new ArrayList<>(List.of());
                 for (PlayerListEntry p : MinecraftClient.getInstance().getNetworkHandler().getPlayerList()) {
                     String playerUuid = p.getProfile().getId().toString();
-                    Text displayName = p.getDisplayName();
+                    String name = p.getProfile().getName();
                     onlinePlayers.add(playerUuid);
                     if ((modNames.contains(playerUuid) || extraStaffNames.contains(playerUuid)) && !onlineStaffUuids.containsKey(playerUuid)) {
                         MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + p.getProfile().getName() +  Formatting.DARK_GREEN + " has joined the server!"));
-                        onlineStaffUuids.put(playerUuid, displayName);
+                        onlineStaffUuids.put(playerUuid, name);
                     }
                     playerCheckTime = 0;
                 }
+                LOGGER.info(onlineStaffUuids.toString());
                 //Check offline staff
                 if (!onlineStaffUuids.isEmpty()) {
                     ArrayList <String> tempList = new ArrayList<>();
                     for (String staffUuid : onlineStaffUuids.keySet()) {
                         if (!onlinePlayers.contains(staffUuid)) {
-                            Text displayName = onlineStaffUuids.get(staffUuid);
-                            MutableText message = displayName.copy();
-                            message.append(Text.literal(Formatting.DARK_GREEN + " is no longer online!"));
-                            MinecraftClient.getInstance().player.sendMessage(message);
+                            String name = onlineStaffUuids.get(staffUuid);
+                            //message.append(Text.literal(Formatting.DARK_GREEN + " is no longer online!"));
+                            MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + name + Formatting.DARK_GREEN + " is no longer online!"));
                             tempList.add(staffUuid);
                         }
                     }

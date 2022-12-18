@@ -74,7 +74,7 @@ public class SbMod implements ModInitializer {
 	public static int ticketAmount = 2;
 
 
-	public static Map<String, Text> onlineStaffUuids = new HashMap<>();
+	public static Map<String, String> onlineStaffUuids = new HashMap<>();
 	public static ArrayList<String> onlinePlayers = new ArrayList<>(List.of());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList(
 			//Helpers

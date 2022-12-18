@@ -17,7 +17,7 @@ public class Config extends MidnightConfig {
     @Comment(centered = true) public static Comment features;
     @Entry(name = "Amount of lottery tickets to buy",isSlider = true, min = 1, max = 5) public static int lotteryTickets = 2;
     @Entry public static boolean joinCommands = true;
-    @Entry() public static boolean staffCheck = true;
+    @Entry() public static boolean staffCheck = false;
     @Entry(name = "Add staff UUID's here") public static List<String> extraStaffNames = List.of();
 
     //@Entry public static TestEnum testEnum = TestEnum.FABRIC;   // Example for an enum option
