@@ -10,7 +10,7 @@ public class Config extends MidnightConfig {
     @Comment(centered = true) public static Comment toggles;      // Centered comments are the same as normal ones - just centered!
     @Entry public static boolean welcomeMessage = true;
     @Entry public static boolean toggleTips = false;
-    @Entry public static boolean toggleAdvancments = false;
+    @Entry public static boolean toggleAdvancements = false;
     @Entry public static boolean toggleNewPlayerWelcome = false;
     @Entry public static boolean togglePlayerVoted = false;
     @Entry public static boolean toggleVoterRewards = false;
