@@ -50,11 +50,11 @@ public final class ToggleChats {
         return Command.SINGLE_SUCCESS;
     }
     private static int advancements(CommandContext<FabricClientCommandSource> context) {
-        if (!toggleAdvancments) {
-            toggleAdvancments = true;
+        if (!toggleAdvancements) {
+            toggleAdvancements = true;
             context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "You have enabled for advancements to not be sent"));
         } else {
-            toggleAdvancments = false;
+            toggleAdvancements = false;
             context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "You have enabled for advancements to be sent"));
         }
         return Command.SINGLE_SUCCESS;

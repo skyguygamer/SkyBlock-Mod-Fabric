@@ -28,7 +28,7 @@ public class ChatMixin {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
-        if (toggleAdvancments && incMessage.contains("has made the advancement") && incMessage.endsWith("]")) {
+        if (toggleAdvancements && incMessage.contains("has made the advancement") && incMessage.endsWith("]")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
