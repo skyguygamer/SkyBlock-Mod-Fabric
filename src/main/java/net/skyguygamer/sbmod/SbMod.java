@@ -80,7 +80,7 @@ public class SbMod implements ModInitializer {
 			//Helpers
 			"82df7471-8ad2-4f16-a3d8-31dd09628b8f", "6df79345-a001-4ccc-9104-e1c2df361c70", "22206b45-7d3e-429c-b339-e0c1629110db", "bd94c577-dc7d-4bfc-bf36-0262cf821441",
 			//Mods
-			"baf7d328-2859-4544-932e-8a4be2a5b3cf", "6652961c-c798-4eff-a441-8b9f99e3c219", "591ea57f-960f-4d53-95ee-ee648c3310b2", "83e6e7e1-1538-4abb-a8c2-67edf15d8e66", "4eb2eeb5-25c1-44c0-adfe-f66765e571fc", "b638643f-59bb-4b9c-97e1-18c7053554f6", "1e62cb3a-ac61-45b2-bcd1-8c3f3f46d5bf", "4ead00c5-a4a6-4612-9260-797331ab70ef", "767b5628-0796-4bab-9cfa-c983e840f3dc",
+			"baf7d328-2859-4544-932e-8a4be2a5b3cf", "6652961c-c798-4eff-a441-8b9f99e3c219", "591ea57f-960f-4d53-95ee-ee648c3310b2", "83e6e7e1-1538-4abb-a8c2-67edf15d8e66", "4eb2eeb5-25c1-44c0-adfe-f66765e571fc", "b638643f-59bb-4b9c-97e1-18c7053554f6", "1e62cb3a-ac61-45b2-bcd1-8c3f3f46d5bf", "4ead00c5-a4a6-4612-9260-797331ab70ef", "767b5628-0796-4bab-9cfa-c983e840f3dc", "751b17e1-51ac-46f1-853a-b79cc388078b",
 			//SuperMods/Dev
 			"afccf682-3351-4ada-a6be-275bed81bd81", "6f34f308-99f6-423f-aca8-d6d47aa3b031", "dc94537e-8e48-468c-ae82-7c394a1da358", "b6521802-d0b6-4a9d-b052-105a949f93f5",
 			//Staff manager and Owner

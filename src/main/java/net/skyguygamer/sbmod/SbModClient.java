@@ -10,6 +10,7 @@ public class SbModClient implements ClientModInitializer {
     private static final Logger LOGGER = LoggerFactory.getLogger(SbModClient.class);
     @Override
     public void onInitializeClient() {
+        LOGGER.info("Initializing sb keybinds");
         KeyInputHandler.register();
     }
 }
