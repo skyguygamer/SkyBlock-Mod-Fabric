@@ -112,13 +112,7 @@ public final class JoinCommand {
                 source.sendFeedback(Text.literal("Successfully updated").formatted(Formatting.GREEN));
                 writer.close();
                 success = false;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                success = false;
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-                success = false;
-            }
+            } catch (FileNotFoundException | UnsupportedEncodingException ignored) {}
         }
         return Command.SINGLE_SUCCESS;
     }
