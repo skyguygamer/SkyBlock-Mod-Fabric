@@ -10,6 +10,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +28,7 @@ public final class JoinCommand {
         boolean success = false;
         ArrayList<String> commands = new ArrayList<String>();
         try {
-            BufferedReader in = new BufferedReader(new FileReader("joincommands.txt"));
+            BufferedReader in = new BufferedReader(new FileReader("sbmod/joincommands.txt"));
             String line;
             while ((line = in.readLine()) != null) {
                 commands.add(line);
@@ -81,20 +84,14 @@ public final class JoinCommand {
         if (success) {
             PrintWriter writer;
             try {
-                writer = new PrintWriter("joincommands.txt", "UTF-8");
+                writer = new PrintWriter("sbmod/joincommands.txt", "UTF-8");
                 for (int i = 0; i < commands.size(); i++) {
                     writer.println(commands.get(i));
                 }
                 source.sendFeedback(Text.literal("Successfully updated").formatted(Formatting.GREEN));
                 writer.close();
                 success = false;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                success = false;
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-                success = false;
-            }
+            } catch (FileNotFoundException | UnsupportedEncodingException ignored) {}
         }
         return Command.SINGLE_SUCCESS;
     }
@@ -108,7 +105,7 @@ public final class JoinCommand {
         if (success) {
             PrintWriter writer;
             try {
-                writer = new PrintWriter("joincommands.txt", "UTF-8");
+                writer = new PrintWriter("sbmod/joincommands.txt", "UTF-8");
                 for (int i = 0; i < commands.size(); i++) {
                     writer.println(commands.get(i));
                 }

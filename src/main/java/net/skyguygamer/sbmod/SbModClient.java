@@ -1,7 +1,6 @@
 package net.skyguygamer.sbmod;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.skyguygamer.sbmod.event.ClientMessageEvents;
 import net.skyguygamer.sbmod.event.KeyInputHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

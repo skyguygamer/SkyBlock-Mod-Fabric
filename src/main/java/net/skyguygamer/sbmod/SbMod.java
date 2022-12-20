@@ -15,10 +15,12 @@ import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
-
-import static net.skyguygamer.sbmod.config.Config.extraStaffNames;
 
 public class SbMod implements ModInitializer {
 	public static final String SBMOD_ID = "sbmod";
@@ -74,6 +76,8 @@ public class SbMod implements ModInitializer {
 	public static int ticketAmount = 2;
 
 
+
+	//Staff checks
 	public static Map<String, String> onlineStaffUuids = new HashMap<>();
 	public static ArrayList<String> onlinePlayers = new ArrayList<>(List.of());
 	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList(
@@ -438,7 +442,20 @@ public class SbMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		//Sbmod folder
+		try {
+			Files.createDirectories(Path.of("sbmod"));
+			//Joincommand txt
+			new File("sbmod/joincommands.txt");
 
+			//Trade logs
+			Files.createDirectories(Path.of("sbmod/tradelogs"));
+
+			//Message logs
+			Files.createDirectories(Path.of("sbmod/messagelogs"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
 		MidnightConfig.init("sbmod", Config.class);
 

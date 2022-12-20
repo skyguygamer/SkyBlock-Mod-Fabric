@@ -34,7 +34,6 @@ import static net.skyguygamer.sbmod.config.Config.*;
 public class ClientTickHandler implements ClientTickEvents.StartTick {
     @Override
     public void onStartTick(MinecraftClient client) {
-
         ClientPlayerEntity lp = MinecraftClient.getInstance().player;
         //assert lp != null;
 
@@ -59,13 +58,16 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 if (joinCommands) {
                     List<String> commands = new ArrayList<>();
                     try {
-                        BufferedReader jclist = new BufferedReader(new FileReader("joincommands.txt"));
+                        BufferedReader jclist = new BufferedReader(new FileReader("sbmod/joincommands.txt"));
                         String line;
                         while ((line = jclist.readLine()) != null) {
                             commands.add(line);
                         }
                         jclist.close();
-                    } catch (Exception ignored){}
+                    } catch (Exception ignored) {}
+
+
+
                     for (int i = 0; i < commands.size(); i++) {
                         if (welcomeMessageTime == (i * 100) + 100) {
                             lp.sendCommand(commands.get(i));
