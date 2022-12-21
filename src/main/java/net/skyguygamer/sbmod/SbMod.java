@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -75,7 +76,10 @@ public class SbMod implements ModInitializer {
 	public static int welcomeMessageTime = 0;
 	public static int ticketAmount = 2;
 
-
+	//public static BufferedWriter myObj = null;
+	//public static String fileName = null;
+	public static String fileName = "";
+	public static BufferedWriter myObj;
 
 	//Staff checks
 	public static Map<String, String> onlineStaffUuids = new HashMap<>();

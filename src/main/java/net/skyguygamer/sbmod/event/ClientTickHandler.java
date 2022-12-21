@@ -97,7 +97,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     }
                     playerCheckTime = 0;
                 }
-                LOGGER.info(onlineStaffUuids.toString());
+               // LOGGER.info(onlineStaffUuids.toString());
                 //Check offline staff
                 if (!onlineStaffUuids.isEmpty()) {
                     ArrayList <String> tempList = new ArrayList<>();
