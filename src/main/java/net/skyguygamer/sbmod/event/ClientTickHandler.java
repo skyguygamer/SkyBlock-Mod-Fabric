@@ -49,7 +49,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         }
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
-                        lp.sendMessage((Text.literal("§7Updated version 3.0.3.1 §cBETA")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.0.4 §cBETA")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         welcomeMsg = true;
@@ -85,7 +85,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //Staffcheck
         if (loggedInToWorld && staffCheck) {
             if (playerCheckTime == 100) {
-                LOGGER.info("Updating and looking for online staff!");
+                //LOGGER.info("Updating and looking for online staff!");
                 onlinePlayers = new ArrayList<>(List.of());
                 for (PlayerListEntry p : MinecraftClient.getInstance().getNetworkHandler().getPlayerList()) {
                     String playerUuid = p.getProfile().getId().toString();

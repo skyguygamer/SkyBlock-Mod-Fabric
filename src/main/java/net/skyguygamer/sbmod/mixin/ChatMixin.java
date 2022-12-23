@@ -54,22 +54,38 @@ public class ChatMixin {
         }
         //Message logger credits to MagikIsAMush
         if (toggleMessageLogs && (incMessage.startsWith("[me -> ") || (incMessage.startsWith("[") && incMessage.contains(" -> ")))) {
-            if (fileName == "") {
+            if (fileNameOfMessageLogs == "") {
                 Date dateNow = new Date(); // On trouve la date
                 SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy'-'HH.mm.ss");
 
-                fileName = "sbmod/messagelogs/" + MinecraftClient.getInstance().player.getGameProfile().getName() + "_" + formatDate.format(dateNow) + ".txt";
+                fileNameOfMessageLogs = "sbmod/messagelogs/" + MinecraftClient.getInstance().player.getGameProfile().getName() + "_" + formatDate.format(dateNow) + ".txt";
 
-                myObj = new BufferedWriter(new FileWriter(fileName));
+                myObjMessageLogs = new BufferedWriter(new FileWriter(fileNameOfMessageLogs));
             }
             Date msgDate = new Date();
             SimpleDateFormat ft2 = new SimpleDateFormat("dd'-'HH:mm:ss");
-            myObj.write("[" + ft2.format(msgDate) + "] " + incMessage);
-            myObj.newLine();
-            myObj.flush();
+            myObjMessageLogs.write("[" + ft2.format(msgDate) + "] " + incMessage);
+            myObjMessageLogs.newLine();
+            myObjMessageLogs.flush();
+        }
+        //Trade logger
+        if (toggleTradeLogs && ((incMessage.contains(" bought ") && incMessage.contains(" from you for ")) || (incMessage.contains("You bought ") && incMessage.contains(" from ") && incMessage.contains(" for ")))) {
+            if (fileNameOfTradeLogs == "") {
+                Date dateNow = new Date(); // On trouve la date
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy'-'HH.mm.ss");
+
+                fileNameOfTradeLogs = "sbmod/tradelogs/" + MinecraftClient.getInstance().player.getGameProfile().getName() + "_" + formatDate.format(dateNow) + ".txt";
+
+                myObjTradeLogs = new BufferedWriter(new FileWriter(fileNameOfTradeLogs));
+            }
+            Date msgDate = new Date();
+            SimpleDateFormat ft2 = new SimpleDateFormat("dd'-'HH:mm:ss");
+            myObjTradeLogs.write("[" + ft2.format(msgDate) + "] " + incMessage);
+            myObjTradeLogs.newLine();
+            myObjTradeLogs.flush();
         }
     }
-    @ModifyVariable (method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"))
+    /*@ModifyVariable (method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"))
     private Text changeVariable(Text message) {
         if (message.getString().toLowerCase().contains("gay")) {
             message = Text.literal("no u");
@@ -77,4 +93,5 @@ public class ChatMixin {
         }
         return message;
     }
+     */
 }

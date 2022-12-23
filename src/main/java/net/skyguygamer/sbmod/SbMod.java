@@ -76,10 +76,16 @@ public class SbMod implements ModInitializer {
 	public static int welcomeMessageTime = 0;
 	public static int ticketAmount = 2;
 
-	//public static BufferedWriter myObj = null;
-	//public static String fileName = null;
-	public static String fileName = "";
-	public static BufferedWriter myObj;
+	//public static BufferedWriter myObjTradeLogsMessageLogs = null;
+	//public static String fileNameOfMessageLogs = null;
+
+	//Message logs
+	public static String fileNameOfMessageLogs = "";
+	public static BufferedWriter myObjMessageLogs;
+
+	//Trade logs
+	public static String fileNameOfTradeLogs = "";
+	public static BufferedWriter myObjTradeLogs;
 
 	//Staff checks
 	public static Map<String, String> onlineStaffUuids = new HashMap<>();
@@ -474,7 +480,7 @@ public class SbMod implements ModInitializer {
 			AutoBuyTemp.register(dispatcher);
 			AutoEnchantInHand.register(dispatcher);
 			AutoFix.register(dispatcher);
-			AutoPrivate.register(dispatcher);
+			//AutoPrivate.register(dispatcher);
 			AutoSell.register(dispatcher);
 			AutoSpawnMob.register(dispatcher);
 			CalcCommand.register(dispatcher);
