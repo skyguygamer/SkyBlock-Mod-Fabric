@@ -40,7 +40,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //Login message
         if (loggedInToWorld) {
             if (!loggedOn && !(MinecraftClient.getInstance().player == null)) {
-                if (!welcomeMsg && welcomeMessage) {
+                if (!welcomeMsg && !toggleWelcomeMessage) {
                     if (welcomeMessageTime >= 100) {
                         StringBuilder boarder = new StringBuilder();
                         for (int i = 0; i < 20; i++) {
@@ -65,9 +65,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         }
                         jclist.close();
                     } catch (Exception ignored) {}
-
-
-
                     for (int i = 0; i < commands.size(); i++) {
                         if (welcomeMessageTime == (i * 100) + 100) {
                             lp.sendCommand(commands.get(i));

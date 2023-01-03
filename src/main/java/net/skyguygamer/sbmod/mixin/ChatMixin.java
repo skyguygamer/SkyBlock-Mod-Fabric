@@ -4,21 +4,21 @@ package net.skyguygamer.sbmod.mixin;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.MessageIndicator;
+import net.minecraft.entity.Entity;
 import net.minecraft.network.message.MessageSignatureData;
+import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 import static net.skyguygamer.sbmod.SbMod.*;
 import static net.skyguygamer.sbmod.config.Config.*;
@@ -28,10 +28,6 @@ public class ChatMixin {
     @Inject(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"), cancellable = true)
     private void sbmod$onChatRecieved(Text message, MessageSignatureData signature, int ticks, MessageIndicator indicator, boolean refresh, CallbackInfo ci) throws IOException {
         String incMessage = message.getString();
-        if (message.getString().toLowerCase().contains("hello")) {
-            ci.cancel();
-            LOGGER.info("I have blocked a message!");
-        }
         if (toggleTips && incMessage.contains("[Skyblock]") && incMessage.startsWith("[S")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
@@ -52,11 +48,22 @@ public class ChatMixin {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
+        if (toggleFriendJoin && incMessage.startsWith("[Friends] ") && incMessage.contains(" has joined ")) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
+        }
+        if (togglePlayersPerishedInVoid && incMessage.endsWith(" player have perished in the void today.")) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
+        }
+        if (autoBuy && incMessage.startsWith("[SBLottery] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && incMessage.endsWith(" tickets")) {
+            autoBuyTime = 100000;
+        }
         //Message logger credits to MagikIsAMush
-        if (toggleMessageLogs && (incMessage.startsWith("[me -> ") || (incMessage.startsWith("[") && incMessage.contains(" -> ")))) {
+        if (toggleMessageLogs && (incMessage.contains("[me -> ") || (incMessage.contains("[") && incMessage.contains(" -> ")))) {
             if (fileNameOfMessageLogs == "") {
                 Date dateNow = new Date(); // On trouve la date
-                SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy'-'HH.mm.ss");
+                SimpleDateFormat formatDate = new SimpleDateFormat("MM.dd.yyyy'-'HH.mm.ss");
 
                 fileNameOfMessageLogs = "sbmod/messagelogs/" + MinecraftClient.getInstance().player.getGameProfile().getName() + "_" + formatDate.format(dateNow) + ".txt";
 
@@ -68,11 +75,11 @@ public class ChatMixin {
             myObjMessageLogs.newLine();
             myObjMessageLogs.flush();
         }
-        //Trade logger
+        //Trade logger credits to MagikIsAMush
         if (toggleTradeLogs && ((incMessage.contains(" bought ") && incMessage.contains(" from you for ")) || (incMessage.contains("You bought ") && incMessage.contains(" from ") && incMessage.contains(" for ")))) {
             if (fileNameOfTradeLogs == "") {
                 Date dateNow = new Date(); // On trouve la date
-                SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy'-'HH.mm.ss");
+                SimpleDateFormat formatDate = new SimpleDateFormat("MM.dd.yyyy'-'HH.mm.ss");
 
                 fileNameOfTradeLogs = "sbmod/tradelogs/" + MinecraftClient.getInstance().player.getGameProfile().getName() + "_" + formatDate.format(dateNow) + ".txt";
 

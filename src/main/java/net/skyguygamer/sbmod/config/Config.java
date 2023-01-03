@@ -8,14 +8,19 @@ import java.util.List;
 
 public class Config extends MidnightConfig {
     @Comment(centered = true) public static Comment toggles;      // Centered comments are the same as normal ones - just centered!
-    @Entry public static boolean welcomeMessage = true;
+    @Entry public static boolean toggleWelcomeMessage = false;
     @Entry public static boolean toggleTips = false;
     @Entry public static boolean toggleAdvancements = false;
     @Entry public static boolean toggleNewPlayerWelcome = false;
     @Entry public static boolean togglePlayerVoted = false;
     @Entry public static boolean toggleVoterRewards = false;
+    @Entry public static boolean toggleFriendJoin = false;
+    @Entry public static boolean togglePlayersPerishedInVoid = false;
     @Comment(centered = true) public static Comment features;
     @Entry(name = "Amount of lottery tickets to buy",isSlider = true, min = 1, max = 5) public static int lotteryTickets = 2;
+    //@Entry public static boolean sendMessages = false
+    //@Entry(min = 5) public static int autoAdvertTime = 7;
+    //@Entry public static String autoAdvert = "";
     @Entry public static boolean joinCommands = true;
     @Entry public static boolean toggleMessageLogs = true;
     @Entry public static boolean toggleTradeLogs = true;
