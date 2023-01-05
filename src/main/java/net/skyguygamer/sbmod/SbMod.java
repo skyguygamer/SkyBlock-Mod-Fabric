@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.minecraft.text.Text;
 import net.skyguygamer.sbmod.commands.*;
 import net.skyguygamer.sbmod.config.Config;
 import net.skyguygamer.sbmod.event.*;
@@ -493,6 +492,7 @@ public class SbMod implements ModInitializer {
 			HelpCommand.register(dispatcher);
 			HoverHelper.register(dispatcher);
 			JoinCommand.register(dispatcher);
+			SBFolder.register(dispatcher);
 			RefreshTimers.register(dispatcher);
 			StaffNotifications.register(dispatcher);
 			ToggleChats.register(dispatcher);
