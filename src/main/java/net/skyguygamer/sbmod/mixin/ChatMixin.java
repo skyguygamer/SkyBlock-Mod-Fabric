@@ -7,11 +7,14 @@ import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.message.MessageSignatureData;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.HoverEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.BufferedWriter;
@@ -92,13 +95,22 @@ public class ChatMixin {
             myObjTradeLogs.flush();
         }
     }
-    /*@ModifyVariable (method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"))
+    @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"))
     private Text changeVariable(Text message) {
-        if (message.getString().toLowerCase().contains("gay")) {
-            message = Text.literal("no u");
-            return message;
+        String incMessage = message.getString();
+        if(hoverHack) {
+            if (incMessage.startsWith("[") && incMessage.endsWith(" Hover for the word to type!")) {
+                Text hoverMsg = message.getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT);
+                //hoverMsg.getContent().toString()
+                message = Text.literal(Formatting.AQUA + "[✎] Type the word " + Formatting.GREEN + hoverMsg.getString());
+                return message;
+            } else if (incMessage.startsWith("[") && incMessage.endsWith(" Hover for the word to unscramble!")) {
+                Text hoverMsg = message.getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT);
+                message = Text.literal(Formatting.AQUA + "[✎] Unscramble the word " + Formatting.GREEN + hoverMsg.getString());
+                return message;
+            }
         }
         return message;
     }
-     */
+
 }
