@@ -491,6 +491,7 @@ public class SbMod implements ModInitializer {
 			FakeHelpCommand.register(dispatcher);
 			HelloCommand.register(dispatcher);
 			HelpCommand.register(dispatcher);
+			HoverHelper.register(dispatcher);
 			JoinCommand.register(dispatcher);
 			RefreshTimers.register(dispatcher);
 			StaffNotifications.register(dispatcher);
