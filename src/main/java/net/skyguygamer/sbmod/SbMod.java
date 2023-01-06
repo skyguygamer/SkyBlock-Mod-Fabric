@@ -1,5 +1,9 @@
 package net.skyguygamer.sbmod;
 
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -14,11 +18,13 @@ import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
@@ -100,8 +106,8 @@ public class SbMod implements ModInitializer {
 			"0051de0c-a908-4eeb-ac30-502dbd8a9694", "1ba2d16f-3d11-4a1f-b214-09e83906e6b5",
 			//Admin (JustMatt)
 			"5aaf78c9-07f9-4d55-b9ea-ab5be34c0bee"));
-
-
+	public static String latestVersion = "";
+	public static String versionNumber;
 	public static void convertText(String text) {
 		for (int i = 0; i < text.length(); i ++) {
 			String character = String.valueOf(text.charAt(i));
@@ -449,8 +455,11 @@ public class SbMod implements ModInitializer {
 
 
 
+
 	@Override
 	public void onInitialize() {
+		versionNumber = SbMod.downloadVersionNumber("https://valid-climber-350022.web.app/sbmodversion.txt");
+
 		//Sbmod folder
 		try {
 			Files.createDirectories(Path.of("sbmod"));
@@ -499,5 +508,34 @@ public class SbMod implements ModInitializer {
 			UnEnchantAllCommand.register(dispatcher);
 			//SetPrefix.register(dispatcher);
 		});
+	}
+
+	//Gets version number
+	private static String downloadVersionNumber(String urlString) {
+		try {
+			// Create a URL object with the URL of the text file
+			URL url = new URL(urlString);
+
+			// Open a connection to the web server
+			URLConnection conn = url.openConnection();
+
+			// Obtain an InputStream from the connection
+			InputStreamReader in = new InputStreamReader(conn.getInputStream());
+
+			// Use a BufferedReader to read the InputStream
+			BufferedReader reader = new BufferedReader(in);
+
+			// Read the first line of the text file (the version number)
+			String versionNumber = reader.readLine();
+
+			// Close the reader and return the version number
+			reader.close();
+			LOGGER.info(versionNumber);
+			return versionNumber;
+		} catch (Exception e) {
+			// If any errors occurred, print an error message and return null
+			System.err.println("An error occurred while downloading the version number: " + e.getMessage());
+			return null;
+		}
 	}
 }
