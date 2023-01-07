@@ -1,9 +1,10 @@
+//NOTEs
+//PER UPDATE YOU MUST UPDATE THE VERSIONS
+//HERE, WELCOME MESSAGE, FABRIC.MOD.JSON and GRADLE.PROPERTIES!!
+//AND OF COURSE YOUR SITE
 package net.skyguygamer.sbmod;
 
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -31,6 +32,14 @@ import java.util.List;
 public class SbMod implements ModInitializer {
 	public static final String SBMOD_ID = "sbmod";
 	public static final Logger LOGGER = LoggerFactory.getLogger(SBMOD_ID);
+
+	//NOTE
+	//PER UPDATE YOU MUST UPDATE THE VERSIONS
+	//HERE, WELCOME MESSAGE, FABRIC.MOD.JSON and GRADLE.PROPERTIES!!
+	public static String versionNumber;
+	public static String version = "v3.0.4-1.19.2";
+	public static boolean latestVersion;
+
 
 	public static Boolean loggingIn = false;
 	public static Boolean loggedOn = false;
@@ -106,8 +115,102 @@ public class SbMod implements ModInitializer {
 			"0051de0c-a908-4eeb-ac30-502dbd8a9694", "1ba2d16f-3d11-4a1f-b214-09e83906e6b5",
 			//Admin (JustMatt)
 			"5aaf78c9-07f9-4d55-b9ea-ab5be34c0bee"));
-	public static String latestVersion = "";
-	public static String versionNumber;
+
+
+	public SbMod() throws Exception {
+	}
+
+
+	@Override
+	public void onInitialize() {
+
+		versionNumber = downloadVersionNumber("https://valid-climber-350022.web.app/sbmodversion.txt");
+		if(Objects.equals(versionNumber, version)) {
+			LOGGER.info("Latest version");
+			latestVersion = true;
+		} else {
+			LOGGER.warn("New version available https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases");
+			latestVersion = false;
+		}
+		//Sbmod folder
+		try {
+			Files.createDirectories(Path.of("sbmod"));
+			//Joincommand txt
+			new File("sbmod/joincommands.txt");
+
+			//Trade logs
+			Files.createDirectories(Path.of("sbmod/tradelogs"));
+
+			//Message logs
+			Files.createDirectories(Path.of("sbmod/messagelogs"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		MidnightConfig.init("sbmod", Config.class);
+
+		UseBlockCallback.EVENT.register(new BlockPlaceHandler());
+		ClientTickEvents.START_CLIENT_TICK.register(new ClientTickHandler());
+		ClientPlayConnectionEvents.DISCONNECT.register(new LogOutHandler());
+		ClientPlayConnectionEvents.JOIN.register(new LogInHandler());
+
+		//Registers commands
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+			AutoAdvert.register(dispatcher);
+			AutoBuyTemp.register(dispatcher);
+			AutoEnchantInHand.register(dispatcher);
+			AutoFix.register(dispatcher);
+			//AutoPrivate.register(dispatcher);
+			AutoSell.register(dispatcher);
+			AutoSpawnMob.register(dispatcher);
+			CalcCommand.register(dispatcher);
+			CommandAliases.register((dispatcher));
+			DiscordLink.register(dispatcher);
+			Divide64.register(dispatcher);
+			EnchantAllCommand.register((dispatcher));
+			FakeHelpCommand.register(dispatcher);
+			HelloCommand.register(dispatcher);
+			HelpCommand.register(dispatcher);
+			HoverHelper.register(dispatcher);
+			JoinCommand.register(dispatcher);
+			SBFolder.register(dispatcher);
+			RefreshTimers.register(dispatcher);
+			StaffNotifications.register(dispatcher);
+			ToggleChats.register(dispatcher);
+			UnEnchantAllCommand.register(dispatcher);
+			//SetPrefix.register(dispatcher);
+		});
+	}
+
+	//Gets version number
+	private static String downloadVersionNumber(String urlString) {
+		try {
+			// Create a URL object with the URL of the text file
+			URL url = new URL(urlString);
+
+			// Open a connection to the web server
+			URLConnection conn = url.openConnection();
+
+			// Obtain an InputStream from the connection
+			InputStreamReader in = new InputStreamReader(conn.getInputStream());
+
+			// Use a BufferedReader to read the InputStream
+			BufferedReader reader = new BufferedReader(in);
+
+			// Read the first line of the text file (the version number)
+			String versionNumber = reader.readLine();
+
+			// Close the reader and return the version number
+			reader.close();
+			LOGGER.info(versionNumber);
+			return versionNumber;
+		} catch (Exception e) {
+			// If any errors occurred, print an error message and return null
+			System.err.println("An error occurred while downloading the version number: " + e.getMessage());
+			return null;
+		}
+	}
+
 	public static void convertText(String text) {
 		for (int i = 0; i < text.length(); i ++) {
 			String character = String.valueOf(text.charAt(i));
@@ -450,92 +553,6 @@ public class SbMod implements ModInitializer {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-	}
-
-
-
-
-	@Override
-	public void onInitialize() {
-		versionNumber = SbMod.downloadVersionNumber("https://valid-climber-350022.web.app/sbmodversion.txt");
-
-		//Sbmod folder
-		try {
-			Files.createDirectories(Path.of("sbmod"));
-			//Joincommand txt
-			new File("sbmod/joincommands.txt");
-
-			//Trade logs
-			Files.createDirectories(Path.of("sbmod/tradelogs"));
-
-			//Message logs
-			Files.createDirectories(Path.of("sbmod/messagelogs"));
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-
-		MidnightConfig.init("sbmod", Config.class);
-
-		UseBlockCallback.EVENT.register(new BlockPlaceHandler());
-		ClientTickEvents.START_CLIENT_TICK.register(new ClientTickHandler());
-		ClientPlayConnectionEvents.DISCONNECT.register(new LogOutHandler());
-		ClientPlayConnectionEvents.JOIN.register(new LogInHandler());
-
-		//Registers commands
-		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-			AutoAdvert.register(dispatcher);
-			AutoBuyTemp.register(dispatcher);
-			AutoEnchantInHand.register(dispatcher);
-			AutoFix.register(dispatcher);
-			//AutoPrivate.register(dispatcher);
-			AutoSell.register(dispatcher);
-			AutoSpawnMob.register(dispatcher);
-			CalcCommand.register(dispatcher);
-			CommandAliases.register((dispatcher));
-			DiscordLink.register(dispatcher);
-			Divide64.register(dispatcher);
-			EnchantAllCommand.register((dispatcher));
-			FakeHelpCommand.register(dispatcher);
-			HelloCommand.register(dispatcher);
-			HelpCommand.register(dispatcher);
-			HoverHelper.register(dispatcher);
-			JoinCommand.register(dispatcher);
-			SBFolder.register(dispatcher);
-			RefreshTimers.register(dispatcher);
-			StaffNotifications.register(dispatcher);
-			ToggleChats.register(dispatcher);
-			UnEnchantAllCommand.register(dispatcher);
-			//SetPrefix.register(dispatcher);
-		});
-	}
-
-	//Gets version number
-	private static String downloadVersionNumber(String urlString) {
-		try {
-			// Create a URL object with the URL of the text file
-			URL url = new URL(urlString);
-
-			// Open a connection to the web server
-			URLConnection conn = url.openConnection();
-
-			// Obtain an InputStream from the connection
-			InputStreamReader in = new InputStreamReader(conn.getInputStream());
-
-			// Use a BufferedReader to read the InputStream
-			BufferedReader reader = new BufferedReader(in);
-
-			// Read the first line of the text file (the version number)
-			String versionNumber = reader.readLine();
-
-			// Close the reader and return the version number
-			reader.close();
-			LOGGER.info(versionNumber);
-			return versionNumber;
-		} catch (Exception e) {
-			// If any errors occurred, print an error message and return null
-			System.err.println("An error occurred while downloading the version number: " + e.getMessage());
-			return null;
 		}
 	}
 }

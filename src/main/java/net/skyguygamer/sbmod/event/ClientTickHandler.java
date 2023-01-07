@@ -15,7 +15,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.text.ClickEvent;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.dynamic.DynamicSerializableUuid;
@@ -51,6 +53,12 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
                         lp.sendMessage((Text.literal("§7Updated version 3.0.4 §cBETA")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
+                        if(!latestVersion) {
+                            Style style = Style.EMPTY;
+                            style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases"));
+                            lp.sendMessage(Text.literal(Formatting.RED + "A new version is available! " + Formatting.DARK_RED + "Click here").setStyle(style));
+                            LOGGER.warn("New version available https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases");
+                        }
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         welcomeMsg = true;
                     }

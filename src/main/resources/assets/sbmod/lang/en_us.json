@@ -18,7 +18,7 @@
   "sbmod.midnightconfig.toggles":"Chat toggles",
 
   "sbmod.midnightconfig.toggleWelcomeMessage": "Toggle off mod welcome message",
-  "sbmod.midnightconfig.toggleWelcomeMessage.tooltip": "§aIf you really want, this gives \nyou the ability to turn off the \non join world message",
+  "sbmod.midnightconfig.toggleWelcomeMessage.tooltip": "§aIf you really want, this gives you the \nability to turn off the on join world message \n§cThis will disable outdated version notifications",
 
   "sbmod.midnightconfig.toggleTips": "Toggle off skyblocks tips",
   "sbmod.midnightconfig.toggleTips.tooltip": "§aToggles off the skyblock servers \ntips (shop,lock/unlock,settings etc.)",
