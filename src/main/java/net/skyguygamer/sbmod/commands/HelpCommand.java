@@ -80,7 +80,7 @@ public final class HelpCommand {
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/refreshtimers" + Formatting.WHITE + ": Refreshes all the timers if the feature is enabled").setStyle(style));
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/toggle"));
-        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/toggle" + Formatting.GRAY + "[tips/advancements...." + Formatting.WHITE + ": Lets you toggle off certain messages sent by the server in chat. You can leave the arguments blank to enable/disabled all toggles").setStyle(style));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/toggle" + Formatting.GRAY + " [tips/advancements...." + Formatting.WHITE + ": Lets you toggle off certain messages sent by the server in chat. You can leave the arguments blank to enable/disabled all toggles").setStyle(style));
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sbmodfolda"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/sbmodfolda" + Formatting.WHITE + ": Opens the folder where all the files of the sb mod are contained except for the config").setStyle(style));

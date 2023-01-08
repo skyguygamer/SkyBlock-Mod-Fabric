@@ -100,7 +100,7 @@ public class ChatMixin {
     @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"))
     private Text changeVariable(Text message) {
         String incMessage = message.getString();
-        if(hoverHack) {
+        /*if(hoverHack) {
             if (incMessage.startsWith("[") && incMessage.endsWith(" Hover for the word to type!")) {
                 Text hoverMsg = message.getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT);
                 //hoverMsg.getContent().toString()
@@ -111,7 +111,7 @@ public class ChatMixin {
                 message = Text.literal(Formatting.AQUA + "[✎] Unscramble the word " + Formatting.GREEN + hoverMsg.getString());
                 return message;
             }
-        }
+        }*/
         return message;
     }
 

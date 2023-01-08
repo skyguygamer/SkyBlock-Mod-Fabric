@@ -21,7 +21,7 @@ public class Config extends MidnightConfig {
     //@Entry public static boolean sendMessages = false
     //@Entry(min = 5) public static int autoAdvertTime = 7;
     //@Entry public static String autoAdvert = "";
-    @Entry public static boolean hoverHack = false;
+    //@Entry public static boolean hoverHack = false;
     @Entry public static boolean joinCommands = true;
     @Entry public static boolean toggleMessageLogs = true;
     @Entry public static boolean toggleTradeLogs = true;
