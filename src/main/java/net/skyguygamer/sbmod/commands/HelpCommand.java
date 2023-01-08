@@ -28,6 +28,9 @@ public final class HelpCommand {
         context.getSource().sendFeedback(Text.literal(boarder.toString()));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Press B to open up the config menu (change it under keybinds)"));
         Style style = Style.EMPTY;
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sponsor"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/sponsor" + Formatting.WHITE + ": Lists current sponsors and gives a link on where/how to sponsor").setStyle(style));
+
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/shelp"));
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/shelp" + Formatting.WHITE + ": Lists the Skyblock Mods Commands").setStyle(style));
 

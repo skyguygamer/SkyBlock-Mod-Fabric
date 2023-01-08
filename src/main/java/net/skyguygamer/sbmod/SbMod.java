@@ -39,6 +39,8 @@ public class SbMod implements ModInitializer {
 	public static String versionNumber;
 	public static String version = "v3.0.4-1.19.2";
 	public static boolean latestVersion;
+	public static String sponsors = "";
+
 
 
 	public static Boolean loggingIn = false;
@@ -124,14 +126,16 @@ public class SbMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		versionNumber = downloadVersionNumber("https://valid-climber-350022.web.app/sbmodversion.txt");
+		versionNumber = getStringFromSite("https://valid-climber-350022.web.app/sbmodversion.txt");
 		if(Objects.equals(versionNumber, version)) {
+			LOGGER.info("Version is " + versionNumber);
 			LOGGER.info("Latest version");
 			latestVersion = true;
 		} else {
 			LOGGER.warn("New version available https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases");
 			latestVersion = false;
 		}
+
 		//Sbmod folder
 		try {
 			Files.createDirectories(Path.of("sbmod"));
@@ -174,6 +178,7 @@ public class SbMod implements ModInitializer {
 			//HoverHelper.register(dispatcher);
 			JoinCommand.register(dispatcher);
 			SBFolder.register(dispatcher);
+			Sponsor.register(dispatcher);
 			RefreshTimers.register(dispatcher);
 			StaffNotifications.register(dispatcher);
 			ToggleChats.register(dispatcher);
@@ -183,7 +188,7 @@ public class SbMod implements ModInitializer {
 	}
 
 	//Gets version number
-	private static String downloadVersionNumber(String urlString) {
+	public static String getStringFromSite(String urlString) {
 		try {
 			// Create a URL object with the URL of the text file
 			URL url = new URL(urlString);
@@ -198,12 +203,11 @@ public class SbMod implements ModInitializer {
 			BufferedReader reader = new BufferedReader(in);
 
 			// Read the first line of the text file (the version number)
-			String versionNumber = reader.readLine();
+			String string = reader.readLine();
 
 			// Close the reader and return the version number
 			reader.close();
-			LOGGER.info(versionNumber);
-			return versionNumber;
+			return string;
 		} catch (Exception e) {
 			// If any errors occurred, print an error message and return null
 			System.err.println("An error occurred while downloading the version number: " + e.getMessage());
