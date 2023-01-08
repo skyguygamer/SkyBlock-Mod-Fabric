@@ -21,9 +21,9 @@ public class Sponsor {
     private static int run(CommandContext<FabricClientCommandSource> context) {
         sponsors = getStringFromSite("https://valid-climber-350022.web.app/githubsponsors.txt");
         Style style = Style.EMPTY;
-        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ""));
-        context.getSource().sendFeedback(Text.literal(Formatting.GREEN+"§aSupport the mod by clicking here! If you donate with a specific amount you will be listed below! "));
-        context.getSource().sendFeedback(Text.literal(Formatting.DARK_GREEN + sponsors));
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/sponsors/skyguygamer"));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN+"§aSupport the mod by clicking here! If you donate with a specific amount you will be listed below! ").setStyle(style));
+        context.getSource().sendFeedback(Text.literal(Formatting.DARK_GREEN + sponsors).setStyle(style));
         return Command.SINGLE_SUCCESS;
     }
 }
