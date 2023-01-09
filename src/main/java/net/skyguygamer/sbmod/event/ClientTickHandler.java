@@ -87,17 +87,24 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 }
             }
         }
+        //Update Staff List Every 5 Minutes
+        if(staffCheck && updateStaffList > 6000) {
+            modNames = getListFromSite("https://skysite.live/sbmodstafflist.json");
+            updateStaffList = 0;
+        } else {
+            updateStaffList++;
+        }
         //Staffcheck
         if (loggedInToWorld && staffCheck) {
             if (playerCheckTime == 100) {
                 //LOGGER.info("Updating and looking for online staff!");
                 onlinePlayers = new ArrayList<>(List.of());
-                for (PlayerListEntry p : MinecraftClient.getInstance().getNetworkHandler().getPlayerList()) {
-                    String playerUuid = p.getProfile().getId().toString();
-                    String name = p.getProfile().getName();
+                for (PlayerListEntry player : MinecraftClient.getInstance().getNetworkHandler().getPlayerList()) {
+                    String playerUuid = player.getProfile().getId().toString();
+                    String name = player.getProfile().getName();
                     onlinePlayers.add(playerUuid);
                     if ((modNames.contains(playerUuid) || extraStaffNames.contains(playerUuid)) && !onlineStaffUuids.containsKey(playerUuid)) {
-                        MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + p.getProfile().getName() +  Formatting.DARK_GREEN + " has joined the server!"));
+                        MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + player.getProfile().getName() +  Formatting.DARK_GREEN + " has joined the server!"));
                         onlineStaffUuids.put(playerUuid, name);
                     }
                     playerCheckTime = 0;

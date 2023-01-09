@@ -25,9 +25,6 @@
   "sbmod.midnightconfig.hoverHack": "Hover for the word hack",
   "sbmod.midnightconfig.hoverHack.tooltip": "§aInstead of making you hover \nfor the word, it will \njust tell you the word",
 
-  "sbmod.midnightconfig.joinCommands": "Join commands",
-  "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world",
-
   "sbmod.midnightconfig.toggleMessageLogs": "Private message logs",
   "sbmod.midnightconfig.toggleMessageLogs.tooltip": "§aToggles whether to log \n private messages or not",
 
@@ -80,6 +77,10 @@
   "sbmod.midnightconfig.toggleHoverGame.tooltip": "§aToggles the hover for \nword games",
 
   "sbmod.midnightconfig.toggleLottery": "Toggle off skyblock lottery",
-  "sbmod.midnightconfig.toggleLottery.tooltip": "§aToggles all skyblock lottery messages"
+  "sbmod.midnightconfig.toggleLottery.tooltip": "§aToggles all skyblock lottery messages",
+
+  "sbmod.midnightconfig.devToggles": "EXPERIMENTAL DON'T USE!",
+  "sbmod.midnightconfig.joinCommands": "Join commands",
+  "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world"
 }
 

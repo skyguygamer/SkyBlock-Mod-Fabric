@@ -24,6 +24,7 @@ import java.awt.event.KeyEvent;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -95,6 +96,7 @@ public class SbMod implements ModInitializer {
 	public static int time = 0;
 	public static int welcomeMessageTime = 0;
 	public static int ticketAmount = 2;
+	public static int updateStaffList = 0;
 
 	//public static BufferedWriter myObjTradeLogsMessageLogs = null;
 	//public static String fileNameOfMessageLogs = null;
@@ -110,7 +112,8 @@ public class SbMod implements ModInitializer {
 	//Staff checks
 	public static Map<String, String> onlineStaffUuids = new HashMap<>();
 	public static ArrayList<String> onlinePlayers = new ArrayList<>(List.of());
-	public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList(
+	public static ArrayList<String> modNames = new ArrayList<>(List.of());
+	/*public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList(
 			//Helpers
 			"82df7471-8ad2-4f16-a3d8-31dd09628b8f", "6df79345-a001-4ccc-9104-e1c2df361c70", "22206b45-7d3e-429c-b339-e0c1629110db", "bd94c577-dc7d-4bfc-bf36-0262cf821441",
 			//Mods
@@ -121,7 +124,7 @@ public class SbMod implements ModInitializer {
 			"0051de0c-a908-4eeb-ac30-502dbd8a9694", "1ba2d16f-3d11-4a1f-b214-09e83906e6b5",
 			//Admin (JustMatt)
 			"5aaf78c9-07f9-4d55-b9ea-ab5be34c0bee"));
-
+	 */
 
 	public SbMod() throws Exception {
 	}
@@ -129,11 +132,7 @@ public class SbMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		try {
-			modNames = getListFromSite("https://skysite.live/sbmodstafflist.json");
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
+		modNames = getListFromSite("https://skysite.live/sbmodstafflist.json");
 		LOGGER.info(String.valueOf(modNames));
 		versionNumber = getStringFromSite("https://valid-climber-350022.web.app/sbmodversion.txt");
 		if(Objects.equals(versionNumber, version)) {
@@ -223,32 +222,36 @@ public class SbMod implements ModInitializer {
 			return null;
 		}
 	}
-	public static ArrayList<String> getListFromSite(String urlString) throws IOException {
-		// Retrieve the JSON file from the online source
-		URL url = new URL(urlString);
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-		StringBuilder stringBuilder = new StringBuilder();
-		String line;
-		while ((line = reader.readLine()) != null) {
-			stringBuilder.append(line);
-		}
-		reader.close();
-		connection.disconnect();
-		String json = stringBuilder.toString();
+	public static ArrayList<String> getListFromSite(String urlString) {
+		try {
+			// Retrieve the JSON file from the online source
+			URL url = new URL(urlString);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuilder stringBuilder = new StringBuilder();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				stringBuilder.append(line);
+			}
+			reader.close();
+			connection.disconnect();
+			String json = stringBuilder.toString();
 
-		// Parse the JSON file
-		JsonObject root = new JsonParser().parse(json).getAsJsonObject();
+			// Parse the JSON file
+			JsonObject root = new JsonParser().parse(json).getAsJsonObject();
 
-		// Retrieve the data you want and store it in an ArrayList<String>
-		JsonArray array = root.getAsJsonArray("modnames");
-		ArrayList<String> itemList = new ArrayList<>();
-		for (int i = 0; i < array.size(); i++) {
-			JsonObject item = array.get(i).getAsJsonObject();
-			String itemName = item.get("name").getAsString();
-			itemList.add(itemName);
+			// Retrieve the data you want and store it in an ArrayList<String>
+			JsonArray array = root.getAsJsonArray("modnames");
+			ArrayList<String> itemList = new ArrayList<>();
+			for (int i = 0; i < array.size(); i++) {
+				JsonObject item = array.get(i).getAsJsonObject();
+				String itemName = item.get("name").getAsString();
+				itemList.add(itemName);
+			}
+			return itemList;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
-		return itemList;
 	}
 
 		public static void convertText(String text) {

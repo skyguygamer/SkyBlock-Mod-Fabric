@@ -13,7 +13,6 @@ public class Config extends MidnightConfig {
     @Entry(name = "Amount of lottery tickets to buy",isSlider = true, min = 1, max = 5) public static int lotteryTickets = 2;
 
     //@Entry public static boolean hoverHack = false;
-    @Entry public static boolean joinCommands = true;
     @Entry public static boolean toggleMessageLogs = true;
     @Entry public static boolean toggleTradeLogs = true;
     @Entry() public static boolean staffCheck = false;
@@ -34,5 +33,8 @@ public class Config extends MidnightConfig {
     @Entry public static boolean toggleClag = false;
     @Entry public static boolean toggleHoverGame = false;
     @Entry public static boolean toggleLottery = false;
+
+    @Comment(centered = true) public static Comment devToggles;
+    @Entry public static boolean joinCommands = true;
 }
 
