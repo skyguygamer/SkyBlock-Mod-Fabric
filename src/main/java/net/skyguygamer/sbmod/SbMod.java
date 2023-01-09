@@ -45,7 +45,7 @@ public class SbMod implements ModInitializer {
 
 	public static Boolean loggingIn = false;
 	public static Boolean loggedOn = false;
-	public static boolean autoBuy = false;
+	//public static boolean autoBuy = false;
 	public static boolean autoFix = false;
 	public static boolean autoPrivate = false;
 	public static boolean autoSell = false;

@@ -14,7 +14,26 @@
 
 
   "sbmod.midnightconfig.title":"Skyblock Configuration",
-  "sbmod.midnightconfig.title.tooltip": "§aVersion 3.0.3, modid = `sbmod`",
+
+  "sbmod.midnightconfig.features": "Features",
+  "sbmod.midnightconfig.lotteryTickets": "§aThe amount of lottery ticket to buy",
+
+  "sbmod.midnightconfig.hoverHack": "Hover for the word hack",
+  "sbmod.midnightconfig.hoverHack.tooltip": "§aInstead of making you hover \nfor the word, it will \njust tell you the word",
+
+  "sbmod.midnightconfig.joinCommands": "Join commands",
+  "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world",
+
+  "sbmod.midnightconfig.toggleMessageLogs": "Private message logs",
+  "sbmod.midnightconfig.toggleMessageLogs.tooltip": "§aToggles whether to log \n private messages or not",
+
+  "sbmod.midnightconfig.toggleTradeLogs": "Trade message logs",
+  "sbmod.midnightconfig.toggleTradeLogs.tooltip": "§aToggles whether to log \n trade messages or not",
+
+  "sbmod.midnightconfig.staffCheck": "Staff join/leave notifications",
+  "sbmod.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \nwhich staff member has joined/left",
+
+
   "sbmod.midnightconfig.toggles":"Chat toggles",
 
   "sbmod.midnightconfig.toggleWelcomeMessage": "Toggle off mod welcome message",
@@ -41,22 +60,22 @@
   "sbmod.midnightconfig.togglePlayersPerishedInVoid": "Toggle off players perish message",
   "sbmod.midnightconfig.togglePlayersPerishedInVoid.tooltip": "§aToggles the notification of \nthe amount of players that \nhave died in the void today",
 
-  "sbmod.midnightconfig.features": "Features",
-  "sbmod.midnightconfig.lotteryTickets": "§aThe amount of lottery ticket to buy",
+  "sbmod.midnightconfig.toggleBans": "Toggle off punishment messages",
+  "sbmod.midnightconfig.toggleBans.tooltip": "§aToggles the [SkyblockBans] messages",
 
-  "sbmod.midnightconfig.hoverHack": "Hover for the word hack",
-  "sbmod.midnightconfig.hoverHack.tooltip": "§aInstead of making you hover \nfor the word, it will \njust tell you the word",
+  "sbmod.midnightconfig.toggleCrates": "Toggle off opened crate messages",
+  "sbmod.midnightconfig.toggleCrates.tooltip": "§aToggles the rare/epic/legendary messages",
 
-  "sbmod.midnightconfig.joinCommands": "Join commands",
-  "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world",
+  "sbmod.midnightconfig.toggleVPRewards": "Toggle off vote party rewards",
+  "sbmod.midnightconfig.toggleVPRewards.tooltip": "§aToggles the vote party rewards",
 
-  "sbmod.midnightconfig.toggleMessageLogs": "Private message logs",
-  "sbmod.midnightconfig.toggleMessageLogs.tooltip": "§aToggles whether to log \n private messages or not",
+  "sbmod.midnightconfig.toggleClag": "Toggle off clear lag messages",
+  "sbmod.midnightconfig.toggleClag.tooltip": "§aToggles the clear lag messages \n§cDon't recommend",
 
-  "sbmod.midnightconfig.toggleTradeLogs": "Trade message logs",
-  "sbmod.midnightconfig.toggleTradeLogs.tooltip": "§aToggles whether to log \n trade messages or not",
+  "sbmod.midnightconfig.toggleHoverGame": "Toggle off the hover games",
+  "sbmod.midnightconfig.toggleHoverGame.tooltip": "§aToggles the hover for \nword games",
 
-  "sbmod.midnightconfig.staffCheck": "Staff join/leave notifications",
-  "sbmod.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \nwhich staff member has joined/left"
+  "sbmod.midnightconfig.toggleLottery": "Toggle off skyblock lottery",
+  "sbmod.midnightconfig.toggleLottery.tooltip": "§aToggles all skyblock lottery messages"
 }
 

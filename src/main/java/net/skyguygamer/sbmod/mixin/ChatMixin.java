@@ -31,36 +31,74 @@ public class ChatMixin {
     @Inject(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;ILnet/minecraft/client/gui/hud/MessageIndicator;Z)V", at = @At("HEAD"), cancellable = true)
     private void sbmod$onChatRecieved(Text message, MessageSignatureData signature, int ticks, MessageIndicator indicator, boolean refresh, CallbackInfo ci) throws IOException {
         String incMessage = message.getString();
+        //Skyblock tips
         if (toggleTips && incMessage.contains("[Skyblock]") && incMessage.startsWith("[S")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
-        if (toggleAdvancements && incMessage.contains("has made the advancement") && incMessage.endsWith("]")) {
+        //Advancements
+        if (toggleAdvancements && incMessage.contains(" has made the advancement ") && incMessage.endsWith("]")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
+        //New player welcome message
         if (toggleNewPlayerWelcome && incMessage.startsWith("Welcome") && incMessage.contains("to Skyblock!")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
+        //Player voted
         if (togglePlayerVoted && incMessage.contains("voted at vote.skyblock.net for") && incMessage.endsWith("/vote")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
-        if (toggleVoterRewards && incMessage.contains("was lucky and received an extra") && incMessage.endsWith("!")) {
+        //Voting rewards
+        if (toggleVoterRewards && (incMessage.contains("was lucky and received an extra") || incMessage.contains("was lucky and received a")) && incMessage.endsWith("!")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
+        //Friend joins
         if (toggleFriendJoin && incMessage.startsWith("[Friends] ") && incMessage.contains(" has joined ")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
-        if (togglePlayersPerishedInVoid && incMessage.endsWith(" player have perished in the void today.")) {
+        //Perish message
+        if (togglePlayersPerishedInVoid && incMessage.endsWith(" players have perished in the void today.")) {
             ci.cancel();
             LOGGER.info("I have blocked: " + incMessage);
         }
+        //Vote party rewards
+        if (toggleVPRewards && incMessage.contains("[VoteParty] Your vote rewards have been applied!")) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
+        }
+        //Clear lag
+        if (toggleClag && (incMessage.contains("WARNING Ground items will be removed in") || incMessage.contains("[SB] Removed "))) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
+        }
+        //Toggle off the hover game
+        if (toggleHoverGame && incMessage.startsWith("[") && (incMessage.endsWith(" Hover for the word to type!") || incMessage.endsWith(" Hover for the word to unscramble!"))) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
+        }
+        //AutoBuy
         if (autoBuy && incMessage.startsWith("[SBLottery] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && incMessage.endsWith(" tickets")) {
-            autoBuyTime = 100000;
+            MinecraftClient.getInstance().player.sendCommand("lottery buy " + lotteryTickets);
+        }
+        //Toggle off lottery
+        if (toggleLottery && incMessage.startsWith("[SBLottery]")) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
+        }
+        //Toggle bans
+        if (toggleBans && incMessage.startsWith("[SkyblockBans]")) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
+        }
+        //Toggle crates
+        if (toggleCrates && incMessage.contains(" has just opened a ")) {
+            ci.cancel();
+            LOGGER.info("I have blocked: " + incMessage);
         }
         //Message logger credits to MagikIsAMush
         if (toggleMessageLogs && (incMessage.contains("[me -> ") || (incMessage.contains("[") && incMessage.contains(" -> ")))) {

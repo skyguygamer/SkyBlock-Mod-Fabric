@@ -14,6 +14,7 @@ import net.skyguygamer.sbmod.SbMod;
 import java.util.Objects;
 
 import static net.skyguygamer.sbmod.SbMod.*;
+import static net.skyguygamer.sbmod.config.Config.autoBuy;
 import static net.skyguygamer.sbmod.config.Config.lotteryTickets;
 
 public final class AutoBuyTemp {
@@ -26,12 +27,11 @@ public final class AutoBuyTemp {
 
     private static int run(CommandContext<FabricClientCommandSource> source) {
 
-        if(SbMod.autoBuy) {
-            SbMod.autoBuy = false;
+        if(autoBuy) {
+            autoBuy = false;
             source.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Auto lottery buy has been disabled!"));
         } else {
-            SbMod.autoBuy = true;
-            SbMod.autoBuyTime = 0;
+            autoBuy = true;
             //lotteryTickets = 2;
             source.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Auto lottery buy has been enabled!"));
             source.getSource().getPlayer().sendCommand("lottery buy " + lotteryTickets);
@@ -39,8 +39,7 @@ public final class AutoBuyTemp {
         return Command.SINGLE_SUCCESS;
     }
     private static int customAmount(FabricClientCommandSource source, int tickets) {
-        SbMod.autoBuy = true;
-        SbMod.autoBuyTime = 0;
+        autoBuy = true;
         lotteryTickets = tickets;
         source.sendFeedback(Text.literal(Formatting.GREEN + "Auto lottery buy has been enabled!"));
         source.getPlayer().sendCommand("lottery buy " + lotteryTickets);

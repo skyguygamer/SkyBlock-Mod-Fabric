@@ -171,14 +171,14 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             coolDownCounter++;
         }
         //AutoBuyTEMP
-        if (autoBuy) {
+        /*if (autoBuy) {
             if (autoBuyTime >= 36000) {
                 LOGGER.info("Gambling");
                 lp.sendCommand("lottery buy " + lotteryTickets);
                 autoBuyTime = 0;
             }
             autoBuyTime++;
-        }
+        }*/
         //AutoAdvert
         if (AutoAdvert.sendingMessages) {
             if (advertTimer >= AutoAdvert.interval) {
