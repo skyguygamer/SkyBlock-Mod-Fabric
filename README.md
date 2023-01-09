@@ -1,6 +1,10 @@
 # SkyBlock Mod `WIP`
-![Downloads](https://cf.way2muchnoise.eu/full_794267_Downloads.svg)
-[Curseforge](https://www.curseforge.com/minecraft/mc-mods/skyblock-net-mod)
+<html>
+<a href="https://www.curseforge.com/minecraft/mc-mods/skyblock-net-mod"><img src="https://cf.way2muchnoise.eu/full_794267_downloads.svg" style="max-width:100%;"></a>
+</html>
+
+[Supporters](https://valid-climber-350022.web.app/githubsponsors.txt)
+
 
 #### This is a mod for skyblock.net
 #### https://skyblock.net/threads/1-19-2-skyblock-mod-for-survival-and-economy-fabric-forge.142467/#post-1603628
