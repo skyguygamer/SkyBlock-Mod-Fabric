@@ -5,6 +5,8 @@
 package net.skyguygamer.sbmod;
 
 
+import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -20,6 +22,8 @@ import org.slf4j.LoggerFactory;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -125,7 +129,12 @@ public class SbMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		try {
+			modNames = getListFromSite("https://skysite.live/sbmodstafflist.json");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		LOGGER.info(String.valueOf(modNames));
 		versionNumber = getStringFromSite("https://valid-climber-350022.web.app/sbmodversion.txt");
 		if(Objects.equals(versionNumber, version)) {
 			LOGGER.info("Version is " + versionNumber);
@@ -214,8 +223,35 @@ public class SbMod implements ModInitializer {
 			return null;
 		}
 	}
+	public static ArrayList<String> getListFromSite(String urlString) throws IOException {
+		// Retrieve the JSON file from the online source
+		URL url = new URL(urlString);
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		StringBuilder stringBuilder = new StringBuilder();
+		String line;
+		while ((line = reader.readLine()) != null) {
+			stringBuilder.append(line);
+		}
+		reader.close();
+		connection.disconnect();
+		String json = stringBuilder.toString();
 
-	public static void convertText(String text) {
+		// Parse the JSON file
+		JsonObject root = new JsonParser().parse(json).getAsJsonObject();
+
+		// Retrieve the data you want and store it in an ArrayList<String>
+		JsonArray array = root.getAsJsonArray("modnames");
+		ArrayList<String> itemList = new ArrayList<>();
+		for (int i = 0; i < array.size(); i++) {
+			JsonObject item = array.get(i).getAsJsonObject();
+			String itemName = item.get("name").getAsString();
+			itemList.add(itemName);
+		}
+		return itemList;
+	}
+
+		public static void convertText(String text) {
 		for (int i = 0; i < text.length(); i ++) {
 			String character = String.valueOf(text.charAt(i));
 
