@@ -4,7 +4,7 @@
 </html>
 
 [Supporters](https://valid-climber-350022.web.app/githubsponsors.txt)
-
+https://www.curseforge.com/minecraft/mc-mods/sbmod
 
 #### This is a mod for skyblock.net
 #### https://skyblock.net/threads/1-19-2-skyblock-mod-for-survival-and-economy-fabric-forge.142467/#post-1603628
