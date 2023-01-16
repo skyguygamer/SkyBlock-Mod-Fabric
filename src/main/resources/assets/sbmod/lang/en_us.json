@@ -17,8 +17,8 @@
 
 
   "sbmod.midnightconfig.features": "Features",
-  "sbmod.midnightconfig.autobuy": "Autobuy",
-  "sbmod.midnightconfig.autobuy.tooltip": "§aToggles whether to autobuy or not",
+  "sbmod.midnightconfig.autoBuy": "Autobuy",
+  "sbmod.midnightconfig.autoBuy.tooltip": "§aToggles whether to autobuy or not",
 
   "sbmod.midnightconfig.lotteryTickets": "§aThe amount of lottery ticket to buy",
 
