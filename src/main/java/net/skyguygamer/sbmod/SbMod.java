@@ -42,7 +42,7 @@ public class SbMod implements ModInitializer {
 	//PER UPDATE YOU MUST UPDATE THE VERSIONS
 	//HERE, WELCOME MESSAGE, FABRIC.MOD.JSON and GRADLE.PROPERTIES!!
 	public static String versionNumber;
-	public static String version = "v3.0.4-1.19.2";
+	public static String version = "v3.0.4.1-1.19.2";
 	public static boolean latestVersion;
 	public static String sponsors = "";
 
@@ -125,10 +125,6 @@ public class SbMod implements ModInitializer {
 			//Admin (JustMatt)
 			"5aaf78c9-07f9-4d55-b9ea-ab5be34c0bee"));
 	 */
-
-	public SbMod() throws Exception {
-	}
-
 
 	@Override
 	public void onInitialize() {
