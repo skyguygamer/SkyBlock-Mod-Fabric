@@ -6,7 +6,6 @@ package net.skyguygamer.sbmod;
 
 
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -22,15 +21,11 @@ import org.slf4j.LoggerFactory;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
@@ -176,6 +171,7 @@ public class SbMod implements ModInitializer {
 			DiscordLink.register(dispatcher);
 			Divide64.register(dispatcher);
 			EnchantAllCommand.register((dispatcher));
+			//EnchantAllInInventory.register(dispatcher);
 			FakeHelpCommand.register(dispatcher);
 			HelloCommand.register(dispatcher);
 			HelpCommand.register(dispatcher);

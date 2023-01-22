@@ -12,7 +12,7 @@ public class Config extends MidnightConfig {
     @Entry public static boolean autoBuy = false;
     @Entry(name = "Amount of lottery tickets to buy",isSlider = true, min = 1, max = 5) public static int lotteryTickets = 2;
     @Entry(min=6000) public static int interval = 8400;
-    @Entry public static boolean hoverHack = false;
+    //@Entry public static boolean hoverHack = false;
     @Entry public static boolean toggleMessageLogs = true;
     @Entry public static boolean toggleTradeLogs = true;
     @Entry() public static boolean staffCheck = false;
