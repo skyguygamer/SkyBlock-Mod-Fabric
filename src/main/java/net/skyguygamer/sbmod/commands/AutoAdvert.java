@@ -10,12 +10,12 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
 
 import static net.skyguygamer.sbmod.SbMod.advertTimer;
+import static net.skyguygamer.sbmod.config.Config.interval;
 
 
 public final class AutoAdvert
 {
     //public static ClientPlayerEntityEntity lp = null;
-    public static int interval = 8400;
     public static Boolean sendingMessages = false;
     public static String message = "";
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher)

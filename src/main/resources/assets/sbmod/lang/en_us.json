@@ -20,7 +20,9 @@
   "sbmod.midnightconfig.autoBuy": "Autobuy",
   "sbmod.midnightconfig.autoBuy.tooltip": "§aToggles whether to autobuy or not",
 
-  "sbmod.midnightconfig.lotteryTickets": "§aThe amount of lottery ticket to buy",
+  "sbmod.midnightconfig.lotteryTickets": "The amount of lottery ticket to buy",
+
+  "sbmod.midnightconfig.interval": "Amount of time in ticks between autoadvert messages (20*seconds)",
 
   "sbmod.midnightconfig.hoverHack": "Hover for the word hack",
   "sbmod.midnightconfig.hoverHack.tooltip": "§aInstead of making you hover \nfor the word, it will \njust tell you the word",

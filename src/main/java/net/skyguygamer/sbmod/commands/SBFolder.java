@@ -3,6 +3,7 @@ package net.skyguygamer.sbmod.commands;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.text.ClickEvent;
@@ -17,7 +18,8 @@ public final class SBFolder {
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
         dispatcher.register(ClientCommandManager.literal("sbmodfolda").executes(SBFolder::folder)
                 .then(ClientCommandManager.literal("msglogs").executes(SBFolder::latestMessage))
-                .then(ClientCommandManager.literal("tradelogs").executes(SBFolder::latestTrades)));
+                .then(ClientCommandManager.literal("tradelogs").executes(SBFolder::latestTrades))
+                .then(ClientCommandManager.literal("log").executes(SBFolder::log)));
     }
     private static int folder(CommandContext<FabricClientCommandSource> source) {
         Style style = Style.EMPTY;
@@ -58,6 +60,15 @@ public final class SBFolder {
             }
         }
         Util.getOperatingSystem().open(lastModifiedFile);
+        return Command.SINGLE_SUCCESS;
+    }
+    private static int log(CommandContext<FabricClientCommandSource> source) {
+        Style style = Style.EMPTY;
+        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, "logs"));
+        source.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Opening the latest full log! If it did not open try clicking here!").setStyle(style));
+
+        Util.getOperatingSystem().open(new File("logs/latest.log"));
+
         return Command.SINGLE_SUCCESS;
     }
 }

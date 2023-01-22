@@ -11,6 +11,7 @@ import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.client.realms.dto.PlayerInfo;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.ClientConnection;
@@ -51,7 +52,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         }
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
-                        lp.sendMessage((Text.literal("§7Updated version 3.0.4 §cBETA")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.0.4.1 §cBETA")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
                         if(!latestVersion) {
                             Style style = Style.EMPTY;
@@ -188,7 +189,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         }*/
         //AutoAdvert
         if (AutoAdvert.sendingMessages) {
-            if (advertTimer >= AutoAdvert.interval) {
+            if (advertTimer >= interval) {
                 LOGGER.info("Adverting");
                 lp.sendChatMessage(AutoAdvert.message, Text.literal(""));
                 advertTimer = 0;
