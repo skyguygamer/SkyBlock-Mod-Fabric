@@ -27,7 +27,6 @@ public final class AutoBuyTemp {
             source.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Auto lottery buy has been disabled!"));
         } else {
             autoBuy = true;
-            //lotteryTickets = 2;
             source.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Auto lottery buy has been enabled!"));
             source.getSource().getPlayer().sendCommand("lottery buy " + lotteryTickets);
         }

@@ -15,7 +15,6 @@ import static net.skyguygamer.sbmod.config.Config.interval;
 
 public final class AutoAdvert
 {
-    //public static ClientPlayerEntityEntity lp = null;
     public static Boolean sendingMessages = false;
     public static String message = "";
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher)
@@ -63,23 +62,12 @@ public final class AutoAdvert
         sendingMessages = true;
         advertTimer = 0;
         ClientPlayerEntity lp = (ClientPlayerEntity) source.getEntity();
-        //lp.chatSigned("d", Text.literal("dd"));
 
-        //Timer timer = new Timer();
-        //timer.scheduleAtFixedRate(sendmsg(messagetosend, source), 1000, 1000);
         source.sendFeedback(Text.literal( "§f" + messagetosend + " §awill now be sent every §f" + interval/1200+ " §aminutes!"));
 
         lp.sendChatMessage(message, Text.literal(""));
         return Command.SINGLE_SUCCESS;
     }
-
-    /*private static TimerTask sendmsg(String messagetosend, FabricClientCommandSource source) {
-        ClientPlayerEntityEntity lp = (ClientPlayerEntityEntity) source.getEntity();
-        lp.chatSigned(messagetosend, Text.literal(""));
-        return null;
-    }
-
-     */
 
     private static int time(FabricClientCommandSource source, int amountofminutes) {
         interval = amountofminutes*1200;

@@ -49,7 +49,6 @@ public class KeyInputHandler {
                 client.player.sendCommand("back");
             }
             if(configKey.wasPressed()) {
-                //MidnightConfig.getScreen(null   , "sbmod");
                 MinecraftClient.getInstance().setScreen(MidnightConfig.getScreen(null   , "sbmod"));
             }
             if(kittyCannonKey.wasPressed()) {

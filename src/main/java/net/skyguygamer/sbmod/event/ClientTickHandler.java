@@ -6,16 +6,10 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
-import net.minecraft.network.packet.s2c.play.TitleFadeS2CPacket;
-import net.minecraft.network.packet.s2c.play.TitleS2CPacket;
-import net.minecraft.server.command.TitleCommand;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.text.Texts;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.math.MathHelper;
 import net.skyguygamer.sbmod.commands.AutoAdvert;
 import net.skyguygamer.sbmod.commands.AutoPrivate;
 import net.skyguygamer.sbmod.commands.AutoSpawnMob;
@@ -32,7 +26,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
     @Override
     public void onStartTick(MinecraftClient client) {
         ClientPlayerEntity lp = MinecraftClient.getInstance().player;
-        //assert lp != null;
 
         //Login message
         if (loggedInToWorld) {
@@ -113,7 +106,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //Staffcheck
         if (loggedInToWorld && staffCheck) {
             if (playerCheckTime == 100) {
-                //LOGGER.info("Updating and looking for online staff!");
                 onlinePlayers = new ArrayList<>(List.of());
                 for (PlayerListEntry player : MinecraftClient.getInstance().getNetworkHandler().getPlayerList()) {
                     String playerUuid = player.getProfile().getId().toString();
@@ -125,23 +117,18 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     }
                     playerCheckTime = 0;
                 }
-                // LOGGER.info(onlineStaffUuids.toString());
                 //Check offline staff
                 if (!onlineStaffUuids.isEmpty()) {
                     ArrayList<String> tempList = new ArrayList<>();
                     for (String staffUuid : onlineStaffUuids.keySet()) {
                         if (!onlinePlayers.contains(staffUuid)) {
                             String name = onlineStaffUuids.get(staffUuid);
-                            //message.append(Text.literal(Formatting.DARK_GREEN + " is no longer online!"));
                             MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + name + Formatting.DARK_GREEN + " is no longer online!"));
                             tempList.add(staffUuid);
                         }
                     }
                     onlineStaffUuids.keySet().removeAll(tempList);
                 }
-                /*if (onlineStaffUuids.isEmpty()) {
-                    MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.RED + "Time to hack!"));
-                }*/
             }
             playerCheckTime++;
         }
@@ -197,15 +184,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             coolDownCounter++;
         }
-        //AutoBuyTEMP
-        /*if (autoBuy) {
-            if (autoBuyTime >= 36000) {
-                LOGGER.info("Gambling");
-                lp.sendCommand("lottery buy " + lotteryTickets);
-                autoBuyTime = 0;
-            }
-            autoBuyTime++;
-        }*/
         //AutoAdvert
         if (AutoAdvert.sendingMessages) {
             if (advertTimer >= interval) {

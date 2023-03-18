@@ -104,8 +104,6 @@ public class SbMod implements ModInitializer {
 	public static int announcementTick = 0;
 	public static boolean announcementSent = false;
 
-	//public static BufferedWriter myObjTradeLogsMessageLogs = null;
-	//public static String fileNameOfMessageLogs = null;
 
 	//Message logs
 	public static String fileNameOfMessageLogs = "";
