@@ -6,14 +6,9 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.skyguygamer.sbmod.SbMod;
 
-import java.util.Objects;
-
-import static net.skyguygamer.sbmod.SbMod.*;
 import static net.skyguygamer.sbmod.config.Config.autoBuy;
 import static net.skyguygamer.sbmod.config.Config.lotteryTickets;
 

@@ -1,35 +1,29 @@
 package net.skyguygamer.sbmod.event;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.GameProfileRepository;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.MinecraftClientGame;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
-import net.minecraft.client.realms.dto.PlayerInfo;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.ClientConnection;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.network.Packet;
+import net.minecraft.network.packet.s2c.play.TitleFadeS2CPacket;
+import net.minecraft.network.packet.s2c.play.TitleS2CPacket;
+import net.minecraft.server.command.TitleCommand;
 import net.minecraft.text.ClickEvent;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.text.Texts;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.dynamic.DynamicSerializableUuid;
-import net.skyguygamer.sbmod.SbMod;
+import net.minecraft.util.math.MathHelper;
 import net.skyguygamer.sbmod.commands.AutoAdvert;
-import net.skyguygamer.sbmod.commands.AutoBuyTemp;
 import net.skyguygamer.sbmod.commands.AutoPrivate;
 import net.skyguygamer.sbmod.commands.AutoSpawnMob;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import static net.skyguygamer.sbmod.SbMod.*;
 import static net.skyguygamer.sbmod.config.Config.*;
@@ -50,20 +44,40 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                             boarder.append("§a-");
                             boarder.append("§2=");
                         }
+                        LOGGER.info(modNames.toString());
+                        Style style = Style.EMPTY;
+                        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://valid-climber-350022.web.app/sbmod.html"));
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
-                        lp.sendMessage((Text.literal("§7Updated version 3.0.4.1 §cBETA")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.0.5")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
-                        if(!latestVersion) {
-                            Style style = Style.EMPTY;
+                        lp.sendMessage((Text.literal("§7Click here for website")).setStyle(style));
+                        if (!latestVersion) {
                             style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases"));
                             lp.sendMessage(Text.literal(Formatting.RED + "A new version is available! " + Formatting.DARK_RED + "Click here").setStyle(style));
-                            LOGGER.warn("New version available https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases");
+                            LOGGER.warn("[SBMOD] New version available https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases");
                         }
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         welcomeMsg = true;
                     }
                 }
+/*
+                //Announcment
+                if(announcementTick >= 200 && !announcementSent) {
+                    String announcment = getStringFromSite("https://valid-climber-350022.web.app/announcment.txt");
+
+                    Text titleText = Text.literal(announcment);
+
+                    announcementSent = true;
+                    announcementTick = 0;
+                } else if (!announcementSent) {
+                    announcementTick++;
+                }
+
+ */
+
+
+
                 if (joinCommands) {
                     List<String> commands = new ArrayList<>();
                     try {
@@ -73,7 +87,8 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                             commands.add(line);
                         }
                         jclist.close();
-                    } catch (Exception ignored) {}
+                    } catch (Exception ignored) {
+                    }
                     for (int i = 0; i < commands.size(); i++) {
                         if (welcomeMessageTime == (i * 100) + 100) {
                             lp.sendCommand(commands.get(i));
@@ -89,7 +104,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
         }
         //Update Staff List Every 5 Minutes
-        if(staffCheck && updateStaffList > 6000) {
+        if (staffCheck && updateStaffList > 6000) {
             modNames = getListFromSite("https://skysite.live/sbmodstafflist.json");
             updateStaffList = 0;
         } else {
@@ -105,15 +120,15 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     String name = player.getProfile().getName();
                     onlinePlayers.add(playerUuid);
                     if ((modNames.contains(playerUuid) || extraStaffNames.contains(playerUuid)) && !onlineStaffUuids.containsKey(playerUuid)) {
-                        MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + player.getProfile().getName() +  Formatting.DARK_GREEN + " has joined the server!"));
+                        MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.GREEN + player.getProfile().getName() + Formatting.DARK_GREEN + " has joined the server!"));
                         onlineStaffUuids.put(playerUuid, name);
                     }
                     playerCheckTime = 0;
                 }
-               // LOGGER.info(onlineStaffUuids.toString());
+                // LOGGER.info(onlineStaffUuids.toString());
                 //Check offline staff
                 if (!onlineStaffUuids.isEmpty()) {
-                    ArrayList <String> tempList = new ArrayList<>();
+                    ArrayList<String> tempList = new ArrayList<>();
                     for (String staffUuid : onlineStaffUuids.keySet()) {
                         if (!onlinePlayers.contains(staffUuid)) {
                             String name = onlineStaffUuids.get(staffUuid);
@@ -124,13 +139,16 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     }
                     onlineStaffUuids.keySet().removeAll(tempList);
                 }
+                /*if (onlineStaffUuids.isEmpty()) {
+                    MinecraftClient.getInstance().player.sendMessage(Text.literal(Formatting.RED + "Time to hack!"));
+                }*/
             }
             playerCheckTime++;
         }
         //AutoSell
         if (autoSell) {
-            if (autoSellTime >= 820) {
-                LOGGER.info("Selling");
+            if (autoSellTime >= 910) {
+                LOGGER.info("[SBMOD] Selling");
                 lp.sendCommand("sell all");
                 autoSellTime = 0;
             }
@@ -151,7 +169,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //AutoSpawnMob
         if (spawnMobs) {
             if (spawnTime >= 620) {
-                LOGGER.info("Spawning mob");
+                LOGGER.info("[SBMOD] Spawning mob");
                 lp.sendCommand(AutoSpawnMob.command);
                 spawnTime = 0;
             }
@@ -164,11 +182,12 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             float percent = 100 * (((float) item.getMaxDamage() - (float) item.getDamage()) / (float) item.getMaxDamage());
             try {
                 if (percent < 25 && autoFix && item.isDamageable() && !coolDown) {
-                    LOGGER.info("Fixing");
+                    LOGGER.info("[SBMOD] Fixing");
                     lp.sendCommand("fix all");
                     coolDown = true;
                 }
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         }
         //Cool down for AutoFix
         if (coolDown) {
@@ -190,7 +209,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         //AutoAdvert
         if (AutoAdvert.sendingMessages) {
             if (advertTimer >= interval) {
-                LOGGER.info("Adverting");
+                LOGGER.info("[SBMOD] Adverting");
                 lp.sendChatMessage(AutoAdvert.message, Text.literal(""));
                 advertTimer = 0;
             }
@@ -200,8 +219,13 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         if (enchantInHand) {
             ItemStack item = MinecraftClient.getInstance().player.getMainHandStack();
             if (item.isEnchantable() && EnchantmentHelper.get(item).isEmpty() && !enchant) {
-                LOGGER.info("AutoEnchanting cause item in da hand");
-                MinecraftClient.getInstance().player.sendCommand("enchantall");
+                LOGGER.info("[SBMOD] AutoEnchanting cause item in da hand");
+                if (eIHTimer >= 2) {
+                    eIHTimer = 0;
+                    MinecraftClient.getInstance().player.sendCommand("enchantall");
+                } else {
+                    eIHTimer++;
+                }
             }
         }
         //AutoEnchanting

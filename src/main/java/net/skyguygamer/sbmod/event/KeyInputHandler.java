@@ -4,13 +4,8 @@ import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.skyguygamer.sbmod.SbMod;
-import net.skyguygamer.sbmod.config.Config;
 import org.lwjgl.glfw.GLFW;
 
 
@@ -23,6 +18,7 @@ public class KeyInputHandler {
     public static final String KEY_BACK_COMMAND = "key.sbmod.back.command";
     public static final String KEY_EHOME_COMMAND = "key.sbmod.ehome.command";
     public static final String KEY_CONFIG = "key.sbmod.config";
+    public static final String KEY_KITTYCANNON = "key.kittycannon.command";
     public static KeyBinding craftKey;
     public static KeyBinding ehomeKey;
     public static KeyBinding backKey;
@@ -30,6 +26,7 @@ public class KeyInputHandler {
     public static KeyBinding homeKey;
     public static KeyBinding jumpKey;
     public static KeyBinding configKey;
+    public static KeyBinding kittyCannonKey;
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -54,6 +51,9 @@ public class KeyInputHandler {
             if(configKey.wasPressed()) {
                 //MidnightConfig.getScreen(null   , "sbmod");
                 MinecraftClient.getInstance().setScreen(MidnightConfig.getScreen(null   , "sbmod"));
+            }
+            if(kittyCannonKey.wasPressed()) {
+                client.player.sendCommand("kittycannon");
             }
         });
     }
@@ -99,6 +99,12 @@ public class KeyInputHandler {
                 KEY_CONFIG,
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_B,
+                KEY_CATEGORY_SB
+        ));
+        kittyCannonKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                KEY_KITTYCANNON,
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_UNKNOWN,
                 KEY_CATEGORY_SB
         ));
         registerKeyInputs();

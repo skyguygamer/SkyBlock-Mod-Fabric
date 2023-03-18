@@ -1,4 +1,4 @@
-package net.skyguygamer.sbmod.mixin;
+/*package net.skyguygamer.sbmod.mixin;
 
 import net.skyguygamer.sbmod.SbMod;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -14,3 +14,4 @@ public class ExampleMixin {
 		SbMod.LOGGER.info("This line is printed by an example mod mixin!");
 	}
 }
+*/

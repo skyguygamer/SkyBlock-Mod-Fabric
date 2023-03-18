@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "sbmod",
-  "version": "3.0.4.1-1.19.2",
+  "version": "3.0.5-1.19.2",
 
   "name": "Skyblock.net Mod FABRIC",
   "description": "A skyblock mod made to use on skyblock.net\n\nRewritten by SkyGuyGamer",
@@ -11,7 +11,7 @@
   ],
 
   "contact": {
-    "homepage": "https://skyblock.net/threads/1-19-2-skyblock-mod.142467/",
+    "homepage": "https://valid-climber-350022.web.app/sbmod.html",
     "issues": "https://github.com/skyguygamer/SkyBlock-Mod-Fabric/issues",
     "sources": "https://github.com/skyguygamer/SkyBlock-Mod-Fabric"
   },
@@ -36,7 +36,7 @@
   "depends": {
     "fabricloader": ">=0.14.9",
     "fabric-api": "*",
-    "minecraft": "~1.19",
+    "minecraft": "~1.19.2",
     "java": ">=17"
 
   },

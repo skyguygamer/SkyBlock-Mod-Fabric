@@ -6,8 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ChatMixin",
-    "ExampleMixin"
+    "ChatMixin"
   ],
   "injectors": {
     "defaultRequire": 1

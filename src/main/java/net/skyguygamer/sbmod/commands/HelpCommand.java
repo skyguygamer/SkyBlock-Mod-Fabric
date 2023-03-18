@@ -5,13 +5,10 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-
-import java.text.Normalizer;
 
 public final class HelpCommand {
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher)
@@ -86,7 +83,7 @@ public final class HelpCommand {
         context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/toggle" + Formatting.GRAY + " [tips/advancements....]" + Formatting.WHITE + ": Lets you toggle off certain messages sent by the server in chat. You can leave the arguments blank to enable/disabled all toggles").setStyle(style));
 
         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sbmodfolda"));
-        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/sbmodfolda" + Formatting.GRAY + "[tradelogs/msglogs]" + Formatting.WHITE + ": Opens the folder where all the files of the sb mod are contained except for the config").setStyle(style));
+        context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "/sbmodfolda" + Formatting.GRAY + " [tradelogs/msglogs]" + Formatting.WHITE + ": Opens the folder where all the files of the sb mod are contained except for the config").setStyle(style));
         //style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/sdiscord"));
         //context.getSource().sendFeedback(Text.literal(Formatting.GREEN + "" + Formatting.WHITE + ": ").setStyle(style));
         context.getSource().sendFeedback(Text.literal(boarder.toString()));

@@ -17,6 +17,13 @@
 
 
   "sbmod.midnightconfig.features": "Features",
+
+  "sbmod.midnightconfig.toggleChatAfk": "Anti chat AFK",
+  "sbmod.midnightconfig.toggleChatAfk.tooltip": "§aThis makes it so you move one \nblock forward if the you cant message \nuntil you move is sent",
+
+  "sbmod.midnightconfig.timeChat": "TimeChat",
+  "sbmod.midnightconfig.timeChat.tooltip": "§aSends times before the chat message",
+
   "sbmod.midnightconfig.autoBuy": "Autobuy",
   "sbmod.midnightconfig.autoBuy.tooltip": "§aToggles whether to autobuy or not",
 
@@ -39,7 +46,10 @@
 
   "sbmod.midnightconfig.toggles":"Chat toggles",
 
-  "sbmod.midnightconfig.toggleWelcomeMessage": "Toggle off mod welcome message",
+  "sbmod.midnightconfig.toggleMotds": "Toggles off island motds ",
+  "sbmod.midnightconfig.toggleMotds.tooltip": "§aThis toggles of motds when \nyou visit an island \n§cThis cancels any message that \n§cstarts with '+ '",
+
+  "sbmod.midnightconfig.toggleWelcomeMessage": "Toggle off welcome msg",
   "sbmod.midnightconfig.toggleWelcomeMessage.tooltip": "§aIf you really want, this gives you the \nability to turn off the on join world message \n§cThis will disable outdated version notifications",
 
   "sbmod.midnightconfig.toggleTips": "Toggle off skyblocks tips",
@@ -83,6 +93,9 @@
 
   "sbmod.midnightconfig.devToggles": "EXPERIMENTAL DON'T USE!",
   "sbmod.midnightconfig.joinCommands": "Join commands",
-  "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world"
+  "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world",
+
+  "sbmod.midnightconfig.toggleNotify": "Notify",
+  "sbmod.midnightconfig.toggleNotify.tooltip": "§aThis makes it so a sound is \nplayed when your name is \nsaid in chat"
 }
 

@@ -12,9 +12,14 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.skyguygamer.sbmod.commands.*;
 import net.skyguygamer.sbmod.config.Config;
 import net.skyguygamer.sbmod.event.*;
+import net.skyguygamer.sbmod.sounds.ModSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,11 +42,14 @@ public class SbMod implements ModInitializer {
 	//PER UPDATE YOU MUST UPDATE THE VERSIONS
 	//HERE, WELCOME MESSAGE, FABRIC.MOD.JSON and GRADLE.PROPERTIES!!
 	public static String versionNumber;
-	public static String version = "v3.0.4.1-1.19.2";
+	public static String version = "v3.0.5-1.19.2";
 	public static boolean latestVersion;
 	public static String sponsors = "";
 
-
+	public static ArrayList<String> motListe = new ArrayList<>();
+	public static HashMap<String, String> mapwords;
+	public static BufferedWriter myObjWord;
+	public static BufferedReader myList;
 
 	public static Boolean loggingIn = false;
 	public static Boolean loggedOn = false;
@@ -80,6 +88,7 @@ public class SbMod implements ModInitializer {
 	public static boolean unEnchantTool = false;
 	public static boolean unEnchantTrident = false;
 	public static boolean welcomeMsg = false;
+	public static int eIHTimer = 0;
 	public static int advertTimer = 0;
 	public static int autoBuyTime = 0;
 	public static int autoSellTime = 0;
@@ -92,6 +101,8 @@ public class SbMod implements ModInitializer {
 	public static int welcomeMessageTime = 0;
 	public static int ticketAmount = 2;
 	public static int updateStaffList = 0;
+	public static int announcementTick = 0;
+	public static boolean announcementSent = false;
 
 	//public static BufferedWriter myObjTradeLogsMessageLogs = null;
 	//public static String fileNameOfMessageLogs = null;
@@ -121,9 +132,43 @@ public class SbMod implements ModInitializer {
 			"5aaf78c9-07f9-4d55-b9ea-ab5be34c0bee"));
 	 */
 
+	//Name
+	public static String username;
 	@Override
 	public void onInitialize() {
-		modNames = getListFromSite("https://skysite.live/sbmodstafflist.json");
+		//Sounds
+		ModSounds.registerSounds();
+		//Username
+		username = MinecraftClient.getInstance().getName().toLowerCase();
+		LOGGER.info("Ign: " + username);
+
+
+		/*try	{
+			if (motListe.isEmpty()){
+				String Line;
+				mapwords = new HashMap<>();
+				myList = new BufferedReader(new FileReader("sbmod/skychatwords.txt"));
+				Line = myList.readLine();
+				while (Line != null){
+					motListe.add(Line);
+					Line = myList.readLine();
+				}
+				for (int i = 0; i < motListe.size(); i++) {
+					String unsorted = motListe.get(i);
+					char[] str = unsorted.toCharArray();
+					Arrays.sort(str);
+					String sorted = new String(str);
+					if (motListe != null) {
+						mapwords.put(sorted, unsorted);
+					}
+				}
+			}
+		} catch (Exception ignored){}
+		 */
+
+
+
+		modNames = getListFromSite("https://valid-climber-350022.web.app/sbmodstafflist.json");
 		LOGGER.info(String.valueOf(modNames));
 		versionNumber = getStringFromSite("https://valid-climber-350022.web.app/sbmodversion.txt");
 		if(Objects.equals(versionNumber, version)) {
@@ -214,6 +259,7 @@ public class SbMod implements ModInitializer {
 			return null;
 		}
 	}
+	//Staff list
 	public static ArrayList<String> getListFromSite(String urlString) {
 		try {
 			// Retrieve the JSON file from the online source
@@ -230,7 +276,7 @@ public class SbMod implements ModInitializer {
 			String json = stringBuilder.toString();
 
 			// Parse the JSON file
-			JsonObject root = new JsonParser().parse(json).getAsJsonObject();
+			JsonObject root = JsonParser.parseString(json).getAsJsonObject();
 
 			// Retrieve the data you want and store it in an ArrayList<String>
 			JsonArray array = root.getAsJsonArray("modnames");

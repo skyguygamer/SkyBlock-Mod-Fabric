@@ -5,11 +5,9 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
-import static net.skyguygamer.sbmod.SbMod.*;
 import static net.skyguygamer.sbmod.config.Config.*;
 
 public final class ToggleChats {
