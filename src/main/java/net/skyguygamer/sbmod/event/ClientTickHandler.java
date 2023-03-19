@@ -132,6 +132,26 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             playerCheckTime++;
         }
+        //Safe from certain death (Checks every half a second)
+        if (saveDeath && loggedInToWorld) {
+            if (deathTime > 5) {
+                if (lp.getY() < -66) {
+                    LOGGER.info("[SBMOD] Saving you from certain death!");
+                    lp.sendCommand("is");
+                    deathTime = 0;
+                }
+                if (!deathHealthCooldown && (lp.getHealth() < 2)) {
+                    LOGGER.info("[SBMOD] Saving you from certain death!");
+                    deathHealthCooldown = true;
+                    lp.sendCommand("is");
+                    deathTime = 0;
+                } else if (lp.getHealth() > 2) {
+                    deathHealthCooldown = false;
+                }
+            } else {
+                deathTime++;
+            }
+        }
         //AutoSell
         if (autoSell) {
             if (autoSellTime >= 910) {
@@ -184,6 +204,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             coolDownCounter++;
         }
+
         //AutoAdvert
         if (AutoAdvert.sendingMessages) {
             if (advertTimer >= interval) {

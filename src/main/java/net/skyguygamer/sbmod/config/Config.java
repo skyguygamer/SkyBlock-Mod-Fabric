@@ -10,6 +10,8 @@ public class Config extends MidnightConfig {
     @Comment(centered = true)
     public static Comment features;
     @Entry
+    public static boolean saveDeath = false;
+    @Entry
     public static boolean toggleChatAfk = false;
     @Entry
     public static boolean timeChat = false;
@@ -30,6 +32,8 @@ public class Config extends MidnightConfig {
 
     @Comment(centered = true)
     public static Comment toggles;
+    @Entry
+    public static boolean toggleMail = false;
     @Entry
     public static boolean toggleMotds = false;
     @Entry

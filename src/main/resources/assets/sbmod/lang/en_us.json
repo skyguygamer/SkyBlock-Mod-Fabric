@@ -18,6 +18,9 @@
 
   "sbmod.midnightconfig.features": "Features",
 
+  "sbmod.midnightconfig.saveDeath": "Save from certain Death",
+  "sbmod.midnightconfig.saveDeath.tooltip": "§aTeleports you home if you are in \nthe void or below 1 full heart",
+
   "sbmod.midnightconfig.toggleChatAfk": "Anti chat AFK",
   "sbmod.midnightconfig.toggleChatAfk.tooltip": "§aThis makes it so you move one \nblock forward if the you cant message \nuntil you move is sent",
 
@@ -45,6 +48,9 @@
 
 
   "sbmod.midnightconfig.toggles":"Chat toggles",
+
+  "sbmod.midnightconfig.toggleMail": "Toggle off /mail read notifications",
+  "sbmod.midnightconfig.toggleMail.tooltip": "§aThis toggles off all mail notifications \nafter the first one sent \nwhen you join the game",
 
   "sbmod.midnightconfig.toggleMotds": "Toggles off island motds ",
   "sbmod.midnightconfig.toggleMotds.tooltip": "§aThis toggles of motds when \nyou visit an island \n§cThis cancels any message that \n§cstarts with '+ '",

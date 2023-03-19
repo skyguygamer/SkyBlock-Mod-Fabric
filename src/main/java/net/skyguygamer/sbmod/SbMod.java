@@ -88,6 +88,8 @@ public class SbMod implements ModInitializer {
 	public static boolean unEnchantTool = false;
 	public static boolean unEnchantTrident = false;
 	public static boolean welcomeMsg = false;
+	public static boolean deathHealthCooldown = false;
+	public static boolean firstMailSent = false;
 	public static int eIHTimer = 0;
 	public static int advertTimer = 0;
 	public static int autoBuyTime = 0;
@@ -102,6 +104,7 @@ public class SbMod implements ModInitializer {
 	public static int ticketAmount = 2;
 	public static int updateStaffList = 0;
 	public static int announcementTick = 0;
+	public static int deathTime = 0;
 	public static boolean announcementSent = false;
 
 

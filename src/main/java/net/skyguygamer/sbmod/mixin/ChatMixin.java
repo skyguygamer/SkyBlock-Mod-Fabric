@@ -111,6 +111,16 @@ public class ChatMixin {
             ci.cancel();
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
+        //Toggle mail
+        if (toggleMail && incMessage.startsWith("[!] You have ") && incMessage.contains(" messages! Type /mail read to ") && incMessage.endsWith(" to view your mail.")) {
+            if (firstMailSent) {
+                ci.cancel();
+                LOGGER.info("[SBMOD] I have blocked: " + incMessage);
+            } else {
+                firstMailSent = true;
+            }
+        }
+
         //Message logger credits to MagikIsAMush
         if (toggleMessageLogs && (incMessage.contains("[me -> ") || (incMessage.contains("[") && incMessage.contains(" -> ")))) {
             if (fileNameOfMessageLogs == "") {

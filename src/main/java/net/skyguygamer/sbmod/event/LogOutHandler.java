@@ -16,6 +16,7 @@ public class LogOutHandler implements ClientPlayConnectionEvents.Disconnect {
         autoFix = false;
         enchant = false;
         enchantAxe = false;
+        firstMailSent = false;
         enchantBoots = false;
         enchantBow = false;
         enchantChest = false;
