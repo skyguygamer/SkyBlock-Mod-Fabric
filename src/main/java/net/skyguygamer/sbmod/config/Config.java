@@ -14,17 +14,23 @@ public class Config extends MidnightConfig {
     @Entry
     public static boolean toggleChatAfk = false;
     @Entry
-    public static boolean timeChat = false;
+    public static boolean toggleMessageLogs = true;
+    @Entry
+    public static boolean toggleTradeLogs = true;
+
+    @Comment(centered = true)
+    public static Comment autoChats;
+
+    @Entry
+    public static boolean clagWarning = false;
     @Entry
     public static boolean autoBuy = false;
     @Entry(name = "Amount of lottery tickets to buy", isSlider = true, min = 1, max = 5)
     public static int lotteryTickets = 2;
+    @Entry
+    public static boolean timeChat = false;
     @Entry(min = 6000)
     public static int interval = 8400;
-    @Entry
-    public static boolean toggleMessageLogs = true;
-    @Entry
-    public static boolean toggleTradeLogs = true;
     @Entry()
     public static boolean staffCheck = false;
     @Entry(name = "Add staff UUID's here")
@@ -32,6 +38,8 @@ public class Config extends MidnightConfig {
 
     @Comment(centered = true)
     public static Comment toggles;
+    @Entry
+    public static boolean announcements = false;
     @Entry
     public static boolean toggleMail = false;
     @Entry

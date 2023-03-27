@@ -6,6 +6,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.TitleS2CPacket;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -18,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static net.skyguygamer.sbmod.SbMod.*;
 import static net.skyguygamer.sbmod.config.Config.*;
@@ -54,20 +56,24 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         welcomeMsg = true;
                     }
                 }
-/*
-                //Announcment
-                if(announcementTick >= 200 && !announcementSent) {
-                    String announcment = getStringFromSite("https://valid-climber-350022.web.app/announcment.txt");
 
-                    Text titleText = Text.literal(announcment);
-
-                    announcementSent = true;
-                    announcementTick = 0;
-                } else if (!announcementSent) {
+                //Announcement
+                if(announcements && announcementTick >= 200) {
+                    String announcement = getStringFromSite("https://valid-climber-350022.web.app/announcement.txt");
+                    LOGGER.info("[SBMOD] Announcement is: " + announcement);
+                    if (!Objects.equals(announcement, "N/A")) {
+                        if (announcementTick >= 200 && !announcementSent) {
+                            LOGGER.info("[SBMOD] Sending announcement");
+                            lp.sendMessage(Text.literal(Formatting.GREEN + "[SBMOD]: " + Formatting.WHITE + announcement), true);
+                            announcementSent = true;
+                            announcementTick = 0;
+                        }
+                    }
+                } else if (!announcementSent && announcements) {
                     announcementTick++;
                 }
 
- */
+
 
 
 

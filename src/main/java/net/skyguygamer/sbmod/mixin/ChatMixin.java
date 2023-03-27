@@ -82,6 +82,12 @@ public class ChatMixin {
             ci.cancel();
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
+        //Clear lag warning
+        if (clagWarning && (incMessage.contains("WARNING Ground items will be removed in 20 seconds!")) && incMessage.startsWith("WARNING Ground items will be removed in 20 seconds!")) {
+            LOGGER.info("[SBMOD] CLAG WARNING!!!");
+            MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 25, 10);
+            MinecraftClient.getInstance().inGameHud.setTitle(Text.literal(Formatting.RED + "CLEAR LAG IN 20!!!"));
+        }
         //Clear lag
         if (toggleClag && (incMessage.contains("WARNING Ground items will be removed in") || incMessage.contains("[SB] Removed "))) {
             ci.cancel();
@@ -93,7 +99,7 @@ public class ChatMixin {
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
         //AutoBuy
-        if (autoBuy && incMessage.startsWith("[SBLottery] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && incMessage.endsWith(" tickets")) {
+        if (autoBuy && incMessage.startsWith("[SBLottery] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && (incMessage.endsWith(" tickets") || incMessage.endsWith(" ticket "))) {
             MinecraftClient.getInstance().player.sendCommand("lottery buy " + lotteryTickets);
         }
         //Toggle off lottery
@@ -187,7 +193,8 @@ public class ChatMixin {
     private Text changeVariable(Text message) {
         String incMessage = message.getString();
         //Toggle notify
-        if (toggleNotify && (incMessage.toLowerCase().contains(MinecraftClient.getInstance().player.getName().getString().toLowerCase()) || incMessage.toLowerCase().contains(extraNotifyWord))) {
+        String name = MinecraftClient.getInstance().player.getName().getString().toLowerCase();
+        if (toggleNotify && (incMessage.toLowerCase().contains(" " + name) || incMessage.toLowerCase().contains(name + " ") || incMessage.toLowerCase().contains(" " + extraNotifyWord) || incMessage.toLowerCase().contains(extraNotifyWord + " "))) {
             //LOGGER.info("[SBMOD] Name is " + MinecraftClient.getInstance().player.getName().getString().toLowerCase());
             MinecraftClient.getInstance().player.playSound(ModSounds.NOTIFY_SOUND,1f,1f);
             //message = Text.literal("Sound is being played");

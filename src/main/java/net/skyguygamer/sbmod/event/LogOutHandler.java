@@ -12,6 +12,7 @@ public class LogOutHandler implements ClientPlayConnectionEvents.Disconnect {
     public void onPlayDisconnect(ClientPlayNetworkHandler handler, MinecraftClient client) {
         AutoAdvert.sendingMessages = false;
         announcementSent = false;
+        announcementTick = 0;
         advertTimer = 0;
         autoFix = false;
         enchant = false;

@@ -10,6 +10,7 @@
   "key.sbmod.home.command": "Home command",
   "key.sbmod.back.command": "Back command",
   "key.sbmod.config": "Configuration",
+  "key.sbmod.kittycannon.command": "Kittycannon command",
 
 
 
@@ -24,30 +25,37 @@
   "sbmod.midnightconfig.toggleChatAfk": "Anti chat AFK",
   "sbmod.midnightconfig.toggleChatAfk.tooltip": "§aThis makes it so you move one \nblock forward if the you cant message \nuntil you move is sent",
 
-  "sbmod.midnightconfig.timeChat": "TimeChat",
-  "sbmod.midnightconfig.timeChat.tooltip": "§aSends times before the chat message",
-
-  "sbmod.midnightconfig.autoBuy": "Autobuy",
-  "sbmod.midnightconfig.autoBuy.tooltip": "§aToggles whether to autobuy or not",
-
-  "sbmod.midnightconfig.lotteryTickets": "The amount of lottery ticket to buy",
-
-  "sbmod.midnightconfig.interval": "Amount of time in ticks between autoadvert messages (20*seconds)",
-
-  "sbmod.midnightconfig.hoverHack": "Hover for the word hack",
-  "sbmod.midnightconfig.hoverHack.tooltip": "§aInstead of making you hover \nfor the word, it will \njust tell you the word",
-
   "sbmod.midnightconfig.toggleMessageLogs": "Private message logs",
   "sbmod.midnightconfig.toggleMessageLogs.tooltip": "§aToggles whether to log \n private messages or not",
 
   "sbmod.midnightconfig.toggleTradeLogs": "Trade message logs",
   "sbmod.midnightconfig.toggleTradeLogs.tooltip": "§aToggles whether to log \n trade messages or not",
 
+
+
+  "sbmod.midnightconfig.autoChats":"Chat automations",
+
+  "sbmod.midnightconfig.clagWarning": "Clear lag warning",
+  "sbmod.midnightconfig.clagWarning.tooltip": "§aSends you a warning title \nif clag is happening in \n20 seconds or less",
+
+  "sbmod.midnightconfig.autoBuy": "Autobuy",
+  "sbmod.midnightconfig.autoBuy.tooltip": "§aToggles whether to autobuy or not",
+
+  "sbmod.midnightconfig.lotteryTickets": "The amount of lottery ticket to buy",
+
+  "sbmod.midnightconfig.timeChat": "TimeChat",
+  "sbmod.midnightconfig.timeChat.tooltip": "§aSends times before the chat message",
+
+  "sbmod.midnightconfig.interval": "Amount of time in ticks between autoadvert messages (20*seconds)",
+
   "sbmod.midnightconfig.staffCheck": "Staff join/leave notifications",
   "sbmod.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \nwhich staff member has joined/left",
 
 
   "sbmod.midnightconfig.toggles":"Chat toggles",
+
+  "sbmod.midnightconfig.announcements": "SBMOD Announcements",
+  "sbmod.midnightconfig.announcements.tooltip": "§aIf there is an announcement \ndisplays in actionbar",
 
   "sbmod.midnightconfig.toggleMail": "Toggle off /mail read notifications",
   "sbmod.midnightconfig.toggleMail.tooltip": "§aThis toggles off all mail notifications \nafter the first one sent \nwhen you join the game",
@@ -102,6 +110,9 @@
   "sbmod.midnightconfig.joinCommands.tooltip": "§aSends join commands upon \nentering a world",
 
   "sbmod.midnightconfig.toggleNotify": "Notify",
-  "sbmod.midnightconfig.toggleNotify.tooltip": "§aThis makes it so a sound is \nplayed when your name is \nsaid in chat"
+  "sbmod.midnightconfig.toggleNotify.tooltip": "§aThis makes it so a sound is \nplayed when your name is \nsaid in chat",
+
+  "sbmod.midnightconfig.hoverHack": "Hover for the word hack",
+  "sbmod.midnightconfig.hoverHack.tooltip": "§aInstead of making you hover \nfor the word, it will \njust tell you the word"
 }
 
