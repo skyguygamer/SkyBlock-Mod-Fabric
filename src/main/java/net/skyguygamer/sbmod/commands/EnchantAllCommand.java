@@ -51,8 +51,13 @@ public class EnchantAllCommand {
                 SbMod.enchantBow = true;
                 SbMod.enchant = true;
             }
-            else if (item == Items.NETHERITE_CHESTPLATE || item == Items.NETHERITE_LEGGINGS || item == Items.DIAMOND_CHESTPLATE || item == Items.DIAMOND_LEGGINGS || item == Items.IRON_CHESTPLATE || item == Items.IRON_LEGGINGS || item == Items.GOLDEN_CHESTPLATE || item == Items.GOLDEN_LEGGINGS || item == Items.LEATHER_CHESTPLATE || item == Items.LEATHER_LEGGINGS || item == Items.CHAINMAIL_CHESTPLATE || item == Items.CHAINMAIL_LEGGINGS ) {
+            else if (item == Items.NETHERITE_CHESTPLATE || item == Items.DIAMOND_CHESTPLATE || item == Items.IRON_CHESTPLATE || item == Items.GOLDEN_CHESTPLATE || item == Items.LEATHER_CHESTPLATE || item == Items.CHAINMAIL_CHESTPLATE) {
                 SbMod.enchantChest = true;
+                SbMod.pressTime = 0;
+                SbMod.enchant = true;
+            }
+            else if (item == Items.NETHERITE_LEGGINGS || item == Items.DIAMOND_LEGGINGS || item == Items.IRON_LEGGINGS || item == Items.GOLDEN_LEGGINGS || item == Items.LEATHER_LEGGINGS || item == Items.CHAINMAIL_LEGGINGS) {
+                SbMod.enchantLeggings = true;
                 SbMod.pressTime = 0;
                 SbMod.enchant = true;
             }

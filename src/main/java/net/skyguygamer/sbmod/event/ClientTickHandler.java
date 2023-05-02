@@ -44,7 +44,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://valid-climber-350022.web.app/sbmod.html"));
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
-                        lp.sendMessage((Text.literal("§7Updated version 3.0.5")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.1")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
                         lp.sendMessage((Text.literal("§7Click here for website")).setStyle(style));
                         if (!latestVersion) {
@@ -73,10 +73,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     announcementTick++;
                 }
 
-
-
-
-
                 if (joinCommands) {
                     List<String> commands = new ArrayList<>();
                     try {
@@ -104,7 +100,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
         }
         //Update Staff List Every 5 Minutes
         if (staffCheck && updateStaffList > 6000) {
-            modNames = getListFromSite("https://skysite.live/sbmodstafflist.json");
+            modNames = getUUIDsFromURL();
             updateStaffList = 0;
         } else {
             updateStaffList++;
@@ -284,6 +280,25 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 enchantTool = false;
                 enchant = false;
             }
+            if (pressTime == 0 && enchantLeggings) {
+                lp.sendCommand("enchant protection 4");
+            } else if (pressTime == 15 && enchantLeggings) {
+                lp.sendCommand("enchant fireprotection 4");
+            } else if (pressTime == 30 && enchantLeggings) {
+                lp.sendCommand("enchant blastprotection 4");
+            } else if (pressTime == 45 && enchantLeggings) {
+                lp.sendCommand("enchant projectileprotection 4");
+            } else if (pressTime == 60 && enchantLeggings) {
+                lp.sendCommand("enchant unbreaking 3");
+            } else if (pressTime == 75 && enchantLeggings) {
+                lp.sendCommand("enchant thorns 3");
+            } else if (pressTime == 90 && enchantLeggings) {
+                lp.sendCommand("enchant mending 1");
+            } else if (pressTime == 105 && enchantLeggings) {
+                lp.sendCommand("enchant soulspeed 3");
+                enchantLeggings = false;
+                enchant = false;
+            }
             if (pressTime == 0 && enchantChest) {
                 lp.sendCommand("enchant protection 4");
             } else if (pressTime == 15 && enchantChest) {
@@ -371,6 +386,34 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 enchantRod = false;
                 enchant = false;
             }
+            if (pressTime == 0 && enchantTrident) {
+                lp.sendCommand("enchant impaling 5");
+            } else if (pressTime == 15 && enchantTrident) {
+                lp.sendCommand("enchant loyalty 3");
+            } else if (pressTime == 30 && enchantTrident) {
+                lp.sendCommand("enchant unbreaking 3");
+            } else if (pressTime == 45 && enchantTrident) {
+                lp.sendCommand("enchant mending");
+            } else if (pressTime == 60 && enchantTrident) {
+                lp.sendCommand("enchant channelling");
+            } else if (pressTime == 75 && enchantTrident) {
+                lp.sendCommand("enchant riptide 3");
+                enchantTrident = false;
+                enchant = false;
+            }
+            if (pressTime == 0 && enchantCrossbow) {
+                lp.sendCommand("enchant multishot 1");
+            } else if (pressTime == 15 && enchantCrossbow) {
+                lp.sendCommand("enchant quickcharge 3");
+            } else if (pressTime == 30 && enchantCrossbow) {
+                lp.sendCommand("enchant unbreaking 3");
+            } else if (pressTime == 45 && enchantCrossbow) {
+                lp.sendCommand("enchant mending");
+            } else if (pressTime == 60 && enchantCrossbow) {
+                lp.sendCommand("enchant piercing 3");
+                enchantCrossbow = false;
+                enchant = false;
+            }
             if (pressTime == 0 && enchantOther) {
                 lp.sendCommand("enchant unbreaking 3");
             } else if (pressTime == 15 && enchantOther) {
@@ -434,6 +477,25 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             } else if (pressTime == 45 && unEnchantTool) {
                 lp.sendCommand("enchant fortune 0");
                 unEnchantTool = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantLeggings) {
+                lp.sendCommand("enchant protection 0");
+            } else if (pressTime == 15 && unEnchantLeggings) {
+                lp.sendCommand("enchant fireprotection 0");
+            } else if (pressTime == 30 && unEnchantLeggings) {
+                lp.sendCommand("enchant blastprotection 0");
+            } else if (pressTime == 45 && unEnchantLeggings) {
+                lp.sendCommand("enchant projectileprotection 0");
+            } else if (pressTime == 60 && unEnchantLeggings) {
+                lp.sendCommand("enchant unbreaking 0");
+            } else if (pressTime == 75 && unEnchantLeggings) {
+                lp.sendCommand("enchant thorns 0");
+            } else if (pressTime == 90 && unEnchantLeggings) {
+                lp.sendCommand("enchant mending 0");
+            } else if (pressTime == 105 && unEnchantLeggings) {
+                lp.sendCommand("enchant soulspeed 0");
+                unEnchantLeggings = false;
                 unEnchant = false;
             }
             if (pressTime == 0 && unEnchantChest) {
@@ -509,6 +571,8 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 lp.sendCommand("enchant depth_strider 0");
             } else if (pressTime == 120 && unEnchantBoots) {
                 lp.sendCommand("enchant featherfalling 0");
+            } else if (pressTime == 135 && unEnchantBoots) {
+                lp.sendCommand("enchant soulspeed 0");
                 unEnchantBoots = false;
                 unEnchant = false;
             }
@@ -521,6 +585,34 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             } else if (pressTime == 45 && unEnchantRod) {
                 lp.sendCommand("enchant mending 0");
                 unEnchantRod = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantTrident) {
+                lp.sendCommand("enchant impaling 0");
+            } else if (pressTime == 15 && unEnchantTrident) {
+                lp.sendCommand("enchant loyalty 0");
+            } else if (pressTime == 30 && unEnchantTrident) {
+                lp.sendCommand("enchant unbreaking 0");
+            } else if (pressTime == 45 && unEnchantTrident) {
+                lp.sendCommand("enchant mending 0");
+            } else if (pressTime == 60 && unEnchantTrident) {
+                lp.sendCommand("enchant channelling 0");
+            } else if (pressTime == 75 && unEnchantTrident) {
+                lp.sendCommand("enchant riptide 0");
+                unEnchantTrident = false;
+                unEnchant = false;
+            }
+            if (pressTime == 0 && unEnchantCrossbow) {
+                lp.sendCommand("enchant multishot 0");
+            } else if (pressTime == 15 && enchantCrossbow) {
+                lp.sendCommand("enchant quickcharge 0");
+            } else if (pressTime == 30 && enchantCrossbow) {
+                lp.sendCommand("enchant unbreaking 0");
+            } else if (pressTime == 45 && enchantCrossbow) {
+                lp.sendCommand("enchant mending 0");
+            } else if (pressTime == 60 && enchantCrossbow) {
+                lp.sendCommand("enchant piercing 0");
+                unEnchantCrossbow = false;
                 unEnchant = false;
             }
             if (pressTime == 0 && unEnchantOther) {

@@ -13,13 +13,12 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.skyguygamer.sbmod.commands.*;
 import net.skyguygamer.sbmod.config.Config;
 import net.skyguygamer.sbmod.event.*;
 import net.skyguygamer.sbmod.sounds.ModSounds;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,7 +41,7 @@ public class SbMod implements ModInitializer {
 	//PER UPDATE YOU MUST UPDATE THE VERSIONS
 	//HERE, WELCOME MESSAGE, FABRIC.MOD.JSON and GRADLE.PROPERTIES!!
 	public static String versionNumber;
-	public static String version = "v3.0.5-1.19.2";
+	public static String version = "v3.6-1.19.2";
 	public static boolean latestVersion;
 	public static String sponsors = "";
 
@@ -63,6 +62,7 @@ public class SbMod implements ModInitializer {
 	public static boolean enchantBoots = false;
 	public static boolean enchantBow = false;
 	public static boolean enchantChest = false;
+	public static boolean enchantLeggings = false;
 	public static boolean enchantCrossbow = false;
 	public static boolean enchantHelmet = false;
 	public static boolean enchantInHand = false;
@@ -79,6 +79,7 @@ public class SbMod implements ModInitializer {
 	public static boolean unEnchantAxe = false;
 	public static boolean unEnchantBoots = false;
 	public static boolean unEnchantBow = false;
+	public static boolean unEnchantLeggings = false;
 	public static boolean unEnchantChest = false;
 	public static boolean unEnchantCrossbow = false;
 	public static boolean unEnchantHelmet = false;
@@ -167,9 +168,8 @@ public class SbMod implements ModInitializer {
 		} catch (Exception ignored){}
 		 */
 
-
-
-		modNames = getListFromSite("https://valid-climber-350022.web.app/sbmodstafflist.json");
+		modNames = getUUIDsFromURL();
+		//modNames = getListFromSite("https://valid-climber-350022.web.app/sbmodstafflist.json");
 		LOGGER.info(String.valueOf(modNames));
 		versionNumber = getStringFromSite("https://valid-climber-350022.web.app/sbmodversion.txt");
 		if(Objects.equals(versionNumber, version)) {
@@ -206,7 +206,7 @@ public class SbMod implements ModInitializer {
 		//Registers commands
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			AutoAdvert.register(dispatcher);
-			AutoBuyTemp.register(dispatcher);
+			//AutoBuyTemp.register(dispatcher);
 			AutoEnchantInHand.register(dispatcher);
 			AutoFix.register(dispatcher);
 			//AutoPrivate.register(dispatcher);
@@ -232,7 +232,45 @@ public class SbMod implements ModInitializer {
 			//SetPrefix.register(dispatcher);
 		});
 	}
+	//New staff list
+	public static ArrayList<String> getUUIDsFromURL() {
+        String urlString = "https://friends.skyblock.net/api/friends/staff";
+		try {
+			URL url = new URL(urlString);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+			connection.setRequestProperty("Content-Type", "application/json");
+			connection.setRequestProperty("Accept", "application/json");
 
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+			String line;
+			StringBuilder responseBuilder = new StringBuilder();
+
+			while ((line = reader.readLine()) != null) {
+				responseBuilder.append(line.trim());
+			}
+
+			reader.close();
+
+			// Parse the JSON file
+			JsonArray friendsArray = JsonParser.parseString(responseBuilder.toString()).getAsJsonArray();
+
+			// Retrieve the data you want and store it in an ArrayList<String>
+			ArrayList<String> uuidList = new ArrayList<>();
+			for (int i = 0; i < friendsArray.size(); i++) {
+				JsonObject friend = friendsArray.get(i).getAsJsonObject();
+				String uuid = friend.get("uuid").getAsString();
+				uuidList.add(uuid);
+			}
+
+			return uuidList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("An error occurred while downloading staff list: " + e.getMessage());
+			return null;
+		}
+	}
 	//Gets version number
 	public static String getStringFromSite(String urlString) {
 		try {
@@ -261,7 +299,7 @@ public class SbMod implements ModInitializer {
 		}
 	}
 	//Staff list
-	public static ArrayList<String> getListFromSite(String urlString) {
+	/*public static ArrayList<String> getListFromSite(String urlString) {
 		try {
 			// Retrieve the JSON file from the online source
 			URL url = new URL(urlString);
@@ -292,6 +330,8 @@ public class SbMod implements ModInitializer {
 			throw new RuntimeException(e);
 		}
 	}
+
+	 */
 
 		public static void convertText(String text) {
 		for (int i = 0; i < text.length(); i ++) {

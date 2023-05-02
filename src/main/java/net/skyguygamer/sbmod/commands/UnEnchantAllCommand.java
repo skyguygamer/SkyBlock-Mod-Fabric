@@ -56,6 +56,11 @@ public class UnEnchantAllCommand {
                 SbMod.pressTime = 0;
                 SbMod.unEnchant = true;
             }
+            else if (item == Items.NETHERITE_LEGGINGS || item == Items.DIAMOND_LEGGINGS || item == Items.IRON_LEGGINGS || item == Items.GOLDEN_LEGGINGS || item == Items.LEATHER_LEGGINGS || item == Items.CHAINMAIL_LEGGINGS) {
+                SbMod.unEnchantLeggings = true;
+                SbMod.pressTime = 0;
+                SbMod.unEnchant = true;
+            }
             else if (item == Items.TURTLE_HELMET || item == Items.NETHERITE_HELMET || item == Items.DIAMOND_HELMET || item == Items.IRON_HELMET || item == Items.GOLDEN_HELMET || item == Items.CHAINMAIL_HELMET || item == Items.LEATHER_HELMET) {
                 SbMod.unEnchantHelmet = true;
                 SbMod.pressTime = 0;

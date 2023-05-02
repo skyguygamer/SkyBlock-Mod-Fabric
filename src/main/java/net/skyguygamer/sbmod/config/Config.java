@@ -19,22 +19,32 @@ public class Config extends MidnightConfig {
     public static boolean toggleTradeLogs = true;
 
     @Comment(centered = true)
-    public static Comment autoChats;
-
-    @Entry
+    public static Comment notifications;
+    /*@Entry
     public static boolean clagWarning = false;
+    */
     @Entry
-    public static boolean autoBuy = false;
-    @Entry(name = "Amount of lottery tickets to buy", isSlider = true, min = 1, max = 5)
-    public static int lotteryTickets = 2;
+    public static boolean wanderingTrader = false;
     @Entry
-    public static boolean timeChat = false;
-    @Entry(min = 6000)
-    public static int interval = 8400;
+    public static boolean vpLlama = false;
     @Entry()
     public static boolean staffCheck = false;
     @Entry(name = "Add staff UUID's here")
     public static List<String> extraStaffNames = List.of();
+
+
+
+    @Comment(centered = true)
+    public static Comment autoChats;
+    /*@Entry
+    public static boolean autoBuy = false;
+    @Entry(name = "Amount of lottery tickets to buy", isSlider = true, min = 1, max = 5)
+    public static int lotteryTickets = 2;
+    */
+    @Entry
+    public static boolean timeChat = false;
+    @Entry(min = 6000)
+    public static int interval = 8400;
 
     @Comment(centered = true)
     public static Comment toggles;

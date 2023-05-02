@@ -78,32 +78,47 @@ public class ChatMixin {
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
         //Vote party rewards
-        if (toggleVPRewards && incMessage.contains("[VoteParty] Your vote rewards have been applied!")) {
+        if (toggleVPRewards && incMessage.contains("[Broadcast] A Vote Party has begun!")) {
             ci.cancel();
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
+        //Vote party llama
+        if (vpLlama && incMessage.startsWith("[VoteParty] ") && incMessage.contains("[VoteParty] A Vote Party Llama has been sighted at the spawn!")) {
+            LOGGER.info("[SBMOD] Vote Party Llama!");
+            MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 25, 10);
+            MinecraftClient.getInstance().inGameHud.setTitle(Text.literal(Formatting.GOLD + "VP LLAMA AT SPAWN!"));
+        }
+        //Wandering trader notif
+        if (wanderingTrader && incMessage.endsWith("trades!") && incMessage.contains("A Wandering Trader has been sighted somewhere at spawn offering a limited number of exclusive trades!")) {
+            LOGGER.info("[SBMOD] Wandering Trader is at Spawn");
+            MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 25, 10);
+            MinecraftClient.getInstance().inGameHud.setTitle(Text.literal(Formatting.GOLD + "WANDERING TRADER!"));
+        }
         //Clear lag warning
-        if (clagWarning && (incMessage.contains("WARNING Ground items will be removed in 20 seconds!")) && incMessage.startsWith("WARNING Ground items will be removed in 20 seconds!")) {
+        /*if (clagWarning && (incMessage.contains("WARNING Ground items will be removed in 20 seconds!")) && incMessage.startsWith("WARNING Ground items will be removed in 20 seconds!")) {
             LOGGER.info("[SBMOD] CLAG WARNING!!!");
             MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 25, 10);
             MinecraftClient.getInstance().inGameHud.setTitle(Text.literal(Formatting.RED + "CLEAR LAG IN 20!!!"));
         }
+        */
         //Clear lag
-        if (toggleClag && (incMessage.contains("WARNING Ground items will be removed in") || incMessage.contains("[SB] Removed "))) {
+        /*if (toggleClag && (incMessage.contains("WARNING Ground items will be removed in") || incMessage.contains("[SB] Removed "))) {
             ci.cancel();
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
+         */
         //Toggle off the hover game
         if (toggleHoverGame && incMessage.startsWith("[") && (incMessage.endsWith(" Hover for the word to type!") || incMessage.endsWith(" Hover for the word to unscramble!"))) {
             ci.cancel();
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
         //AutoBuy
-        if (autoBuy && incMessage.startsWith("[SBLottery] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && (incMessage.endsWith(" tickets") || incMessage.endsWith(" ticket "))) {
+        /*if (autoBuy && incMessage.startsWith("[SBRaffle] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && (incMessage.endsWith(" tickets") || incMessage.endsWith(" ticket "))) {
             MinecraftClient.getInstance().player.sendCommand("lottery buy " + lotteryTickets);
         }
+         */
         //Toggle off lottery
-        if (toggleLottery && incMessage.startsWith("[SBLottery]")) {
+        if (toggleLottery && incMessage.startsWith("[SBRaffle]")) {
             ci.cancel();
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
@@ -118,7 +133,7 @@ public class ChatMixin {
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
         //Toggle mail
-        if (toggleMail && incMessage.startsWith("[!] You have ") && incMessage.contains(" messages! Type /mail read to ") && incMessage.endsWith(" to view your mail.")) {
+        if (toggleMail && incMessage.startsWith("You have ") && incMessage.contains(" messages! Type /mail read to ") && incMessage.endsWith(" to view your mail.")) {
             if (firstMailSent) {
                 ci.cancel();
                 LOGGER.info("[SBMOD] I have blocked: " + incMessage);
