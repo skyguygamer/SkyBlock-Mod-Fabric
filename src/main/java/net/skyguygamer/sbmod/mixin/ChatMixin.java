@@ -85,14 +85,20 @@ public class ChatMixin {
         //Vote party llama
         if (vpLlama && incMessage.startsWith("[VoteParty] ") && incMessage.contains("[VoteParty] A Vote Party Llama has been sighted at the spawn!")) {
             LOGGER.info("[SBMOD] Vote Party Llama!");
-            MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 25, 10);
+            MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 40, 10);
             MinecraftClient.getInstance().inGameHud.setTitle(Text.literal(Formatting.GOLD + "VP LLAMA AT SPAWN!"));
+            if (alertSounds) {
+                MinecraftClient.getInstance().player.playSound(ModSounds.ALERT_SOUND,1f,1f);
+            }
         }
         //Wandering trader notif
         if (wanderingTrader && incMessage.endsWith("trades!") && incMessage.contains("A Wandering Trader has been sighted somewhere at spawn offering a limited number of exclusive trades!")) {
             LOGGER.info("[SBMOD] Wandering Trader is at Spawn");
-            MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 25, 10);
+            MinecraftClient.getInstance().inGameHud.setTitleTicks(10, 40, 10);
             MinecraftClient.getInstance().inGameHud.setTitle(Text.literal(Formatting.GOLD + "WANDERING TRADER!"));
+            if (alertSounds) {
+                MinecraftClient.getInstance().player.playSound(ModSounds.ALERT_SOUND,1f,1f);
+            }
         }
         //Clear lag warning
         /*if (clagWarning && (incMessage.contains("WARNING Ground items will be removed in 20 seconds!")) && incMessage.startsWith("WARNING Ground items will be removed in 20 seconds!")) {

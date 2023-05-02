@@ -3,5 +3,10 @@
     "sounds": [
       "sbmod:notify_sound"
     ]
+  },
+  "alert_correct_sound": {
+    "sounds": [
+      "sbmod:alert_correct_sound"
+    ]
   }
 }

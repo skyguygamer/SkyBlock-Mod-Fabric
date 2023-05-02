@@ -27,6 +27,8 @@ public class Config extends MidnightConfig {
     public static boolean wanderingTrader = false;
     @Entry
     public static boolean vpLlama = false;
+    @Entry
+    public static boolean alertSounds = true;
     @Entry()
     public static boolean staffCheck = false;
     @Entry(name = "Add staff UUID's here")

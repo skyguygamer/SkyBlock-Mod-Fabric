@@ -9,6 +9,7 @@ import static net.skyguygamer.sbmod.SbMod.LOGGER;
 
 public class ModSounds {
     public static SoundEvent NOTIFY_SOUND = registerSoundEvent("notify_sound");
+    public static SoundEvent ALERT_SOUND = registerSoundEvent("alert_correct_sound");
 
     private static SoundEvent registerSoundEvent(String  name) {
         Identifier id = new Identifier(SbMod.SBMOD_ID, name);
