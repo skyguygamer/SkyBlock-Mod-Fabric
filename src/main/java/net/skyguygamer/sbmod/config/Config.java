@@ -38,15 +38,16 @@ public class Config extends MidnightConfig {
 
     @Comment(centered = true)
     public static Comment autoChats;
-    /*@Entry
-    public static boolean autoBuy = false;
-    @Entry(name = "Amount of lottery tickets to buy", isSlider = true, min = 1, max = 5)
-    public static int lotteryTickets = 2;
-    */
+
     @Entry
     public static boolean timeChat = false;
     @Entry(min = 6000)
     public static int interval = 8400;
+    @Entry
+    public static boolean autoBuy = false;
+    @Entry(name = "Amount of lottery tickets to buy", isSlider = true, min = 1, max = 5)
+    public static int lotteryTickets = 2;
+
 
     @Comment(centered = true)
     public static Comment toggles;

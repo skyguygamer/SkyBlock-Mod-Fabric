@@ -119,10 +119,10 @@ public class ChatMixin {
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
         //AutoBuy
-        /*if (autoBuy && incMessage.startsWith("[SBRaffle] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && (incMessage.endsWith(" tickets") || incMessage.endsWith(" ticket "))) {
+        if (autoBuy && incMessage.startsWith("[SBRaffle] Congratulations go to ") && incMessage.contains(" for winning ") && incMessage.contains(" Grass with ") && (incMessage.endsWith(" tickets") || incMessage.endsWith(" ticket "))) {
             MinecraftClient.getInstance().player.sendCommand("lottery buy " + lotteryTickets);
         }
-         */
+
         //Toggle off lottery
         if (toggleLottery && incMessage.startsWith("[SBRaffle]")) {
             ci.cancel();
