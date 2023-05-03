@@ -32,6 +32,19 @@
   "sbmod.midnightconfig.toggleTradeLogs.tooltip": "§aToggles whether to log \n trade messages or not",
 
 
+  "sbmod.midnightconfig.notifications": "Alerts and Notifications",
+
+  "sbmod.midnightconfig.staffCheck": "Staff join/leave notifications",
+  "sbmod.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \nwhich staff member has joined/left",
+
+  "sbmod.midnightconfig.wanderingTrader": "Wandering trader notifications",
+  "sbmod.midnightconfig.wanderingTrader.tooltip": "§aSends a title to your screen telling \nyou that there is a wandering \ntrader at spawn",
+
+  "sbmod.midnightconfig.vpLlama": "Vote party llama notifications",
+  "sbmod.midnightconfig.vpLlama.tooltip": "§aSends a title to your screen telling \nyou that there is a vote party llama at spawn",
+
+  "sbmod.midnightconfig.alertSounds": "Alert sounds",
+  "sbmod.midnightconfig.alertSounds.tooltip": "§aToggles whether you want sounds \nor not for alerts and notifications",
 
   "sbmod.midnightconfig.autoChats":"Chat automations",
 
@@ -48,8 +61,6 @@
 
   "sbmod.midnightconfig.interval": "Amount of time in ticks between autoadvert messages (20*seconds)",
 
-  "sbmod.midnightconfig.staffCheck": "Staff join/leave notifications",
-  "sbmod.midnightconfig.staffCheck.tooltip": "§aSends messages to you letting know \nwhich staff member has joined/left",
 
 
   "sbmod.midnightconfig.toggles":"Chat toggles",
