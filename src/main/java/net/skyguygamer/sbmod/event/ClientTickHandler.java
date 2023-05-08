@@ -414,6 +414,15 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                 enchantCrossbow = false;
                 enchant = false;
             }
+            if (pressTime == 0 && enchantHoe) {
+                lp.sendCommand("enchant unbreaking 3");
+            } else if (pressTime == 15 && enchantHoe) {
+                lp.sendCommand("enchant mending 1");
+            } else if (pressTime == 30 && enchantHoe) {
+                lp.sendCommand("enchant fortune 3");
+                enchantHoe = false;
+                enchant = false;
+            }
             if (pressTime == 0 && enchantOther) {
                 lp.sendCommand("enchant unbreaking 3");
             } else if (pressTime == 15 && enchantOther) {
@@ -604,17 +613,27 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
             }
             if (pressTime == 0 && unEnchantCrossbow) {
                 lp.sendCommand("enchant multishot 0");
-            } else if (pressTime == 15 && enchantCrossbow) {
+            } else if (pressTime == 15 && unEnchantCrossbow) {
                 lp.sendCommand("enchant quickcharge 0");
-            } else if (pressTime == 30 && enchantCrossbow) {
+            } else if (pressTime == 30 && unEnchantCrossbow) {
                 lp.sendCommand("enchant unbreaking 0");
-            } else if (pressTime == 45 && enchantCrossbow) {
+            } else if (pressTime == 45 && unEnchantCrossbow) {
                 lp.sendCommand("enchant mending 0");
-            } else if (pressTime == 60 && enchantCrossbow) {
+            } else if (pressTime == 60 && unEnchantCrossbow) {
                 lp.sendCommand("enchant piercing 0");
                 unEnchantCrossbow = false;
                 unEnchant = false;
             }
+            if (pressTime == 0 && unEnchantHoes) {
+                lp.sendCommand("enchant unbreaking 0");
+            } else if (pressTime == 15 && unEnchantHoes) {
+                lp.sendCommand("enchant mending 0");
+            } else if (pressTime == 30 && unEnchantHoes) {
+                lp.sendCommand("enchant fortune 0");
+                unEnchantHoes = false;
+                unEnchant = false;
+            }
+
             if (pressTime == 0 && unEnchantOther) {
                 lp.sendCommand("enchant unbreaking 0");
             } else if (pressTime == 15 && unEnchantOther) {

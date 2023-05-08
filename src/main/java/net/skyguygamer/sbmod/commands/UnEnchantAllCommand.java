@@ -76,7 +76,12 @@ public class UnEnchantAllCommand {
                 SbMod.pressTime = 0;
                 SbMod.unEnchant = true;
             }
-            else if (item == Items.WARPED_FUNGUS_ON_A_STICK || item == Items.CARROT_ON_A_STICK || item == Items.FLINT_AND_STEEL || item == Items.ELYTRA || item == Items.WOODEN_HOE || item == Items.STONE_HOE || item == Items.IRON_HOE || item == Items.GOLDEN_HOE || item == Items.DIAMOND_HOE || item == Items.SHIELD) {
+            else if (item == Items.WOODEN_HOE || item == Items.STONE_HOE || item == Items.IRON_HOE || item == Items.GOLDEN_HOE || item == Items.DIAMOND_HOE || item == Items.NETHERITE_HOE) {
+                SbMod.unEnchantHoes = true;
+                SbMod.pressTime = 0;
+                SbMod.unEnchant = true;
+            }
+            else if (item == Items.WARPED_FUNGUS_ON_A_STICK || item == Items.CARROT_ON_A_STICK || item == Items.FLINT_AND_STEEL || item == Items.ELYTRA || item == Items.SHIELD) {
                 SbMod.unEnchantOther = true;
                 SbMod.pressTime = 0;
                 SbMod.unEnchant = true;

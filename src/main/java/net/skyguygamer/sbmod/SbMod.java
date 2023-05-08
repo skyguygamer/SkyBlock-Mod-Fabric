@@ -68,6 +68,7 @@ public class SbMod implements ModInitializer {
 	public static boolean enchantInHand = false;
 	public static boolean enchantOther = false;
 	public static boolean enchantRod = false;
+	public static boolean enchantHoe = false;
 	public static boolean enchantSword = false;
 	public static boolean enchantTool = false;
 	public static boolean enchantTrident = false;
@@ -77,6 +78,7 @@ public class SbMod implements ModInitializer {
 	public static boolean spawnMobs = false;
 	public static boolean unEnchant = false;
 	public static boolean unEnchantAxe = false;
+	public static boolean unEnchantHoes = false;
 	public static boolean unEnchantBoots = false;
 	public static boolean unEnchantBow = false;
 	public static boolean unEnchantLeggings = false;
@@ -136,6 +138,7 @@ public class SbMod implements ModInitializer {
 
 	//Name
 	public static String username;
+
 	@Override
 	public void onInitialize() {
 		//Sounds
@@ -206,7 +209,7 @@ public class SbMod implements ModInitializer {
 		//Registers commands
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			AutoAdvert.register(dispatcher);
-			//AutoBuyTemp.register(dispatcher);
+			AutoBuyTemp.register(dispatcher);
 			AutoEnchantInHand.register(dispatcher);
 			AutoFix.register(dispatcher);
 			//AutoPrivate.register(dispatcher);

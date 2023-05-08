@@ -76,7 +76,12 @@ public class EnchantAllCommand {
                 SbMod.pressTime = 0;
                 SbMod.enchant = true;
             }
-            else if (item == Items.WARPED_FUNGUS_ON_A_STICK || item == Items.CARROT_ON_A_STICK || item == Items.FLINT_AND_STEEL || item == Items.ELYTRA || item == Items.WOODEN_HOE || item == Items.STONE_HOE || item == Items.IRON_HOE || item == Items.GOLDEN_HOE || item == Items.DIAMOND_HOE || item == Items.NETHERITE_HOE||item == Items.SHIELD) {
+            else if (item == Items.WOODEN_HOE || item == Items.STONE_HOE || item == Items.IRON_HOE || item == Items.GOLDEN_HOE || item == Items.DIAMOND_HOE || item == Items.NETHERITE_HOE) {
+                SbMod.enchantHoe = true;
+                SbMod.pressTime = 0;
+                SbMod.enchant = true;
+            }
+            else if (item == Items.WARPED_FUNGUS_ON_A_STICK || item == Items.CARROT_ON_A_STICK || item == Items.FLINT_AND_STEEL || item == Items.ELYTRA || item == Items.SHIELD) {
                 SbMod.enchantOther = true;
                 SbMod.pressTime = 0;
                 SbMod.enchant = true;
