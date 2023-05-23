@@ -142,12 +142,17 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                     lp.sendCommand("is");
                     deathTime = 0;
                 }
-                if (!deathHealthCooldown && (lp.getHealth() < 2)) {
+                if (lp.isInLava()) {
+                    LOGGER.info("[SBMOD] Saving you from certain death!");
+                    lp.sendCommand("is");
+                    deathTime = 0;
+                }
+                if (!deathHealthCooldown && (lp.getHealth() < 4)) {
                     LOGGER.info("[SBMOD] Saving you from certain death!");
                     deathHealthCooldown = true;
                     lp.sendCommand("is");
                     deathTime = 0;
-                } else if (lp.getHealth() > 2) {
+                } else if (lp.getHealth() > 4) {
                     deathHealthCooldown = false;
                 }
             } else {
