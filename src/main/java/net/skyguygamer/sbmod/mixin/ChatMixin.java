@@ -167,7 +167,8 @@ public class ChatMixin {
         //Trade logger credits to MagikIsAMush
         if (toggleTradeLogs && ((incMessage.contains(" bought ") && incMessage.contains(" from you for ")) || (incMessage.contains("You bought ") && incMessage.contains(" from ") && incMessage.contains(" for "))
                 || (incMessage.contains(" sold ") && incMessage.contains(" to you for ")) || (incMessage.contains("You sold ") && incMessage.contains(" to ") && incMessage.contains(" for "))
-                || (incMessage.contains(" bartered ") && incMessage.contains(" of their ") && incMessage.contains(" for ") && incMessage.contains(" of your ")) || (incMessage.contains("You bartered ") && incMessage.contains(" of your ") && incMessage.contains(" for ") && incMessage.contains(" of ")))) {
+                || (incMessage.contains(" bartered ") && incMessage.contains(" of their ") && incMessage.contains(" for ") && incMessage.contains(" of your ")) || (incMessage.contains("You bartered ") && incMessage.contains(" of your ") && incMessage.contains(" for ") && incMessage.contains(" of "))
+                || (incMessage.startsWith("Shop transaction completed by ") && incMessage.contains("Remaining trades:")))) {
             if (fileNameOfTradeLogs == "") {
                 Date dateNow = new Date(); // On trouve la date
                 SimpleDateFormat formatDate = new SimpleDateFormat("MM.dd.yyyy'-'HH.mm.ss");
