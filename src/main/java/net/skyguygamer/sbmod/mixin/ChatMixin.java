@@ -58,7 +58,7 @@ public class ChatMixin {
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
         //Player voted
-        if (togglePlayerVoted && incMessage.contains("voted at vote.skyblock.net for") && incMessage.endsWith("/vote")) {
+        if (togglePlayerVoted && incMessage.contains("voted at vote.skyblock.net for") && incMessage.endsWith("(/vote)")) {
             ci.cancel();
             LOGGER.info("[SBMOD] I have blocked: " + incMessage);
         }
