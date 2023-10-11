@@ -38,7 +38,8 @@ public class Config extends MidnightConfig {
 
     @Comment(centered = true)
     public static Comment autoChats;
-
+    @Entry
+    public static boolean copyChat = false;
     @Entry
     public static boolean timeChat = false;
     @Entry(min = 6000)

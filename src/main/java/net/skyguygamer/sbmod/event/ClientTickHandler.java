@@ -40,6 +40,8 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                             boarder.append("§2=");
                         }
                         LOGGER.info(modNames.toString());
+                        Style style2 = Style.EMPTY;
+                        style2 = style2.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, "d"));
                         Style style = Style.EMPTY;
                         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://valid-climber-350022.web.app/sbmod.html"));
                         lp.sendMessage((Text.literal(boarder + "§a-")));

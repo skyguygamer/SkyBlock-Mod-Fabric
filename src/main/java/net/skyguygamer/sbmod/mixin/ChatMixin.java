@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import javax.swing.text.DefaultEditorKit;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -249,7 +250,15 @@ public class ChatMixin {
             Date msgDate = new Date();
             SimpleDateFormat ft2 = new SimpleDateFormat("HH:mm:ss");
             MutableText text = (Text.literal(Formatting.GRAY + "[" + ft2.format(msgDate) + "] "));
+
             text.append(message);
+            message = text;
+        }
+        if(copyChat) {
+            Style style = Style.EMPTY;
+            style = style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, incMessage));
+            MutableText text = (message.copy()).setStyle(style);
+            //text.append(Text.literal(Formatting.DARK_GREEN + "  [" + Formatting.GREEN + "COPY" + Formatting.DARK_GREEN + "]")).setStyle(style);
             message = text;
         }
         return message;
