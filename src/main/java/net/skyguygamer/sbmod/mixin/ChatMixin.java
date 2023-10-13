@@ -1,6 +1,7 @@
 package net.skyguygamer.sbmod.mixin;
 
 
+import com.sun.jna.platform.win32.WinDef;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.MessageIndicator;
@@ -16,7 +17,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.swing.text.DefaultEditorKit;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -256,9 +256,11 @@ public class ChatMixin {
         }
         if(copyChat) {
             Style style = Style.EMPTY;
-            style = style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, incMessage));
+            String modifiedMessage = incMessage.replaceAll("§[0-9a-fk-or]", "");
+            style = style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, modifiedMessage));
             MutableText text = (message.copy()).setStyle(style);
             //text.append(Text.literal(Formatting.DARK_GREEN + "  [" + Formatting.GREEN + "COPY" + Formatting.DARK_GREEN + "]")).setStyle(style);
+            MinecraftClient.getInstance().player.sendMessage(Text.literal("Copied!"),true);
             message = text;
         }
         return message;

@@ -56,6 +56,9 @@
 
   "sbmod.midnightconfig.lotteryTickets": "The amount of lottery ticket to buy",
 
+  "sbmod.midnightconfig.copyChat": "Click to copy chat",
+  "sbmod.midnightconfig.copyChat.tooltip": "§aCopies the chat when you click on a message",
+
   "sbmod.midnightconfig.timeChat": "TimeChat",
   "sbmod.midnightconfig.timeChat.tooltip": "§aSends times before the chat message",
 

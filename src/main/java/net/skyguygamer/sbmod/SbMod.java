@@ -17,8 +17,6 @@ import net.skyguygamer.sbmod.commands.*;
 import net.skyguygamer.sbmod.config.Config;
 import net.skyguygamer.sbmod.event.*;
 import net.skyguygamer.sbmod.sounds.ModSounds;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +39,7 @@ public class SbMod implements ModInitializer {
 	//PER UPDATE YOU MUST UPDATE THE VERSIONS
 	//HERE, WELCOME MESSAGE, FABRIC.MOD.JSON and GRADLE.PROPERTIES!!
 	public static String versionNumber;
-	public static String version = "v3.1-1.19.2";
+	public static String version = "v3.2-1.19.2";
 	public static boolean latestVersion;
 	public static String sponsors = "";
 
