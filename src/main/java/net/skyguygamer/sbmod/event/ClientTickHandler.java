@@ -27,7 +27,6 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
     @Override
     public void onStartTick(MinecraftClient client) {
         ClientPlayerEntity lp = MinecraftClient.getInstance().player;
-
         //Login message
         if (loggedInToWorld) {
             if (!loggedOn && !(MinecraftClient.getInstance().player == null)) {
@@ -47,7 +46,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
                         lp.sendMessage((Text.literal("§7Updated version 3.2")));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
-                        lp.sendMessage((Text.literal("§7Click here for website")).setStyle(style));
+                        lp.sendMessage((Text.literal("§7Click here for website")).fillStyle(style));
                         if (!latestVersion) {
                             style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases"));
                             lp.sendMessage(Text.literal(Formatting.RED + "A new version is available! " + Formatting.DARK_RED + "Click here").setStyle(style));
@@ -90,6 +89,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                             lp.sendCommand(commands.get(i));
                             loggedOn = true;
                         } else {
+
                             loggedOn = false;
                         }
                     }

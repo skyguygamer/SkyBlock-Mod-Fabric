@@ -1,10 +1,10 @@
 package net.skyguygamer.sbmod.mixin;
 
 
-import com.sun.jna.platform.win32.WinDef;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.MessageIndicator;
+
 import net.minecraft.entity.MovementType;
 import net.minecraft.network.message.MessageSignatureData;
 import net.minecraft.text.*;
@@ -258,9 +258,11 @@ public class ChatMixin {
             Style style = Style.EMPTY;
             String modifiedMessage = incMessage.replaceAll("§[0-9a-fk-or]", "");
             style = style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, modifiedMessage));
-            MutableText text = (message.copy()).setStyle(style);
-            //text.append(Text.literal(Formatting.DARK_GREEN + "  [" + Formatting.GREEN + "COPY" + Formatting.DARK_GREEN + "]")).setStyle(style);
-            MinecraftClient.getInstance().player.sendMessage(Text.literal("Copied!"),true);
+            style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal(Formatting.GREEN + "Copy")));
+            MutableText text = Text.literal(Formatting.BOLD + "✄ ").setStyle(style);
+            style = style.withHoverEvent(new HoverEvent(HoverEvent.Action))
+            text.append(message.copy().);
+            //MinecraftClient.getInstance().player.sendMessage(Text.literal("Copied!"),true);
             message = text;
         }
         return message;
