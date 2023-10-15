@@ -1,4 +1,4 @@
-# SkyBlock Mod `WIP`
+# SkyBlock Mod
 <html>
 <a href="https://www.curseforge.com/minecraft/mc-mods/skyblock-net-mod"><img src="https://cf.way2muchnoise.eu/full_794267_downloads.svg" style="max-width:100%;"></a>
 </html>
