@@ -7,6 +7,7 @@ import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.ClickEvent;
+import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -41,14 +42,19 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         Style style2 = Style.EMPTY;
                        // style2 = style2.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, "d"));
                         Style style = Style.EMPTY;
-                        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://valid-climber-350022.web.app/sbmod.html"));
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
                         lp.sendMessage((Text.literal("§7Updated version 3.2")));
-                        lp.sendMessage((Text.literal("§7Type /shelp for list of commands")));
-                        lp.sendMessage((Text.literal("§7Click here for website")).fillStyle(style));
+                        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "help"));
+                        lp.sendMessage((Text.literal("§7Type /shelp for list of commands")).setStyle(style));
+                        style = Style.EMPTY;
+                        style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://valid-climber-350022.web.app/sbmod.html"));
+                        style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("Click for website!")));
+                        lp.sendMessage((Text.literal("§7Click here for website")).setStyle(style));
                         if (!latestVersion) {
+                            style = Style.EMPTY;
                             style = style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases"));
+                            style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal("Click for link!")));
                             lp.sendMessage(Text.literal(Formatting.RED + "A new version is available! " + Formatting.DARK_RED + "Click here").setStyle(style));
                             LOGGER.warn("[SBMOD] New version available https://github.com/skyguygamer/SkyBlock-Mod-Fabric/releases");
                         }

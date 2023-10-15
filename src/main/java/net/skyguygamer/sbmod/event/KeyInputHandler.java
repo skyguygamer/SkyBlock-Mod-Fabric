@@ -18,7 +18,7 @@ public class KeyInputHandler {
     public static final String KEY_BACK_COMMAND = "key.sbmod.back.command";
     public static final String KEY_EHOME_COMMAND = "key.sbmod.ehome.command";
     public static final String KEY_CONFIG = "key.sbmod.config";
-    public static final String KEY_KITTYCANNON = "key.kittycannon.command";
+    public static final String KEY_KITTYCANNON = "key.sbmod.kittycannon.command";
     public static KeyBinding craftKey;
     public static KeyBinding ehomeKey;
     public static KeyBinding backKey;

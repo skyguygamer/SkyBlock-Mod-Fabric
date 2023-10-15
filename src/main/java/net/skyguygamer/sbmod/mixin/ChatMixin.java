@@ -11,7 +11,9 @@ import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
 import net.skyguygamer.sbmod.sounds.ModSounds;
+import org.apache.commons.lang3.StringUtils;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -21,6 +23,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import static net.skyguygamer.sbmod.SbMod.*;
@@ -186,7 +189,7 @@ public class ChatMixin {
         }
 
 
-        /*if (incMessage.contains("unscrambled the word") || incMessage.contains("typed the word") || incMessage.contains("The word was")) {
+        if (incMessage.contains("unscrambled the word") || incMessage.contains("typed the word") || incMessage.contains("The word was")) {
             String WordToSave = "";
             if (incMessage.contains("unscrambled the word")) {
                 WordToSave = StringUtils.substringBetween(incMessage, "unscrambled the word ", " in");
@@ -208,7 +211,7 @@ public class ChatMixin {
                 myObjWord.newLine();
                 myObjWord.flush();
             }
-        }*/
+        }
     }
 
 
@@ -222,7 +225,7 @@ public class ChatMixin {
             MinecraftClient.getInstance().player.playSound(ModSounds.NOTIFY_SOUND,1f,1f);
             //message = Text.literal("Sound is being played");
         }
-        /*if(hoverHack) {
+        if(hoverHack) {
             if (incMessage.startsWith("[") && incMessage.endsWith(" Hover for the word to type!")) {
                 Text hoverMsg = message.getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT);
                 Style style = Style.EMPTY;
@@ -245,7 +248,7 @@ public class ChatMixin {
                     message = Text.literal(Formatting.AQUA + "[✎] Unscramble the word " + Formatting.GREEN + word).setStyle(style);
                 }
             }
-        }*/
+        }
         if(timeChat) {
             Date msgDate = new Date();
             SimpleDateFormat ft2 = new SimpleDateFormat("HH:mm:ss");
@@ -258,12 +261,11 @@ public class ChatMixin {
             Style style = Style.EMPTY;
             String modifiedMessage = incMessage.replaceAll("§[0-9a-fk-or]", "");
             style = style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, modifiedMessage));
-            style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal(Formatting.GREEN + "Copy")));
+            //style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.literal(Formatting.GREEN + "Copy")));
             MutableText text = Text.literal(Formatting.BOLD + "✄ ").setStyle(style);
-            style = style.withHoverEvent(new HoverEvent(HoverEvent.Action))
-            text.append(message.copy().);
+
             //MinecraftClient.getInstance().player.sendMessage(Text.literal("Copied!"),true);
-            message = text;
+            message = text.append(message);
         }
         return message;
     }

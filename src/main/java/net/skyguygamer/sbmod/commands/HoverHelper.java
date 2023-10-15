@@ -1,4 +1,4 @@
-/*package net.skyguygamer.sbmod.commands;
+package net.skyguygamer.sbmod.commands;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
@@ -28,4 +28,4 @@ public final class HoverHelper {
 
 
 }
-*/
+
