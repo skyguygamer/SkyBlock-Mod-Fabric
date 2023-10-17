@@ -39,7 +39,7 @@ public class SbMod implements ModInitializer {
 	//PER UPDATE YOU MUST UPDATE THE VERSIONS
 	//HERE, WELCOME MESSAGE, FABRIC.MOD.JSON and GRADLE.PROPERTIES!!
 	public static String versionNumber;
-	public static String version = "v3.2-1.19.2";
+	public static String version = "v3.1.1-1.19.2";
 	public static boolean latestVersion;
 	public static String sponsors = "";
 

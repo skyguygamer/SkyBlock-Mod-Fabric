@@ -220,10 +220,17 @@ public class ChatMixin {
         String incMessage = message.getString();
         //Toggle notify
         String name = MinecraftClient.getInstance().player.getName().getString().toLowerCase();
-        if (toggleNotify && (incMessage.toLowerCase().contains(" " + name) || incMessage.toLowerCase().contains(name + " ") || incMessage.toLowerCase().contains(" " + extraNotifyWord) || incMessage.toLowerCase().contains(extraNotifyWord + " "))) {
+        if (toggleNotify && (incMessage.toLowerCase().contains(" " + name) || incMessage.toLowerCase().contains(name + " "))) {
             //LOGGER.info("[SBMOD] Name is " + MinecraftClient.getInstance().player.getName().getString().toLowerCase());
             MinecraftClient.getInstance().player.playSound(ModSounds.NOTIFY_SOUND,1f,1f);
             //message = Text.literal("Sound is being played");
+        }
+        if (toggleNotify) {
+            for (String word : extraNotifyWords) {
+                if (incMessage.toLowerCase().contains(" " + word) || incMessage.toLowerCase().contains(word + " ")) {
+                    MinecraftClient.getInstance().player.playSound(ModSounds.NOTIFY_SOUND,1f,1f);
+                }
+            }
         }
         if(hoverHack) {
             if (incMessage.startsWith("[") && incMessage.endsWith(" Hover for the word to type!")) {

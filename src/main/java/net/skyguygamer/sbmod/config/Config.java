@@ -91,8 +91,10 @@ public class Config extends MidnightConfig {
     public static boolean joinCommands = true;
     @Entry()
     public static boolean toggleNotify = false;
-    @Entry(name = "Add extra word to notify (nickname)")
-    public static String extraNotifyWord = "";
+    //@Entry(name = "Add extra word to notify (nickname)")
+    //public static String extraNotifyWord = "";
+    @Entry(name = "Add extra words to notify (nickname) (LOWERCASE!)")
+    public static List<String> extraNotifyWords = List.of();
     @Entry
     public static boolean toggleWelcomeMessage = false;
     @Entry

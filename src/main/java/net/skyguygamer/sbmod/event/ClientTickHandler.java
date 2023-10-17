@@ -44,7 +44,7 @@ public class ClientTickHandler implements ClientTickEvents.StartTick {
                         Style style = Style.EMPTY;
                         lp.sendMessage((Text.literal(boarder + "§a-")));
                         lp.sendMessage((Text.literal("§7Skyblock Mod for fabric 1.19.2")));
-                        lp.sendMessage((Text.literal("§7Updated version 3.2")));
+                        lp.sendMessage((Text.literal("§7Updated version 3.1.1")));
                         style = style.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "help"));
                         lp.sendMessage((Text.literal("§7Type /shelp for list of commands")).setStyle(style));
                         style = Style.EMPTY;
