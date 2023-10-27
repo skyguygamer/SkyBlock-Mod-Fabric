@@ -146,7 +146,7 @@ public class SbMod implements ModInitializer {
 		LOGGER.info("Ign: " + username);
 
 
-		try	{
+		/*try	{
 			if (motListe.isEmpty()){
 				String Line;
 				mapwords = new HashMap<>();
@@ -167,6 +167,8 @@ public class SbMod implements ModInitializer {
 				}
 			}
 		} catch (Exception ignored){}
+
+		 */
 
 
 		modNames = getUUIDsFromURL();

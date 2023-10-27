@@ -189,7 +189,7 @@ public class ChatMixin {
         }
 
 
-        if (incMessage.contains("unscrambled the word") || incMessage.contains("typed the word") || incMessage.contains("The word was")) {
+        /*if (incMessage.contains("unscrambled the word") || incMessage.contains("typed the word") || incMessage.contains("The word was")) {
             String WordToSave = "";
             if (incMessage.contains("unscrambled the word")) {
                 WordToSave = StringUtils.substringBetween(incMessage, "unscrambled the word ", " in");
@@ -212,6 +212,8 @@ public class ChatMixin {
                 myObjWord.flush();
             }
         }
+
+         */
     }
 
 
@@ -232,7 +234,7 @@ public class ChatMixin {
                 }
             }
         }
-        if(hoverHack) {
+        /*if(hoverHack) {
             if (incMessage.startsWith("[") && incMessage.endsWith(" Hover for the word to type!")) {
                 Text hoverMsg = message.getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT);
                 Style style = Style.EMPTY;
@@ -256,6 +258,8 @@ public class ChatMixin {
                 }
             }
         }
+
+         */
         if(timeChat) {
             Date msgDate = new Date();
             SimpleDateFormat ft2 = new SimpleDateFormat("HH:mm:ss");

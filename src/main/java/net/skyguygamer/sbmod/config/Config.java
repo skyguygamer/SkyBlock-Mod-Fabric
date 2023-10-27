@@ -97,8 +97,8 @@ public class Config extends MidnightConfig {
     public static List<String> extraNotifyWords = List.of();
     @Entry
     public static boolean toggleWelcomeMessage = false;
-    @Entry
-    public static boolean hoverHack = false;
+    //@Entry
+    //public static boolean hoverHack = false;
 
 }
 
