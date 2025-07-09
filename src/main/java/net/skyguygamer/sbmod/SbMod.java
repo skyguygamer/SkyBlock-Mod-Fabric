@@ -120,7 +120,7 @@ public class SbMod implements ModInitializer {
 	//Staff checks
 	public static Map<String, String> onlineStaffUuids = new HashMap<>();
 	public static ArrayList<String> onlinePlayers = new ArrayList<>(List.of());
-	public static ArrayList<String> modNames = new ArrayList<>(List.of());
+	public static ArrayList<String> modNames = new ArrayList<>(List.of("Test"));
 	/*public static ArrayList<String> modNames = new ArrayList<>(Arrays.asList(
 			//Helpers
 			"82df7471-8ad2-4f16-a3d8-31dd09628b8f", "6df79345-a001-4ccc-9104-e1c2df361c70", "22206b45-7d3e-429c-b339-e0c1629110db", "bd94c577-dc7d-4bfc-bf36-0262cf821441",
